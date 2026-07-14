@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role_contains">
+  <sys_user_role_contains action="INSERT_OR_UPDATE">
+    <sys_id>a88a97cbcd7348b1abc5bf10effc5155</sys_id>
+    <sys_scope display_value="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_scope>
+    <sys_update_name>sys_user_role_contains_a88a97cbcd7348b1abc5bf10effc5155</sys_update_name>
+    <contains name="x_1903615_worksp_0.wrm_user">a5589fce5a934ffeb6410d15d2c15806</contains>
+    <role name="x_1903615_worksp_0.wrm_agent">6c2752d167ed4d70b5efdc64f8f8262e</role>
+  </sys_user_role_contains>
+</record_update>
