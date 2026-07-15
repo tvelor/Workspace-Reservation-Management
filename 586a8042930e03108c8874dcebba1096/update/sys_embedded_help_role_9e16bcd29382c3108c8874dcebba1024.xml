@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_embedded_help_role">
+    <sys_embedded_help_role action="INSERT_OR_UPDATE">
+        <order>1000</order>
+        <role display_value="x_1903615_worksp_0.workspace_maintenance_user" name="x_1903615_worksp_0.workspace_maintenance_user">de1638d29382c3108c8874dcebba1093</role>
+        <sys_class_name>sys_embedded_help_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-15 03:00:34</sys_created_on>
+        <sys_id>9e16bcd29382c3108c8874dcebba1024</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>de1638d29382c3108c8874dcebba1093</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sys_embedded_help_role_9e16bcd29382c3108c8874dcebba1024</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-15 03:00:34</sys_updated_on>
+    </sys_embedded_help_role>
+</record_update>
