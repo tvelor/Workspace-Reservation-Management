@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="09ecacde9302c3108c8874dcebba1004" sys_domain="global" table="x_1903615_worksp_0_reservation_tracker" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-15 02:20:21</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d5ecacde9302c3108c8874dcebba101a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_1903615_worksp_0_reservation_tracker" name="x_1903615_worksp_0_reservation_tracker" sys_domain="global" view="Default view">09ecacde9302c3108c8874dcebba1004</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="x_1903615_worksp_0_reservation_tracker" sys_domain="global" view="Default view">550ca09e9302c3108c8874dcebba101e</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-15 02:20:21</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-15 02:20:21</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9decacde9302c3108c8874dcebba101b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_1903615_worksp_0_reservation_tracker" name="x_1903615_worksp_0_reservation_tracker" sys_domain="global" view="Default view">09ecacde9302c3108c8874dcebba1004</sys_ui_form>
+            <sys_ui_section caption="Details" display_value="Details" name="x_1903615_worksp_0_reservation_tracker" sys_domain="global" view="Default view">c1ec6cde9302c3108c8874dcebba1084</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-15 02:20:21</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-15 02:20:21</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d9ecacde9302c3108c8874dcebba1022</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_1903615_worksp_0_reservation_tracker" name="x_1903615_worksp_0_reservation_tracker" sys_domain="global" view="Default view">09ecacde9302c3108c8874dcebba1004</sys_ui_form>
+            <sys_ui_section caption="Activity" display_value="Activity" name="x_1903615_worksp_0_reservation_tracker" sys_domain="global" view="Default view">45ecacde9302c3108c8874dcebba1002</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-15 02:20:21</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_1903615_worksp_0_reservation_tracker</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-15 02:20:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>09ecacde9302c3108c8874dcebba1004</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_1903615_worksp_0_reservation_tracker</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+            <sys_update_name>sys_ui_form_sections_09ecacde9302c3108c8874dcebba1004</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-15 02:20:20</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" db_object_id="c358e4129302c3108c8874dcebba1049" extends="task" label="Reservation Tracker" max_length="40" name="x_1903615_worksp_0_reservation_tracker" type="collection">
+        <element label="Reserved For" max_length="32" name="reserved_for" reference="sys_user" type="reference"/>
+        <element label="Additonal notes" max_length="1000" name="additonal_notes" type="string"/>
+        <element label="Workspace" max_length="32" name="workspace" reference="x_1903615_worksp_0_workspace_options" type="reference"/>
+        <element choice="1" label="Reservation status" max_length="40" name="reservation_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Checked-out" sequence="10" value="checked_out"/>
+                <element inactive_on_update="false" label="No-show" sequence="25" value="no_show"/>
+                <element inactive_on_update="false" label="Pending check-in" sequence="5" value="pending_check_in"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="20" value="cancelled"/>
+                <element inactive_on_update="false" label="Checked-in" sequence="10" value="checked_in"/>
+            </choice>
+        </element>
+        <element label="Request number" max_length="32" name="request_number" reference="sc_req_item" type="reference"/>
+    </element>
+</database>
