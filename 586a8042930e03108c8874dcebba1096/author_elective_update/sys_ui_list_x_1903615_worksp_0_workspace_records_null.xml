@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_list action="DELETE" parent="" relationship="" sys_domain="global" table="x_1903615_worksp_0_workspace_records" version="2" view="">
+        <sys_ui_list action="DELETE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>x_1903615_worksp_0_workspace_records</name>
+            <parent/>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by/>
+            <sys_created_on/>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path/>
+            <sys_id>b1cd101e938e83108c8874dcebba1000</sys_id>
+            <sys_mod_count/>
+            <sys_name>x_1903615_worksp_0_workspace_records</sys_name>
+            <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+            <sys_update_name/>
+            <sys_updated_by/>
+            <sys_updated_on>2026-07-15 01:19:54</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</application>
+        <file_path/>
+        <instance_id>5b8062d13b3f9694a80ce0bf55e45a19</instance_id>
+        <instance_name>dev295661</instance_name>
+        <name>sys_ui_list_x_1903615_worksp_0_workspace_records_null</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_ui_list parent="" relationship="" sys_domain="global" table="x_1903615_worksp_0_workspace_records" version="2" view=""><sys_ui_list action="DELETE"><average_value>false</average_value><element/><max_value>false</max_value><min_value>false</min_value><name>x_1903615_worksp_0_workspace_records</name><parent/><position/><relationship/><sum>false</sum><sys_class_name>sys_ui_list</sys_class_name><sys_created_by/><sys_created_on/><sys_domain>global</sys_domain><sys_domain_path/><sys_id>b1cd101e938e83108c8874dcebba1000</sys_id><sys_mod_count/><sys_name>x_1903615_worksp_0_workspace_records</sys_name><sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package><sys_policy/><sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope><sys_update_name/><sys_updated_by/><sys_updated_on>2026-07-15 01:19:54</sys_updated_on><sys_user/><view display_value="Default view" name="NULL">Default view</view><view_name/></sys_ui_list></sys_ui_list></record_update>]]></payload>
+        <payload_hash>-1086716433</payload_hash>
+        <record_name>x_1903615_worksp_0_workspace_records</record_name>
+        <reverted_from/>
+        <source>6f2c10d6938e83108c8874dcebba103a</source>
+        <source_table>sys_update_set</source_table>
+        <state>current</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-15 01:19:54</sys_created_on>
+        <sys_id>3b0f5c9e938e83108c8874dcebba102e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19f635be57e0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-15 01:19:54</sys_updated_on>
+        <type>List Layout</type>
+        <update_guid>f70f5c9e298e83103b958519c864962d</update_guid>
+        <update_guid_history>f70f5c9e298e83103b958519c864962d:-1086716433</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-15 01:29:13</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_list">sys_ui_list</sys_db_object>
+        <sys_id>881e53512efc402b8e3a245d75f0af89</sys_id>
+        <sys_metadata>eb3f14de938e83108c8874dcebba10ff</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1903615_worksp_0_workspace_records</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_parent display_value="">af3f14de938e83108c8874dcebba109e</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_scope_delete display_value="">14c313a8f537498087dc70da5ab4b840</sys_scope_delete>
+        <sys_update_name>sys_ui_list_x_1903615_worksp_0_workspace_records_null</sys_update_name>
+        <sys_update_version display_value="sys_ui_list_x_1903615_worksp_0_workspace_records_null">3b0f5c9e938e83108c8874dcebba102e</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-15 01:29:13</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
