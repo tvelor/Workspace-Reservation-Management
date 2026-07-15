@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role_contains">
-  <sys_user_role_contains action="INSERT_OR_UPDATE">
-    <sys_id>f9bdc855e6104f30b23c07a99ffe4b32</sys_id>
-    <sys_scope display_value="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_scope>
-    <sys_update_name>sys_user_role_contains_f9bdc855e6104f30b23c07a99ffe4b32</sys_update_name>
-    <contains name="x_1903615_worksp_0.wrm_agent">6c2752d167ed4d70b5efdc64f8f8262e</contains>
-    <role name="x_1903615_worksp_0.wrm_admin">51520e2e194642a3986acf0764ac08e8</role>
-  </sys_user_role_contains>
+    <sys_user_role_contains action="INSERT_OR_UPDATE">
+        <contains display_value="x_1903615_worksp_0.wrm_agent" name="x_1903615_worksp_0.wrm_agent">6c2752d167ed4d70b5efdc64f8f8262e</contains>
+        <role display_value="x_1903615_worksp_0.wrm_admin" name="x_1903615_worksp_0.wrm_admin">51520e2e194642a3986acf0764ac08e8</role>
+        <sys_class_name>sys_user_role_contains</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-14 05:11:35</sys_created_on>
+        <sys_id>f9bdc855e6104f30b23c07a99ffe4b32</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1903615_worksp_0.wrm_agent.x_1903615_worksp_0.wrm_admin</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sys_user_role_contains_f9bdc855e6104f30b23c07a99ffe4b32</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-14 05:11:35</sys_updated_on>
+    </sys_user_role_contains>
 </record_update>
