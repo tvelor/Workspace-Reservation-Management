@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_1903615_worksp_0.discordNotification</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>discordNotification</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var discordNotification = Class.create();
+discordNotification.prototype = {
+
+    initialize: function() {
+        // Runs automatically when new discordNotification() is called.
+        // Reads the webhook URL from the system property and stores it
+        // on 'this' so sendMessage can use it without reading the
+        // property again on every call
+        this.webhookURL = gs.getProperty('x_1903615_worksp_0.discord.webhook_url');
+    },
+
+    sendMessage: function(message, emoji) {
+        // Guard: if property lookup returned empty (wrong name,
+        // wrong scope, deleted property), log and bail out cleanly
+        if (!this.webhookURL) {
+            gs.warn('Discord webhook URL not configured. Check system property.');
+            return false;
+        }
+
+        try {
+            // Build the outbound HTTP POST request to Discord
+            var request = new sn_ws.RESTMessageV2();
+
+            // The Discord webhook URL — pulled from the property,
+            // never hardcoded here
+            request.setEndpoint(this.webhookURL);
+
+            // POST = we are sending/creating data on Discord's end
+            request.setHttpMethod('POST');
+
+            // Tell Discord the body is JSON, not plain text
+            request.setRequestHeader('Content-Type', 'application/json');
+
+            // Discord expects { content: "message text" }.
+            // Prepend emoji if one was passed in.
+            var payload = {
+                content: (emoji ? emoji + ' ' : '') + message
+            };
+
+            // setRequestBody needs a string — JSON.stringify converts
+            // the JavaScript object to a JSON string
+            request.setRequestBody(JSON.stringify(payload));
+
+            // Fire the request and read Discord's response
+            var response = request.execute();
+            var httpStatus = response.getStatusCode();
+
+            // 200 or 204 = Discord accepted the message successfully
+            if (httpStatus == 200 || httpStatus == 204) {
+                gs.info('Discord notification sent successfully');
+                return true;
+            } else {
+                gs.error('Discord notification failed with status: ' + httpStatus);
+                return false;
+            }
+
+        } catch (ex) {
+            // Safety net: network failure, bad URL, anything unexpected —
+            // log the error and return false instead of crashing the caller
+            gs.error('Error sending Discord notification: ' + ex.message);
+            return false;
+        }
+    },
+
+    // Required — must exactly match the Script Include name.
+    // ServiceNow uses this internally to identify the class.
+    type: 'discordNotification'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-16 02:39:53</sys_created_on>
+        <sys_id>459a352e93ca47108c8874dcebba10d2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>discordNotification</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sys_script_include_459a352e93ca47108c8874dcebba10d2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-16 02:39:53</sys_updated_on>
+    </sys_script_include>
+</record_update>
