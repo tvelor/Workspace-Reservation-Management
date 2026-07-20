@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="2afb3d63930e4f108c8874dcebba1040" extends="sys_import_set_row" label="Workspace Import Stage" max_length="40" name="x_1903615_worksp_0_workspace_import_stage" type="collection">
+        <element label="Status" max_length="50" name="status" type="string"/>
+        <element label="Image" max_length="200" name="image" type="string"/>
+        <element label="Max Occupancy" max_length="40" name="max_occupancy" type="integer"/>
+        <element label="Location" max_length="200" name="location" type="string"/>
+        <element label="Workspace Name" max_length="100" name="workspace_name" type="string"/>
+        <element label="Workspace Description" max_length="1000" name="workspace_description" type="string"/>
+        <element label="Workspace Type" max_length="100" name="workspace_type" type="string"/>
+    </element>
+</database>

@@ -16,7 +16,7 @@
         <flow_priority/>
         <ih_action>false</ih_action>
         <internal_name>process_workspace_csv_import</internal_name>
-        <label_cache>[{"name":"{{action.rits_sys_id}}","label":"action➛RITS Sys ID","type":"action","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{}},{"name":"{{step[757b30d0-6f12-4147-a2fc-4f8051b65bab].result}}","label":"step➛Script step➛Result","type":"step","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"string","uiUniqueId":"2a1ab90d-680e-4241-ad6d-ca12aa809e0d"}},{"name":"{{step[757b30d0-6f12-4147-a2fc-4f8051b65bab].record_count}}","label":"step➛Script step➛Record Count","type":"step","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"string","uiUniqueId":"506b79e9-ac4b-40e5-ab4a-14915cfefe85"}}]</label_cache>
+        <label_cache>[{"name":"{{action.rits_sys_id}}","label":"action➛RITM Sys ID","type":"action","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"string","uiUniqueId":"cef95e8e-4130-4c19-99c7-58524c447289"}},{"name":"{{action.ritm_sys_id}}","label":"action➛RITM Sys ID","type":"action","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{}},{"name":"{{step[757b30d0-6f12-4147-a2fc-4f8051b65bab].result}}","label":"step➛Script step➛Result","type":"step","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"string","uiUniqueId":"2a1ab90d-680e-4241-ad6d-ca12aa809e0d"}},{"name":"{{step[757b30d0-6f12-4147-a2fc-4f8051b65bab].record_count}}","label":"step➛Script step➛Record Count","type":"step","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"string","uiUniqueId":"506b79e9-ac4b-40e5-ab4a-14915cfefe85"}}]</label_cache>
         <master_snapshot>7dd85f76930a0b108c8874dcebba1036</master_snapshot>
         <master_snapshot_digest/>
         <name>Process Workspace CSV Import</name>
@@ -31,7 +31,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>69e71bf2930a0b108c8874dcebba1064</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>47</sys_mod_count>
         <sys_name>Process Workspace CSV Import</sys_name>
         <sys_overrides/>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
@@ -39,7 +39,7 @@
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name>sys_hub_action_type_definition_69e71bf2930a0b108c8874dcebba1064</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:08:35</sys_updated_on>
+        <sys_updated_on>2026-07-19 07:12:31</sys_updated_on>
         <system_level>false</system_level>
         <type/>
     </sys_hub_action_type_definition>
@@ -128,6 +128,7 @@
         <cid>757b30d0-6f12-4147-a2fc-4f8051b65bab</cid>
         <error_handling_type>1</error_handling_type>
         <extended_inputs/>
+        <extended_inputs/>
         <extended_outputs/>
         <icon/>
         <inputs/>
@@ -139,10 +140,10 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-17 04:07:46</sys_created_on>
         <sys_id>5ea85776930a0b108c8874dcebba10a6</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:07:47</sys_updated_on>
+        <sys_updated_on>2026-07-19 07:12:24</sys_updated_on>
     </sys_hub_step_instance>
     <sys_variable_value action="delete_multiple" query="document_key=5ea85776930a0b108c8874dcebba10a6"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
@@ -162,43 +163,27 @@
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_hub_step_instance</document>
         <document_key>5ea85776930a0b108c8874dcebba10a6</document_key>
-        <order>0</order>
-        <sys_class_name>sys_variable_value</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-17 04:07:47</sys_created_on>
-        <sys_id>a6a85776930a0b108c8874dcebba10eb</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:07:47</sys_updated_on>
-        <value>RITS Sys ID</value>
-        <variable display_value="">1ea85776930a0b108c8874dcebba10b0</variable>
-    </sys_variable_value>
-    <sys_variable_value action="INSERT_OR_UPDATE">
-        <document>sys_hub_step_instance</document>
-        <document_key>5ea85776930a0b108c8874dcebba10a6</document_key>
         <order>600</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-17 04:07:47</sys_created_on>
         <sys_id>aea85776930a0b108c8874dcebba10e9</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:07:47</sys_updated_on>
+        <sys_updated_on>2026-07-19 07:12:24</sys_updated_on>
         <value>(function execute(inputs, outputs) {&#13;
-&#13;
     try {&#13;
-        // Get the RITM sys_id from the trigger&#13;
-        // We need this to find the attachment the manager uploaded&#13;
         var ritmSysId = inputs.ritm_sys_id;&#13;
 &#13;
-        // GlideSysAttachment is the API for reading file attachments&#13;
-        // in ServiceNow server-side scripts&#13;
-        var attachment = new GlideSysAttachment();&#13;
+        if (sys_id) {&#13;
+            successCount++;&#13;
+        } else {&#13;
+            errorCount++;&#13;
+            gs.error('Failed to insert row ' + i + ': ' + line);&#13;
+        }&#13;
 &#13;
-        // Get all attachments on this RITM record&#13;
-        // Returns a GlideRecord of sys_attachment records&#13;
+        // Read the CSV attachment from the RITM&#13;
         var attachmentGR = new GlideRecord('sys_attachment');&#13;
-        attachmentGR.addQuery('table_name', 'sc_req_item');&#13;
         attachmentGR.addQuery('table_sys_id', ritmSysId);&#13;
         attachmentGR.addQuery('file_name', 'ENDSWITH', '.csv');&#13;
         attachmentGR.orderByDesc('sys_created_on');&#13;
@@ -212,7 +197,8 @@
             return;&#13;
         }&#13;
 &#13;
-        // Read the raw bytes of the attachment and convert to a string&#13;
+        // Read CSV content&#13;
+        var attachment = new GlideSysAttachment();&#13;
         var csvContent = attachment.getContent(attachmentGR);&#13;
 &#13;
         if (!csvContent) {&#13;
@@ -222,60 +208,52 @@
             return;&#13;
         }&#13;
 &#13;
-        // Split the CSV into lines&#13;
-        // The first line is the header row — skip it&#13;
+        // Split into lines, skip header&#13;
         var lines = csvContent.split('\n');&#13;
-        var headers = lines[0].split(',');&#13;
-&#13;
-        gs.info('Bulk Workspace Import: Found ' + (lines.length - 1) + ' data rows');&#13;
+        gs.info('Bulk Workspace Import: Total lines including header: ' + lines.length);&#13;
 &#13;
         var successCount = 0;&#13;
         var errorCount = 0;&#13;
 &#13;
-        // Loop through each data row (skip header at index 0)&#13;
+        // Create one Import Set record per data row&#13;
         for (var i = 1; i &lt; lines.length; i++) {&#13;
             var line = lines[i].trim();&#13;
-&#13;
-            // Skip empty lines&#13;
             if (!line) continue;&#13;
 &#13;
+            // Handle commas inside quoted fields&#13;
             var values = line.split(',');&#13;
 &#13;
-            // Insert a row into the staging table&#13;
-            // Column names match the import set table's u_ prefixed fields&#13;
-            var staging = new GlideRecord('x_1903615_worksp_0_workspace_records');&#13;
+            // Insert into staging table via GlideRecord&#13;
+            // Import set tables accept direct GlideRecord inserts&#13;
+            // when the table extends sys_import_set_row&#13;
+            var staging = new GlideRecord('x_1903615_worksp_0_workspace_import_stage');&#13;
             staging.initialize();&#13;
-            staging.u_workspace_name = values[0] ? values[0].trim() : '';&#13;
-            staging.u_workspace_type = values[1] ? values[1].trim() : '';&#13;
-            staging.u_location = values[2] ? values[2].trim() : '';&#13;
-            staging.u_max_occupancy = values[3] ? values[3].trim() : '0';&#13;
-            staging.u_status = values[4] ? values[4].trim() : '';&#13;
-            staging.u_workspace_description = values[5] ? values[5].trim() : '';&#13;
-            staging.u_image = values[6] ? values[6].trim() : '';&#13;
+            staging.workspace_name = values[0] ? values[0].trim() : '';&#13;
+            staging.workspace_type = values[1] ? values[1].trim() : '';&#13;
+            staging.location = values[2] ? values[2].trim() : '';&#13;
+            staging.max_occupancy = values[3] ? values[3].trim() : '0';&#13;
+            staging.status = values[4] ? values[4].trim() : '';&#13;
+            staging.workspace_description = values[5] ? values[5].trim() : '';&#13;
+            staging.image = values[6] ? values[6].trim() : '';&#13;
 &#13;
-            var stagingSysId = staging.insert();&#13;
+            var sys_id = staging.insert();&#13;
+            gs.info('Row ' + i + ' insert result: ' + sys_id);&#13;
 &#13;
-            if (stagingSysId) {&#13;
+            if (sys_id) {&#13;
                 successCount++;&#13;
             } else {&#13;
                 errorCount++;&#13;
-                gs.error('Bulk Workspace Import: Failed to insert row ' + i);&#13;
+                gs.error('Failed to insert row ' + i + ': ' + line);&#13;
             }&#13;
         }&#13;
 &#13;
-        // Now trigger the transform map to move data from&#13;
-        // staging table into Workspace Options&#13;
-        // GlideImportSetTransformerWorker runs the named transform map&#13;
-        var transformWorker = new GlideImportSetTransformerWorker(&#13;
-            'x_1903615_worksp_0_workspace_records',  // source table&#13;
-            'Workspace records'                        // transform map name&#13;
-        );&#13;
-        transformWorker.setBackground(false); // run synchronously so we wait for results&#13;
-        transformWorker.start(null, null);&#13;
+        gs.info('Bulk Workspace Import: Inserted ' + successCount + ' rows into staging table');&#13;
 &#13;
-        gs.info('Bulk Workspace Import: Transform complete. Success: ' + successCount + ', Errors: ' + errorCount);&#13;
+        // Note: No explicit transform call needed.&#13;
+        // The staging table has a "Transform synchronously" business rule&#13;
+        // that automatically runs the "Workspace records" transform map&#13;
+        // on every insert. Records flow to Workspace Options immediately.&#13;
 &#13;
-        // Set outputs so the email step can use them&#13;
         outputs.result = 'Import completed. ' + successCount + ' records processed, ' + errorCount + ' errors.';&#13;
         outputs.record_count = successCount + '';&#13;
 &#13;
@@ -284,15 +262,62 @@
         outputs.result = 'Import failed: ' + ex.message;&#13;
         outputs.record_count = '0';&#13;
     }&#13;
-&#13;
 })(inputs, outputs);</value>
         <variable display_value="Script">71aa7f6647032200b4fad7527c9a719b</variable>
     </sys_variable_value>
-    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_step_ext_input_5ea85776930a0b108c8874dcebba10a6^id=5ea85776930a0b108c8874dcebba10a6"/>
+    <sys_element_mapping action="delete_multiple" query="id=5ea85776930a0b108c8874dcebba10a6"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>application</field>
+        <id>5ea85776930a0b108c8874dcebba10a6</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-17 04:07:47</sys_created_on>
+        <sys_id>eaa85776930a0b108c8874dcebba10e7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-17 04:07:47</sys_updated_on>
+        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>ritm_sys_id</field>
+        <id>5ea85776930a0b108c8874dcebba10a6</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-19 06:38:07</sys_created_on>
+        <sys_id>444ec2ab938e4f108c8874dcebba10ca</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-19 06:38:07</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_5ea85776930a0b108c8874dcebba10a6</table>
+        <value>{{action.ritm_sys_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>rits_sys_id</field>
+        <id>5ea85776930a0b108c8874dcebba10a6</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-17 04:07:47</sys_created_on>
+        <sys_id>e2a85776930a0b108c8874dcebba10eb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-17 04:07:47</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_5ea85776930a0b108c8874dcebba10a6</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>script</field>
+        <id>5ea85776930a0b108c8874dcebba10a6</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-17 04:07:47</sys_created_on>
+        <sys_id>aaa85776930a0b108c8874dcebba10e8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-17 04:07:47</sys_updated_on>
+        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
+        <value/>
+    </sys_element_mapping>
     <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_step_ext_output_5ea85776930a0b108c8874dcebba10a6^id=5ea85776930a0b108c8874dcebba10a6"/>
     <sys_element_mapping action="delete_multiple" query="table=var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7^id=5ea85776930a0b108c8874dcebba10a6"/>
     <sys_translated_text action="delete_multiple" query="documentkey=5ea85776930a0b108c8874dcebba10a6"/>
-    <sys_hub_step_ext_input action="delete_multiple" query="model=5ea85776930a0b108c8874dcebba10a6^sys_idNOT IN1ea85776930a0b108c8874dcebba10b0"/>
+    <sys_hub_step_ext_input action="delete_multiple" query="model=5ea85776930a0b108c8874dcebba10a6^sys_idNOT IN8c4ec2ab938e4f108c8874dcebba109d"/>
     <sys_hub_step_ext_input action="INSERT_OR_UPDATE">
         <active>true</active>
         <array>false</array>
@@ -321,7 +346,7 @@
         <dynamic_creation_script/>
         <dynamic_default_value/>
         <dynamic_ref_qual/>
-        <element>rits_sys_id</element>
+        <element>ritm_sys_id</element>
         <element_reference>false</element_reference>
         <foreign_database/>
         <formula/>
@@ -354,8 +379,8 @@
         <staged>false</staged>
         <sys_class_name>sys_hub_step_ext_input</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-17 04:07:46</sys_created_on>
-        <sys_id>1ea85776930a0b108c8874dcebba10b0</sys_id>
+        <sys_created_on>2026-07-19 06:38:07</sys_created_on>
+        <sys_id>8c4ec2ab938e4f108c8874dcebba109d</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name/>
         <sys_package/>
@@ -363,7 +388,7 @@
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:07:46</sys_updated_on>
+        <sys_updated_on>2026-07-19 06:38:07</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -590,12 +615,12 @@
         <url/>
         <url_target/>
     </sys_documentation>
-    <sys_hub_action_input action="delete_multiple" query="model=69e71bf2930a0b108c8874dcebba1064^sys_idNOT IN1ea85776930a0b108c8874dcebba1079"/>
+    <sys_hub_action_input action="delete_multiple" query="model=69e71bf2930a0b108c8874dcebba1064^sys_idNOT IN373ec2ab938e4f108c8874dcebba1038"/>
     <sys_hub_action_input action="INSERT_OR_UPDATE">
         <active>true</active>
         <array>false</array>
         <array_denormalized>false</array_denormalized>
-        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String,uiUniqueId=cef95e8e-4130-4c19-99c7-58524c447289</attributes>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String,uiUniqueId=aee7da8a-99fb-499e-a66b-7e8d07be0f1d</attributes>
         <audit>false</audit>
         <calculation><![CDATA[(function calculatedFieldValue(current) {
 
@@ -619,7 +644,7 @@
         <dynamic_creation_script/>
         <dynamic_default_value/>
         <dynamic_ref_qual/>
-        <element>rits_sys_id</element>
+        <element>ritm_sys_id</element>
         <element_reference>false</element_reference>
         <foreign_database/>
         <formula/>
@@ -628,7 +653,7 @@
         <help/>
         <hint/>
         <internal_type display_value="String">string</internal_type>
-        <label>RITS Sys ID</label>
+        <label>RITM Sys ID</label>
         <mandatory>true</mandatory>
         <max_length>8000</max_length>
         <model display_value="Process Workspace CSV Import">69e71bf2930a0b108c8874dcebba1064</model>
@@ -652,8 +677,8 @@
         <staged>false</staged>
         <sys_class_name>sys_hub_action_input</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-17 04:07:46</sys_created_on>
-        <sys_id>1ea85776930a0b108c8874dcebba1079</sys_id>
+        <sys_created_on>2026-07-19 06:38:06</sys_created_on>
+        <sys_id>373ec2ab938e4f108c8874dcebba1038</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name/>
         <sys_package/>
@@ -661,7 +686,7 @@
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:07:46</sys_updated_on>
+        <sys_updated_on>2026-07-19 06:38:06</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -674,7 +699,7 @@
         <write_roles/>
         <xml_view>false</xml_view>
     </sys_hub_action_input>
-    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=1ea85776930a0b108c8874dcebba1079"/>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=373ec2ab938e4f108c8874dcebba1038"/>
     <sys_hub_action_output action="delete_multiple" query="model=69e71bf2930a0b108c8874dcebba1064^sys_idNOT IN2ea85776930a0b108c8874dcebba10f0,62a89776930a0b108c8874dcebba100a,6ea85776930a0b108c8874dcebba10ff,e6a85776930a0b108c8874dcebba10f9"/>
     <sys_hub_action_output action="INSERT_OR_UPDATE">
         <active>true</active>
@@ -915,14 +940,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-17 04:07:47</sys_created_on>
         <sys_id>6ea85776930a0b108c8874dcebba10ff</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>37</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:08:33</sys_updated_on>
+        <sys_updated_on>2026-07-19 07:12:28</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -1037,17 +1062,17 @@
     </sys_hub_action_status_metadata>
     <sys_hub_status_condition action="delete_multiple" query="action_status_metadata_id=f6a89776930a0b108c8874dcebba101a"/>
     <sys_documentation action="INSERT_OR_UPDATE">
-        <element>rits_sys_id</element>
+        <element>ritm_sys_id</element>
         <help/>
         <hint/>
-        <label>RITS Sys ID</label>
+        <label>RITM Sys ID</label>
         <language>en</language>
         <name>var__m_sys_hub_action_input_69e71bf2930a0b108c8874dcebba1064</name>
         <plural/>
         <sys_class_name>sys_documentation</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-17 04:07:46</sys_created_on>
-        <sys_id>dea85776930a0b108c8874dcebba1080</sys_id>
+        <sys_created_on>2026-07-19 06:38:06</sys_created_on>
+        <sys_id>884ec2ab938e4f108c8874dcebba104b</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name/>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
@@ -1055,7 +1080,7 @@
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:07:46</sys_updated_on>
+        <sys_updated_on>2026-07-19 06:38:06</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
@@ -1157,17 +1182,17 @@
     <sys_hub_action_plan action="INSERT_OR_UPDATE">
         <action_id display_value="Process Workspace CSV Import">69e71bf2930a0b108c8874dcebba1064</action_id>
         <plan>{"type":"PlanProxy","persistor":{"@class":".ChunkingPlanPersistor","table":"sys_hub_action_plan","id":"5ed89f76930a0b108c8874dcebba102f","name":"plan","plan_signature":null}}</plan>
-        <snapshot>d2d85f76930a0b108c8874dcebba10b4</snapshot>
+        <snapshot>4826526f93ce4f108c8874dcebba104e</snapshot>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-17 04:08:36</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>5ed89f76930a0b108c8874dcebba102f</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>8</sys_mod_count>
         <sys_overrides/>
         <sys_scope/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:08:36</sys_updated_on>
+        <sys_updated_on>2026-07-19 07:12:32</sys_updated_on>
     </sys_hub_action_plan>
     <sys_hub_action_type_snapshot action="INSERT_OR_UPDATE">
         <access>public</access>
@@ -1184,7 +1209,7 @@
         <description/>
         <flow_priority/>
         <internal_name>process_workspace_csv_import</internal_name>
-        <label_cache>[{"name":"{{action.rits_sys_id}}","label":"action➛RITS Sys ID","type":"action","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{}},{"name":"{{step[757b30d0-6f12-4147-a2fc-4f8051b65bab].result}}","label":"step➛Script step➛Result","type":"step","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"string","uiUniqueId":"2a1ab90d-680e-4241-ad6d-ca12aa809e0d"}},{"name":"{{step[757b30d0-6f12-4147-a2fc-4f8051b65bab].record_count}}","label":"step➛Script step➛Record Count","type":"step","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"string","uiUniqueId":"506b79e9-ac4b-40e5-ab4a-14915cfefe85"}}]</label_cache>
+        <label_cache>[{"name":"{{action.rits_sys_id}}","label":"action➛RITM Sys ID","type":"action","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"string","uiUniqueId":"cef95e8e-4130-4c19-99c7-58524c447289"}},{"name":"{{action.ritm_sys_id}}","label":"action➛RITM Sys ID","type":"action","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{}},{"name":"{{step[757b30d0-6f12-4147-a2fc-4f8051b65bab].result}}","label":"step➛Script step➛Result","type":"step","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"string","uiUniqueId":"2a1ab90d-680e-4241-ad6d-ca12aa809e0d"}},{"name":"{{step[757b30d0-6f12-4147-a2fc-4f8051b65bab].record_count}}","label":"step➛Script step➛Record Count","type":"step","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"string","uiUniqueId":"506b79e9-ac4b-40e5-ab4a-14915cfefe85"}}]</label_cache>
         <master>true</master>
         <name>Process Workspace CSV Import</name>
         <natlang/>
@@ -1197,7 +1222,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>7dd85f76930a0b108c8874dcebba1036</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name/>
         <sys_overrides/>
         <sys_package/>
@@ -1205,7 +1230,7 @@
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:08:33</sys_updated_on>
+        <sys_updated_on>2026-07-19 06:38:14</sys_updated_on>
         <system_level>false</system_level>
         <type/>
     </sys_hub_action_type_snapshot>
@@ -1294,6 +1319,7 @@
         <cid>757b30d0-6f12-4147-a2fc-4f8051b65bab</cid>
         <error_handling_type>1</error_handling_type>
         <extended_inputs/>
+        <extended_inputs/>
         <extended_outputs/>
         <icon/>
         <inputs/>
@@ -1305,10 +1331,10 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-17 04:08:34</sys_created_on>
         <sys_id>7dd85f76930a0b108c8874dcebba1049</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:08:34</sys_updated_on>
+        <sys_updated_on>2026-07-19 07:12:30</sys_updated_on>
     </sys_hub_step_instance>
     <sys_variable_value action="delete_multiple" query="document_key=7dd85f76930a0b108c8874dcebba1049"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
@@ -1333,24 +1359,22 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-17 04:08:34</sys_created_on>
         <sys_id>4ad85f76930a0b108c8874dcebba106c</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:08:34</sys_updated_on>
+        <sys_updated_on>2026-07-19 07:12:30</sys_updated_on>
         <value>(function execute(inputs, outputs) {&#13;
-&#13;
     try {&#13;
-        // Get the RITM sys_id from the trigger&#13;
-        // We need this to find the attachment the manager uploaded&#13;
         var ritmSysId = inputs.ritm_sys_id;&#13;
 &#13;
-        // GlideSysAttachment is the API for reading file attachments&#13;
-        // in ServiceNow server-side scripts&#13;
-        var attachment = new GlideSysAttachment();&#13;
+        if (sys_id) {&#13;
+            successCount++;&#13;
+        } else {&#13;
+            errorCount++;&#13;
+            gs.error('Failed to insert row ' + i + ': ' + line);&#13;
+        }&#13;
 &#13;
-        // Get all attachments on this RITM record&#13;
-        // Returns a GlideRecord of sys_attachment records&#13;
+        // Read the CSV attachment from the RITM&#13;
         var attachmentGR = new GlideRecord('sys_attachment');&#13;
-        attachmentGR.addQuery('table_name', 'sc_req_item');&#13;
         attachmentGR.addQuery('table_sys_id', ritmSysId);&#13;
         attachmentGR.addQuery('file_name', 'ENDSWITH', '.csv');&#13;
         attachmentGR.orderByDesc('sys_created_on');&#13;
@@ -1364,7 +1388,8 @@
             return;&#13;
         }&#13;
 &#13;
-        // Read the raw bytes of the attachment and convert to a string&#13;
+        // Read CSV content&#13;
+        var attachment = new GlideSysAttachment();&#13;
         var csvContent = attachment.getContent(attachmentGR);&#13;
 &#13;
         if (!csvContent) {&#13;
@@ -1374,60 +1399,52 @@
             return;&#13;
         }&#13;
 &#13;
-        // Split the CSV into lines&#13;
-        // The first line is the header row — skip it&#13;
+        // Split into lines, skip header&#13;
         var lines = csvContent.split('\n');&#13;
-        var headers = lines[0].split(',');&#13;
-&#13;
-        gs.info('Bulk Workspace Import: Found ' + (lines.length - 1) + ' data rows');&#13;
+        gs.info('Bulk Workspace Import: Total lines including header: ' + lines.length);&#13;
 &#13;
         var successCount = 0;&#13;
         var errorCount = 0;&#13;
 &#13;
-        // Loop through each data row (skip header at index 0)&#13;
+        // Create one Import Set record per data row&#13;
         for (var i = 1; i &lt; lines.length; i++) {&#13;
             var line = lines[i].trim();&#13;
-&#13;
-            // Skip empty lines&#13;
             if (!line) continue;&#13;
 &#13;
+            // Handle commas inside quoted fields&#13;
             var values = line.split(',');&#13;
 &#13;
-            // Insert a row into the staging table&#13;
-            // Column names match the import set table's u_ prefixed fields&#13;
-            var staging = new GlideRecord('x_1903615_worksp_0_workspace_records');&#13;
+            // Insert into staging table via GlideRecord&#13;
+            // Import set tables accept direct GlideRecord inserts&#13;
+            // when the table extends sys_import_set_row&#13;
+            var staging = new GlideRecord('x_1903615_worksp_0_workspace_import_stage');&#13;
             staging.initialize();&#13;
-            staging.u_workspace_name = values[0] ? values[0].trim() : '';&#13;
-            staging.u_workspace_type = values[1] ? values[1].trim() : '';&#13;
-            staging.u_location = values[2] ? values[2].trim() : '';&#13;
-            staging.u_max_occupancy = values[3] ? values[3].trim() : '0';&#13;
-            staging.u_status = values[4] ? values[4].trim() : '';&#13;
-            staging.u_workspace_description = values[5] ? values[5].trim() : '';&#13;
-            staging.u_image = values[6] ? values[6].trim() : '';&#13;
+            staging.workspace_name = values[0] ? values[0].trim() : '';&#13;
+            staging.workspace_type = values[1] ? values[1].trim() : '';&#13;
+            staging.location = values[2] ? values[2].trim() : '';&#13;
+            staging.max_occupancy = values[3] ? values[3].trim() : '0';&#13;
+            staging.status = values[4] ? values[4].trim() : '';&#13;
+            staging.workspace_description = values[5] ? values[5].trim() : '';&#13;
+            staging.image = values[6] ? values[6].trim() : '';&#13;
 &#13;
-            var stagingSysId = staging.insert();&#13;
+            var sys_id = staging.insert();&#13;
+            gs.info('Row ' + i + ' insert result: ' + sys_id);&#13;
 &#13;
-            if (stagingSysId) {&#13;
+            if (sys_id) {&#13;
                 successCount++;&#13;
             } else {&#13;
                 errorCount++;&#13;
-                gs.error('Bulk Workspace Import: Failed to insert row ' + i);&#13;
+                gs.error('Failed to insert row ' + i + ': ' + line);&#13;
             }&#13;
         }&#13;
 &#13;
-        // Now trigger the transform map to move data from&#13;
-        // staging table into Workspace Options&#13;
-        // GlideImportSetTransformerWorker runs the named transform map&#13;
-        var transformWorker = new GlideImportSetTransformerWorker(&#13;
-            'x_1903615_worksp_0_workspace_records',  // source table&#13;
-            'Workspace records'                        // transform map name&#13;
-        );&#13;
-        transformWorker.setBackground(false); // run synchronously so we wait for results&#13;
-        transformWorker.start(null, null);&#13;
+        gs.info('Bulk Workspace Import: Inserted ' + successCount + ' rows into staging table');&#13;
 &#13;
-        gs.info('Bulk Workspace Import: Transform complete. Success: ' + successCount + ', Errors: ' + errorCount);&#13;
+        // Note: No explicit transform call needed.&#13;
+        // The staging table has a "Transform synchronously" business rule&#13;
+        // that automatically runs the "Workspace records" transform map&#13;
+        // on every insert. Records flow to Workspace Options immediately.&#13;
 &#13;
-        // Set outputs so the email step can use them&#13;
         outputs.result = 'Import completed. ' + successCount + ' records processed, ' + errorCount + ' errors.';&#13;
         outputs.record_count = successCount + '';&#13;
 &#13;
@@ -1436,29 +1453,62 @@
         outputs.result = 'Import failed: ' + ex.message;&#13;
         outputs.record_count = '0';&#13;
     }&#13;
-&#13;
 })(inputs, outputs);</value>
         <variable display_value="Script">71aa7f6647032200b4fad7527c9a719b</variable>
     </sys_variable_value>
-    <sys_variable_value action="INSERT_OR_UPDATE">
-        <document>sys_hub_step_instance</document>
-        <document_key>7dd85f76930a0b108c8874dcebba1049</document_key>
-        <order>0</order>
-        <sys_class_name>sys_variable_value</sys_class_name>
+    <sys_element_mapping action="delete_multiple" query="id=7dd85f76930a0b108c8874dcebba1049"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>application</field>
+        <id>7dd85f76930a0b108c8874dcebba1049</id>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-17 04:08:34</sys_created_on>
-        <sys_id>4ed85f76930a0b108c8874dcebba106d</sys_id>
+        <sys_id>0ed85f76930a0b108c8874dcebba106b</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-07-17 04:08:34</sys_updated_on>
-        <value>RITS Sys ID</value>
-        <variable display_value="rits_sys_id">0ad85f76930a0b108c8874dcebba1050</variable>
-    </sys_variable_value>
-    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_step_ext_input_7dd85f76930a0b108c8874dcebba1049^id=7dd85f76930a0b108c8874dcebba1049"/>
+        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>ritm_sys_id</field>
+        <id>7dd85f76930a0b108c8874dcebba1049</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-19 06:38:15</sys_created_on>
+        <sys_id>4a4e86ab938e4f108c8874dcebba1081</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-19 06:38:15</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_7dd85f76930a0b108c8874dcebba1049</table>
+        <value>{{action.ritm_sys_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>rits_sys_id</field>
+        <id>7dd85f76930a0b108c8874dcebba1049</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-17 04:08:34</sys_created_on>
+        <sys_id>8ad85f76930a0b108c8874dcebba106d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-17 04:08:34</sys_updated_on>
+        <table>var__m_sys_hub_step_ext_input_7dd85f76930a0b108c8874dcebba1049</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>script</field>
+        <id>7dd85f76930a0b108c8874dcebba1049</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-17 04:08:34</sys_created_on>
+        <sys_id>42d85f76930a0b108c8874dcebba106c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-17 04:08:34</sys_updated_on>
+        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
+        <value/>
+    </sys_element_mapping>
     <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_step_ext_output_7dd85f76930a0b108c8874dcebba1049^id=7dd85f76930a0b108c8874dcebba1049"/>
     <sys_element_mapping action="delete_multiple" query="table=var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7^id=7dd85f76930a0b108c8874dcebba1049"/>
     <sys_translated_text action="delete_multiple" query="documentkey=7dd85f76930a0b108c8874dcebba1049"/>
-    <sys_hub_step_ext_input action="delete_multiple" query="model=7dd85f76930a0b108c8874dcebba1049^sys_idNOT IN0ad85f76930a0b108c8874dcebba1050"/>
+    <sys_hub_step_ext_input action="delete_multiple" query="model=7dd85f76930a0b108c8874dcebba1049^sys_idNOT IN824e86ab938e4f108c8874dcebba103b"/>
     <sys_hub_step_ext_input action="INSERT_OR_UPDATE">
         <active>true</active>
         <array>false</array>
@@ -1487,7 +1537,7 @@
         <dynamic_creation_script/>
         <dynamic_default_value/>
         <dynamic_ref_qual/>
-        <element>rits_sys_id</element>
+        <element>ritm_sys_id</element>
         <element_reference>false</element_reference>
         <foreign_database/>
         <formula/>
@@ -1496,7 +1546,7 @@
         <help/>
         <hint/>
         <internal_type display_value="String">string</internal_type>
-        <label>rits_sys_id</label>
+        <label>ritm_sys_id</label>
         <mandatory>true</mandatory>
         <max_length>8000</max_length>
         <model display_value="Script step">7dd85f76930a0b108c8874dcebba1049</model>
@@ -1520,8 +1570,8 @@
         <staged>false</staged>
         <sys_class_name>sys_hub_step_ext_input</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-17 04:08:34</sys_created_on>
-        <sys_id>0ad85f76930a0b108c8874dcebba1050</sys_id>
+        <sys_created_on>2026-07-19 06:38:14</sys_created_on>
+        <sys_id>824e86ab938e4f108c8874dcebba103b</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name/>
         <sys_package/>
@@ -1529,7 +1579,7 @@
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:08:34</sys_updated_on>
+        <sys_updated_on>2026-07-19 06:38:14</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -1756,12 +1806,12 @@
         <url/>
         <url_target/>
     </sys_documentation>
-    <sys_hub_action_input action="delete_multiple" query="model=7dd85f76930a0b108c8874dcebba1036^sys_idNOT IN3dd85f76930a0b108c8874dcebba103c"/>
+    <sys_hub_action_input action="delete_multiple" query="model=7dd85f76930a0b108c8874dcebba1036^sys_idNOT IN7d4e46ab938e4f108c8874dcebba10f3"/>
     <sys_hub_action_input action="INSERT_OR_UPDATE">
         <active>true</active>
         <array>false</array>
         <array_denormalized>false</array_denormalized>
-        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String,uiUniqueId=cef95e8e-4130-4c19-99c7-58524c447289</attributes>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String,uiUniqueId=aee7da8a-99fb-499e-a66b-7e8d07be0f1d</attributes>
         <audit>false</audit>
         <calculation><![CDATA[(function calculatedFieldValue(current) {
 
@@ -1785,7 +1835,7 @@
         <dynamic_creation_script/>
         <dynamic_default_value/>
         <dynamic_ref_qual/>
-        <element>rits_sys_id</element>
+        <element>ritm_sys_id</element>
         <element_reference>false</element_reference>
         <foreign_database/>
         <formula/>
@@ -1794,7 +1844,7 @@
         <help/>
         <hint/>
         <internal_type display_value="String">string</internal_type>
-        <label>RITS Sys ID</label>
+        <label>RITM Sys ID</label>
         <mandatory>true</mandatory>
         <max_length>8000</max_length>
         <model display_value="Process Workspace CSV Import">7dd85f76930a0b108c8874dcebba1036</model>
@@ -1818,8 +1868,8 @@
         <staged>false</staged>
         <sys_class_name>sys_hub_action_input</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-17 04:08:33</sys_created_on>
-        <sys_id>3dd85f76930a0b108c8874dcebba103c</sys_id>
+        <sys_created_on>2026-07-19 06:38:14</sys_created_on>
+        <sys_id>7d4e46ab938e4f108c8874dcebba10f3</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name/>
         <sys_package/>
@@ -1827,7 +1877,7 @@
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:08:33</sys_updated_on>
+        <sys_updated_on>2026-07-19 06:38:14</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -1840,7 +1890,7 @@
         <write_roles/>
         <xml_view>false</xml_view>
     </sys_hub_action_input>
-    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=3dd85f76930a0b108c8874dcebba103c"/>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=7d4e46ab938e4f108c8874dcebba10f3"/>
     <sys_hub_action_output action="delete_multiple" query="model=7dd85f76930a0b108c8874dcebba1036^sys_idNOT IN02d85f76930a0b108c8874dcebba108d,06d85f76930a0b108c8874dcebba1096,4ed85f76930a0b108c8874dcebba1072,c2d85f76930a0b108c8874dcebba107a"/>
     <sys_hub_action_output action="INSERT_OR_UPDATE">
         <active>true</active>
@@ -1907,14 +1957,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-17 04:08:34</sys_created_on>
         <sys_id>02d85f76930a0b108c8874dcebba108d</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>17</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:08:34</sys_updated_on>
+        <sys_updated_on>2026-07-19 07:12:31</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -2203,17 +2253,17 @@
     </sys_hub_action_status_metadata>
     <sys_hub_status_condition action="delete_multiple" query="action_status_metadata_id=9ed85f76930a0b108c8874dcebba10b3"/>
     <sys_documentation action="INSERT_OR_UPDATE">
-        <element>rits_sys_id</element>
+        <element>ritm_sys_id</element>
         <help/>
         <hint/>
-        <label>RITS Sys ID</label>
+        <label>RITM Sys ID</label>
         <language>en</language>
         <name>var__m_sys_hub_action_input_7dd85f76930a0b108c8874dcebba1036</name>
         <plural/>
         <sys_class_name>sys_documentation</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-17 04:08:34</sys_created_on>
-        <sys_id>7dd85f76930a0b108c8874dcebba1042</sys_id>
+        <sys_created_on>2026-07-19 06:38:14</sys_created_on>
+        <sys_id>754e86ab938e4f108c8874dcebba1012</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name/>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
@@ -2221,7 +2271,7 @@
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 04:08:34</sys_updated_on>
+        <sys_updated_on>2026-07-19 06:38:14</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>

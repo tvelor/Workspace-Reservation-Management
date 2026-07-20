@@ -40,22 +40,22 @@
         <item_table/>
         <mandatory>false</mandatory>
         <message/>
-        <message_html><![CDATA[<p><span style="font-size: 10pt;">Dear<strong> ${assigned_to.name}</strong></span></p>
-<p><span style="font-size: 10pt;">A workspace reservation has been checked out and requires your inspection.</span></p>
-<p><span style="font-size: 10pt;">Reservation: ${number}</span></p>
-<p><span style="font-size: 10pt;">Please inspect the workspace area now that the session has ended.&nbsp;</span></p>
-<ul style="list-style-position: inside;">
-<li style="font-size: 10pt;"><span style="font-size: 10pt;">If no issues are found, no further action is needed.</span></li>
+        <message_html><![CDATA[<p>Hello ${assigned_to.name}</p>
+<p>A workspace reservation has been checked out and requires your inspection.</p>
+<p><strong>Reservation:</strong> ${number}</p>
+<p>Please inspect the workspace area now that the session has ended.</p>
+<ul>
+<li>If no issues are found, no further action is needed.</li>
+<li>If maintenance is required:
+<ol>
+<li>Open the reservation record</li>
+<li>Fill out the <strong>Maintenance issue</strong> field</li>
+<li>Save the record</li>
+<li>Set the Reservation status to <strong>Needs Maintenance</strong></li>
+</ol>
+</li>
 </ul>
-<p><span style="font-size: 10pt;">If maintenance is required:&nbsp;</span></p>
-<ul style="list-style-position: inside;">
-<li style="font-size: 10pt;"><span style="font-size: 10pt;">Open the reservation record&nbsp;</span></li>
-<li style="font-size: 10pt;"><span style="font-size: 10pt;">Fill out the Maintenance issueSave the record</span></li>
-<li style="font-size: 10pt;"><span style="font-size: 10pt;">Set the Reservation status to Needs Maintenance</span></li>
-</ul>
-<p><span style="font-size: 10pt;">Thank you,</span></p>
-<p><span style="font-size: 10pt;">Workspace Reservation Management System</span></p>
-<p>&nbsp;</p>]]></message_html>
+<p>Thank you,<br>Workspace Reservation Management System</p>]]></message_html>
         <message_list/>
         <message_text/>
         <name>Workspace Check-Out Notification</name>
@@ -77,7 +77,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>6ea803f293860b108c8874dcebba1013</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>Workspace Check-Out Notification</sys_name>
         <sys_overrides/>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
@@ -85,9 +85,9 @@
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name>sysevent_email_action_6ea803f293860b108c8874dcebba1013</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 03:18:18</sys_updated_on>
+        <sys_updated_on>2026-07-19 03:32:51</sys_updated_on>
         <sys_version>2</sys_version>
-        <template display_value="Unsubscribe and Preferences">7ed0481f3b0b2200c869c2c703efc487</template>
+        <template display_value="User triggered notification template">e79add0bc3658610c1a4be2bb001312f</template>
         <type>email</type>
         <weight>0</weight>
     </sysevent_email_action>
