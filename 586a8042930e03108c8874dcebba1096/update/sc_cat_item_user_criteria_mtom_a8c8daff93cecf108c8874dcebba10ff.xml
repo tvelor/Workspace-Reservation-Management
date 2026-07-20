@@ -3,16 +3,16 @@
         <sc_cat_item display_value="Bulk Update Workspace Options">5ee4d73e93c60b108c8874dcebba10c7</sc_cat_item>
         <sys_class_name>sc_cat_item_user_criteria_mtom</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-17 03:54:54</sys_created_on>
-        <sys_id>35b5d3be93c60b108c8874dcebba10d9</sys_id>
+        <sys_created_on>2026-07-20 02:02:30</sys_created_on>
+        <sys_id>a8c8daff93cecf108c8874dcebba10ff</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>Bulk Update Workspace Options.WRM Admins</sys_name>
+        <sys_name>Bulk Update Workspace Options.WRM Managers</sys_name>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
-        <sys_update_name>sc_cat_item_user_criteria_mtom_35b5d3be93c60b108c8874dcebba10d9</sys_update_name>
+        <sys_update_name>sc_cat_item_user_criteria_mtom_a8c8daff93cecf108c8874dcebba10ff</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-17 03:54:54</sys_updated_on>
-        <user_criteria display_value="WRM Admins">f79553be93c60b108c8874dcebba1007</user_criteria>
+        <sys_updated_on>2026-07-20 02:02:30</sys_updated_on>
+        <user_criteria display_value="WRM Managers">2588d2ff93cecf108c8874dcebba1076</user_criteria>
     </sc_cat_item_user_criteria_mtom>
 </record_update>
