@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_1903615_worksp_0_reservation_tracker</collection>
+        <condition>current.reservation_status.changes()</condition>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Sync Workspace Status on Reservation Cha</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+    // Store the reservation status as a string for clean comparison
+    var reservationStatus = current.reservation_status.toString();
+
+    // Set up a GlideRecord to find and update the related Workspace Options record
+    var workspaceGR = new GlideRecord('x_1903615_worksp_0_workspace_options');
+
+    // Use the workspace reference field on Reservation Tracker to find the related record
+    if (!workspaceGR.get(current.workspace)) {
+        gs.warn('Sync Workspace Status BR: No related Workspace Options record found for reservation ' + current.number);
+        return;
+    }
+
+    // If checking in or checked in, workspace becomes unavailable
+    if (reservationStatus == 'pending_check_in' || reservationStatus == 'checked_in') {
+        workspaceGR.setValue('status', 'unavailable');
+    }
+    // If checked out, no-show, or cancelled, workspace becomes available again
+    else if (reservationStatus == 'checked_out' || reservationStatus == 'no_show' || reservationStatus == 'cancelled') {
+        workspaceGR.setValue('status', 'available');
+    }
+
+    // Save the change to the other table's record — required in after business rules
+    workspaceGR.update();
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-22 00:00:42</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>f01fcca4931203108c8874dcebba10a3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Sync Workspace Status on Reservation Cha</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sys_script_f01fcca4931203108c8874dcebba10a3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-22 00:00:42</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=f01fcca4931203108c8874dcebba10a3"/>
+</record_update>

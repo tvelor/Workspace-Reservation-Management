@@ -8,7 +8,6 @@
         <element choice="1" label="Status" max_length="40" name="status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Available" sequence="5" value="available"/>
-                <element inactive_on_update="false" label="available_status" sequence="0" value="available_status"/>
                 <element inactive_on_update="false" label="Unavailable" sequence="10" value="unavailable"/>
                 <element inactive_on_update="false" label="Under maintenance" sequence="15" value="under_maintenance"/>
                 <element inactive_on_update="false" label="Decommissioned" sequence="20" value="decommissioned"/>
