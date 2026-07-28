@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="DELETE">
+        <category>custom</category>
+        <css/>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <human_readable_url_structure/>
+        <id>wrm_faq</id>
+        <internal>false</internal>
+        <omit_watcher>false</omit_watcher>
+        <public>false</public>
+        <roles/>
+        <seo_script/>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:21:58</sys_created_on>
+        <sys_id>2d8c33a293d6c7108c8874dcebba10a1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>wrm_faq</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_page_2d8c33a293d6c7108c8874dcebba10a1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:21:58</sys_updated_on>
+        <title>WRM FAQ</title>
+        <use_seo_script>false</use_seo_script>
+    </sp_page>
+    <sys_translated_text action="DELETE" query="documentkey=2d8c33a293d6c7108c8874dcebba10a1"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</application>
+        <file_path/>
+        <instance_id>5b8062d13b3f9694a80ce0bf55e45a19</instance_id>
+        <instance_name>dev295661</instance_name>
+        <name>sp_page_2d8c33a293d6c7108c8874dcebba10a1</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page"><sp_page action="INSERT_OR_UPDATE"><category>custom</category><css/><draft>false</draft><dynamic_title_structure/><human_readable_url_structure/><id>wrm_faq</id><internal>false</internal><omit_watcher>false</omit_watcher><public>false</public><roles/><seo_script/><short_description/><sys_class_name>sp_page</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-07-28 22:21:58</sys_created_on><sys_id>2d8c33a293d6c7108c8874dcebba10a1</sys_id><sys_mod_count>0</sys_mod_count><sys_name>wrm_faq</sys_name><sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package><sys_policy/><sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope><sys_update_name>sp_page_2d8c33a293d6c7108c8874dcebba10a1</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-07-28 22:21:58</sys_updated_on><title>WRM FAQ</title><use_seo_script>false</use_seo_script></sp_page><sys_translated_text action="delete_multiple" query="documentkey=2d8c33a293d6c7108c8874dcebba10a1"/></record_update>]]></payload>
+        <payload_hash>1298723485</payload_hash>
+        <record_name>wrm_faq</record_name>
+        <reverted_from/>
+        <source>02a384ea93d647108c8874dcebba104c</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:21:58</sys_created_on>
+        <sys_id>f59cf3a293d6c7108c8874dcebba1089</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19faad204b20000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:21:58</sys_updated_on>
+        <type>Page</type>
+        <update_guid>b59cf3a20fd6c710e0200c4a5febec88</update_guid>
+        <update_guid_history>b59cf3a20fd6c710e0200c4a5febec88:1298723485</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="wrm_faq">c0ccbbe69396c7108c8874dcebba10ed</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:22:40</sys_created_on>
+        <sys_db_object display_value="" name="sp_page">sp_page</sys_db_object>
+        <sys_id>2a9d2dc780694c6096b79ef5975c1da1</sys_id>
+        <sys_metadata>2d8c33a293d6c7108c8874dcebba10a1</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>wrm_faq</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_scope_delete display_value="">14c313a8f537498087dc70da5ab4b840</sys_scope_delete>
+        <sys_update_name>sp_page_2d8c33a293d6c7108c8874dcebba10a1</sys_update_name>
+        <sys_update_version display_value="sp_page_2d8c33a293d6c7108c8874dcebba10a1">f59cf3a293d6c7108c8874dcebba1089</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:22:40</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

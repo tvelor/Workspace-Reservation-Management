@@ -27,15 +27,24 @@
     // Clear stale messages
     g_form.clearMessages();
 
-    // newValue = the Start date/time just entered
     var start = newValue;
 
-    // Fetch current End value from the form
+    // --- NEW: reject start dates in the past ---
+    // Catalog date/time values arrive as "YYYY-MM-DD HH:mm:ss".
+    // JavaScript's Date wants a "T" between date and time.
+    var startDate = new Date(start.replace(' ', 'T'));
+    var now = new Date();
+
+    if (startDate < now) {
+        g_form.clearValue('start_date_time');
+        g_form.showFieldMsg('start_date_time',
+            'Start date/time cannot be in the past', 'error');
+        return;   // stop here — no point checking end date
+    }
+
+    // --- existing check: end must not be before start ---
     var end = g_form.getValue('end_date_time');
 
-    // Same rule, caught from the other direction.
-    // Error and clear always happen on End field
-    // so user experience is consistent either way
     if (end && end < start) {
         g_form.clearValue('end_date_time');
         g_form.showFieldMsg('end_date_time',
@@ -48,7 +57,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>84137dea938a47108c8874dcebba10d6</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>Validate Start Date/time</sys_name>
         <sys_overrides/>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
@@ -56,7 +65,7 @@
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name>catalog_script_client_84137dea938a47108c8874dcebba10d6</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-16 02:20:45</sys_updated_on>
+        <sys_updated_on>2026-07-28 04:54:17</sys_updated_on>
         <table/>
         <type>onChange</type>
         <ui_type>10</ui_type>

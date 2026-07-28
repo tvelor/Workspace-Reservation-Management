@@ -3,7 +3,7 @@
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element label="Location" max_length="32" name="location" reference="cmn_location" type="reference"/>
         <element label="Max occupancy" max_length="40" name="max_occupancy" type="integer"/>
-        <element label="Workspace name" max_length="121" name="workspace_name" type="string"/>
+        <element display="true" label="Workspace name" max_length="121" name="workspace_name" type="string"/>
         <element label="Workspace description" max_length="1000" name="workspace_description" type="string"/>
         <element choice="1" label="Status" max_length="40" name="status" type="choice">
             <choice>

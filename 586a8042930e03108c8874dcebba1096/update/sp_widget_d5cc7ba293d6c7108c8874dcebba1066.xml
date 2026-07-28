@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.wrm-faq { margin-top: 28px; }&#13;
+.wrm-faq h2 {&#13;
+  margin: 0 0 12px;&#13;
+  font-size: 22px;&#13;
+  color: var(--ink);&#13;
+}&#13;
+&#13;
+.wrm-faq-item {&#13;
+  background: var(--surface);&#13;
+  border: 1px solid var(--line);&#13;
+  border-radius: var(--r-soft);&#13;
+  margin-bottom: 8px;&#13;
+  overflow: hidden;&#13;
+}&#13;
+&#13;
+.wrm-faq-q {&#13;
+  width: 100%;&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  justify-content: space-between;&#13;
+  gap: 14px;&#13;
+  background: transparent;&#13;
+  border: 0;&#13;
+  text-align: left;&#13;
+  padding: 14px 16px;&#13;
+  font-size: 14px;&#13;
+  color: var(--ink);&#13;
+  cursor: pointer;&#13;
+}&#13;
+.wrm-faq-q:hover { background: var(--surface-2); }&#13;
+.wrm-faq-q:focus-visible { outline: 2px solid var(--clay); outline-offset: -2px; }&#13;
+.wrm-faq-q.open { color: var(--clay); }&#13;
+&#13;
+.wrm-faq-q .chev {&#13;
+  font-size: 17px;&#13;
+  color: var(--ink-3);&#13;
+  flex: none;&#13;
+  line-height: 1;&#13;
+}&#13;
+.wrm-faq-q.open .chev { color: var(--clay); }&#13;
+&#13;
+.wrm-faq-a {&#13;
+  padding: 0 16px 14px;&#13;
+  font-size: 13px;&#13;
+  color: var(--ink-2);&#13;
+  border-top: 1px solid var(--line);&#13;
+  padding-top: 12px;&#13;
+}&#13;
+.wrm-faq-a p { margin: 0 0 9px; }&#13;
+.wrm-faq-a p:last-child { margin-bottom: 0; }</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>wrm_faq</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>WRM FAQ</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+  // Content lives here rather than in a knowledge base. That means
+  // edits need widget access — fine for a short, stable list.
+  data.faqs = [
+    {
+      question: 'How do I book a workspace?',
+      open: false,
+      answer:
+        '<p>Select <strong>Request a reservation</strong> at the top of this page, ' +
+        'then choose your workspace and the times you need it.</p>' +
+        '<p>Location fills in automatically from the workspace you pick, so you ' +
+        'don\'t need to set it. Start times in the past aren\'t accepted, and the ' +
+        'end time must be after the start.</p>' +
+        '<p>Your request goes for approval and appears in <strong>My reservations</strong> ' +
+        'straight away marked <em>Pending approval</em>. Once approved it becomes a ' +
+        'confirmed reservation with its own number.</p>'
+    },
+    {
+      question: 'What do the reservation statuses mean?',
+      open: false,
+      answer:
+        '<p><strong>Pending approval</strong> — submitted, waiting for someone to approve it.</p>' +
+        '<p><strong>Pending check-in</strong> — approved and the space is held for you, ' +
+        'but you haven\'t arrived yet.</p>' +
+        '<p><strong>Checked-in</strong> — you\'re using the space now.</p>' +
+        '<p><strong>Checked-out</strong> — finished, and the space has been released.</p>' +
+        '<p>While a reservation is pending check-in or checked in, the workspace is held ' +
+        'and won\'t show as available to anyone else.</p>'
+    },
+    {
+      question: 'How do I check in and check out?',
+      open: false,
+      answer:
+        '<p>Both are done from <strong>My reservations</strong> on this page.</p>' +
+        '<p>A <strong>Check in</strong> button appears on your reservation row. You can ' +
+        'check in from one hour before your start time until the reservation ends. If you ' +
+        'try earlier, the portal tells you exactly when check-in opens.</p>' +
+        '<p>Once checked in, the button becomes <strong>Check out</strong>. Checking out ' +
+        'releases the workspace immediately, so please check out when you leave rather than ' +
+        'letting the reservation run to its end time.</p>'
+    }
+
+	,{
+      question: 'What happens if I don\'t check in?',
+      open: false,
+      answer:
+        '<p>If you don\'t check in, the workspace team can mark your reservation as a ' +
+        '<strong>No-show</strong>.</p>' +
+        '<p>A space held by a reservation nobody turns up for is a space nobody else ' +
+        'could book, so please let the team know as early as you can if your plans ' +
+        'change.</p>'
+    },
+    {
+      question: 'How do I cancel a reservation?',
+      open: false,
+      answer:
+        '<p>Reservations can\'t currently be cancelled from this portal. Contact the ' +
+        'workspace team and they\'ll cancel it for you.</p>' +
+        '<p>Cancelling releases the workspace straight away so someone else can book it, ' +
+        'so it\'s worth doing as soon as you know you won\'t need the space.</p>'
+    }
+  ];
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:23:10</sys_created_on>
+        <sys_id>d5cc7ba293d6c7108c8874dcebba1066</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>WRM FAQ</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_widget_d5cc7ba293d6c7108c8874dcebba1066</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:28:09</sys_updated_on>
+        <template><![CDATA[<div class="wrm-faq" id="wrm-faq">
+  <h2>Common questions</h2>
+
+  <div class="wrm-faq-item" ng-repeat="q in data.faqs">
+    <button class="wrm-faq-q"
+            ng-click="q.open = !q.open"
+            ng-class="{'open': q.open}">
+      <span>{{q.question}}</span>
+      <span class="chev">{{q.open ? '−' : '+'}}</span>
+    </button>
+    <div class="wrm-faq-a" ng-if="q.open" ng-bind-html="q.answer"></div>
+  </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

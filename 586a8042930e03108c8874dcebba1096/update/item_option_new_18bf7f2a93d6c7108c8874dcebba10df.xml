@@ -2,7 +2,7 @@
     <item_option_new action="INSERT_OR_UPDATE">
         <active>true</active>
         <attributes/>
-        <cat_item display_value="Workspace Reservation Request">fe1e919e93c6c3108c8874dcebba10d0</cat_item>
+        <cat_item display_value="Workspace Support">d71f7be693d6c7108c8874dcebba10bb</cat_item>
         <category/>
         <choice_direction>down</choice_direction>
         <choice_field/>
@@ -10,7 +10,7 @@
         <conversational_label/>
         <create_roles/>
         <default_html_value/>
-        <default_value>javascript:gs.getUserID()</default_value>
+        <default_value/>
         <delete_roles/>
         <delivery_plan/>
         <description/>
@@ -26,7 +26,7 @@
         <field/>
         <global>false</global>
         <help_tag>More information</help_tag>
-        <help_text>Reservations are booked in your name.</help_text>
+        <help_text/>
         <hidden>false</hidden>
         <include_none>false</include_none>
         <instructions/>
@@ -41,26 +41,26 @@
         <lookup_value/>
         <macro/>
         <macroponent/>
-        <mandatory>false</mandatory>
+        <mandatory>true</mandatory>
         <map_to_field>false</map_to_field>
         <mask_use_confirmation>false</mask_use_confirmation>
         <mask_use_encryption>false</mask_use_encryption>
-        <name>reserved_for</name>
+        <name>help_topic</name>
         <not_available_conversation>false</not_available_conversation>
         <order>100</order>
         <post_insert_script/>
         <price_if_checked>0</price_if_checked>
         <pricing_implications>false</pricing_implications>
         <published_ref/>
-        <question_text>Reserved for</question_text>
-        <read_only>true</read_only>
+        <question_text>What do you need help with?</question_text>
+        <read_only>false</read_only>
         <read_roles/>
         <read_script/>
         <rec_lookup_price/>
         <rec_price_if_checked>0</rec_price_if_checked>
         <record/>
         <record_producer_table/>
-        <reference>sys_user</reference>
+        <reference/>
         <reference_qual/>
         <reference_qual_condition/>
         <rich_text/>
@@ -74,26 +74,26 @@
 */]]></save_script>
         <scale_max>5</scale_max>
         <scale_min>0</scale_min>
-        <show_help>true</show_help>
+        <show_help>false</show_help>
         <show_help_on_load>false</show_help_on_load>
         <sp_widget/>
         <summary_macro/>
         <sys_class_name>item_option_new</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-15 05:59:45</sys_created_on>
-        <sys_id>37aed5de93c6c3108c8874dcebba1042</sys_id>
-        <sys_mod_count>3</sys_mod_count>
-        <sys_name>Reserved for</sys_name>
+        <sys_created_on>2026-07-28 22:36:20</sys_created_on>
+        <sys_id>18bf7f2a93d6c7108c8874dcebba10df</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>What do you need help with?</sys_name>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
-        <sys_update_name>item_option_new_37aed5de93c6c3108c8874dcebba1042</sys_update_name>
+        <sys_update_name>item_option_new_18bf7f2a93d6c7108c8874dcebba10df</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-28 04:30:44</sys_updated_on>
+        <sys_updated_on>2026-07-28 23:07:18</sys_updated_on>
         <table/>
         <tooltip/>
         <topic_block/>
-        <type>8</type>
+        <type>5</type>
         <ui_page/>
         <unique>false</unique>
         <use_dynamic_default>false</use_dynamic_default>
@@ -109,22 +109,22 @@
         <visible_summary>true</visible_summary>
         <write_roles/>
     </item_option_new>
-    <sys_translated_text action="delete_multiple" query="documentkey=37aed5de93c6c3108c8874dcebba1042"/>
-    <fx_price action="delete_multiple" query="id=37aed5de93c6c3108c8874dcebba1042"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=18bf7f2a93d6c7108c8874dcebba10df"/>
+    <fx_price action="delete_multiple" query="id=18bf7f2a93d6c7108c8874dcebba10df"/>
     <fx_price action="INSERT_OR_UPDATE">
         <amount>0</amount>
         <currency display_value="USD">USD</currency>
         <field>price_if_checked</field>
-        <id>37aed5de93c6c3108c8874dcebba1042</id>
+        <id>18bf7f2a93d6c7108c8874dcebba10df</id>
         <parent/>
         <reference_amount>0</reference_amount>
         <reference_currency display_value="USD">USD</reference_currency>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-15 05:59:45</sys_created_on>
-        <sys_id>cf1f5512930ac3108c8874dcebba100c</sys_id>
+        <sys_created_on>2026-07-28 22:36:20</sys_created_on>
+        <sys_id>58ef376a93d6c7108c8874dcebba1000</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-15 05:59:45</sys_updated_on>
+        <sys_updated_on>2026-07-28 22:36:20</sys_updated_on>
         <table>item_option_new</table>
         <type>calculated</type>
     </fx_price>
@@ -132,16 +132,16 @@
         <amount>0</amount>
         <currency display_value="USD">USD</currency>
         <field>rec_price_if_checked</field>
-        <id>37aed5de93c6c3108c8874dcebba1042</id>
+        <id>18bf7f2a93d6c7108c8874dcebba10df</id>
         <parent/>
         <reference_amount>0</reference_amount>
         <reference_currency display_value="USD">USD</reference_currency>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-15 05:59:45</sys_created_on>
-        <sys_id>871f5512930ac3108c8874dcebba100c</sys_id>
+        <sys_created_on>2026-07-28 22:36:20</sys_created_on>
+        <sys_id>10ef376a93d6c7108c8874dcebba1000</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-15 05:59:45</sys_updated_on>
+        <sys_updated_on>2026-07-28 22:36:20</sys_updated_on>
         <table>item_option_new</table>
         <type>calculated</type>
     </fx_price>

@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope) {
+  var c = this;
+  c.busy = false;
+
+  c.act = function(row, action) {
+    if (c.busy || !row.sysId) {
+      return;
+    }
+    c.busy = true;
+    $scope.data.notice = '';
+
+    $scope.server.get({
+      action: action,
+      sysId:  row.sysId
+    }).then(function(response) {
+      $scope.data.upcoming  = response.data.upcoming;
+      $scope.data.past      = response.data.past;
+      $scope.data.count     = response.data.count;
+      $scope.data.pastCount = response.data.pastCount;
+      $scope.data.notice    = response.data.notice;
+      c.busy = false;
+    }, function() {
+      // Previously this failed silently.
+      $scope.data.notice = "Something went wrong. Try again in a moment.";
+      c.busy = false;
+    });
+  };
+
+  $scope.act = c.act;
+};]]></client_script>
+        <controller_as/>
+        <css>.wrm-res-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }&#13;
+.wrm-res-head h2 { margin: 0; font-size: 22px; color: var(--ink); }&#13;
+.wrm-res-count { font-size: 13px; color: var(--ink-3); }&#13;
+&#13;
+.wrm-notice {&#13;
+  background: var(--held-bg);&#13;
+  color: var(--held-fg);&#13;
+  font-size: 13px;&#13;
+  padding: 10px 14px;&#13;
+  border-radius: var(--r-soft);&#13;
+  margin-bottom: 12px;&#13;
+}&#13;
+&#13;
+.wrm-res-rows {&#13;
+  background: var(--surface);&#13;
+  border: 1px solid var(--line);&#13;
+  border-radius: var(--r-card);&#13;
+  overflow: hidden;&#13;
+}&#13;
+.wrm-res-row {&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  gap: 16px;&#13;
+  padding: 15px 16px;&#13;
+  border-bottom: 1px solid var(--line);&#13;
+}&#13;
+.wrm-res-row:last-child { border-bottom: 0; }&#13;
+&#13;
+.wrm-when { width: 192px; flex: none; }&#13;
+&#13;
+.wrm-when-labels {&#13;
+  display: flex;&#13;
+  font-size: 10px;&#13;
+  letter-spacing: .07em;&#13;
+  color: var(--ink-3);&#13;
+  margin-bottom: 5px;&#13;
+}&#13;
+.wrm-when-labels.two { justify-content: space-between; }&#13;
+&#13;
+.wrm-when-rail { display: flex; align-items: center; gap: 7px; }&#13;
+.wrm-when-rail .tm { font-size: 13px; color: var(--ink); }&#13;
+.wrm-when-rail .dot { width: 6px; height: 6px; border-radius: 50%; flex: none; }&#13;
+.wrm-when-rail .dot.start { background: var(--clay); }&#13;
+.wrm-when-rail .dot.end { border: 1px solid var(--clay); }&#13;
+.wrm-when-rail .dot.end.done { background: var(--clay); }&#13;
+.wrm-when-rail .track {&#13;
+  flex: 1;&#13;
+  height: 2px;&#13;
+  background: var(--line);&#13;
+  border-radius: 2px;&#13;
+  overflow: hidden;&#13;
+}&#13;
+.wrm-when-rail .fill {&#13;
+  display: block;&#13;
+  height: 100%;&#13;
+  background: var(--clay);&#13;
+}&#13;
+&#13;
+.wrm-when-dur { text-align: center; font-size: 10px; color: var(--ink-3); margin-top: 4px; }&#13;
+.wrm-when-dur .live { color: var(--clay); }&#13;
+&#13;
+.wrm-res-main { flex: 1; min-width: 0; }&#13;
+.wrm-res-main .t { font-size: 14px; color: var(--ink); }&#13;
+.wrm-res-main .s { font-size: 11px; color: var(--ink-3); }&#13;
+.wrm-res-main .n { font-size: 10px; color: var(--ink-3); letter-spacing: .06em; margin-top: 2px; }&#13;
+&#13;
+.wrm-res-pill {&#13;
+  font-size: 11px;&#13;
+  padding: 5px 12px;&#13;
+  border-radius: var(--r-pill);&#13;
+  white-space: nowrap;&#13;
+  flex: none;&#13;
+}&#13;
+.wrm-res-pill.free  { background: var(--free-bg); color: var(--free-fg); }&#13;
+.wrm-res-pill.held  { background: var(--held-bg); color: var(--held-fg); }&#13;
+.wrm-res-pill.out   { background: var(--out-bg);  color: var(--out-fg); }&#13;
+.wrm-res-pill.quiet { background: var(--surface-2); color: var(--ink-3); }&#13;
+&#13;
+.wrm-res-actions { flex: none; display: flex; gap: 8px; }&#13;
+.wrm-res-btn {&#13;
+  font-size: 12px;&#13;
+  font-weight: 500;&#13;
+  padding: 8px 18px;&#13;
+  border: 0;&#13;
+  border-radius: var(--r-pill);&#13;
+  background: var(--clay);&#13;
+  color: var(--on-clay);&#13;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.22);&#13;
+  white-space: nowrap;&#13;
+  cursor: pointer;&#13;
+}&#13;
+.wrm-res-btn:hover { background: var(--clay-press); }&#13;
+.wrm-res-btn:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }&#13;
+.wrm-res-btn.ghost {&#13;
+  background: transparent;&#13;
+  color: var(--ink-2);&#13;
+  box-shadow: inset 0 0 0 1px var(--line);&#13;
+}&#13;
+.wrm-res-btn.ghost:hover { background: var(--surface-2); color: var(--ink); }&#13;
+&#13;
+.wrm-past { margin-top: 20px; }&#13;
+.wrm-past-head {&#13;
+  font-size: 11px;&#13;
+  letter-spacing: .08em;&#13;
+  color: var(--ink-3);&#13;
+  margin-bottom: 8px;&#13;
+}&#13;
+.wrm-res-rows.past { opacity: .62; }&#13;
+&#13;
+.wrm-res-empty {&#13;
+  text-align: center;&#13;
+  padding: 38px 20px;&#13;
+  background: var(--surface);&#13;
+  border: 1px dashed var(--line);&#13;
+  border-radius: var(--r-card);&#13;
+  color: var(--ink-2);&#13;
+}&#13;
+.wrm-res-empty h3 { margin: 0 0 6px; font-size: 17px; color: var(--ink); }&#13;
+.wrm-res-empty p  { margin: 0; font-size: 13px; }</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>wrm_my_reservations</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>WRM My Reservations</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+  var MONTHS   = ['JAN','FEB','MAR','APR','MAY','JUN',
+                  'JUL','AUG','SEP','OCT','NOV','DEC'];
+  var WEEKDAYS = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+
+  var TINTS = {
+    pending_check_in: 'held',
+    checked_in:       'free',
+    checked_out:      'quiet',
+    cancelled:        'quiet',
+    no_show:          'out'
+  };
+
+  // Statuses that mean the reservation is finished regardless of date.
+  var CLOSED = ['checked_out', 'cancelled', 'no_show'];
+
+  // How early someone may check in, in minutes before the start time.
+  var CHECKIN_LEAD_MIN = 60;
+
+  var nowMs = new GlideDateTime().getNumericValue();
+
+  // Split "YYYY-MM-DD HH:mm:ss" into display parts.
+  // Date.UTC keeps the weekday stable regardless of server timezone.
+  function parts(dt) {
+    if (!dt) return { month:'', day:'', time:'', weekday:'', ymd:'' };
+    var p = dt.split(' ');
+    var d = p[0].split('-');
+    var y = parseInt(d[0], 10);
+    var m = parseInt(d[1], 10);
+    var dd = parseInt(d[2], 10);
+    var js = new Date(Date.UTC(y, m - 1, dd));
+    return {
+      month:   MONTHS[m - 1],
+      day:     d[2],
+      time:    p[1] ? p[1].substring(0, 5) : '',
+      weekday: WEEKDAYS[js.getUTCDay()],
+      ymd:     p[0]
+    };
+  }
+
+  // Calendar days spanned, inclusive. 28th to 29th is 2 days.
+  function spanLabel(a, b) {
+    if (!a || !b) return '';
+    var A = a.split('-'), B = b.split('-');
+    var t1 = Date.UTC(+A[0], +A[1] - 1, +A[2]);
+    var t2 = Date.UTC(+B[0], +B[1] - 1, +B[2]);
+    var n = Math.round((t2 - t1) / 86400000) + 1;
+    if (n < 1) n = 1;
+    return n + (n === 1 ? ' day' : ' days');
+  }
+
+  // How far through the booking we are, 0-100.
+  // Uses raw UTC values so it doesn't depend on display timezone.
+  function progressPct(startRaw, endRaw) {
+    if (!startRaw || !endRaw) return 0;
+    var s = new GlideDateTime(startRaw).getNumericValue();
+    var e = new GlideDateTime(endRaw).getNumericValue();
+    if (e <= s) return nowMs >= e ? 100 : 0;
+    if (nowMs <= s) return 0;
+    if (nowMs >= e) return 100;
+    return Math.round(((nowMs - s) / (e - s)) * 100);
+  }
+
+  // "09:00 on Tue 28 Jul" — built from the display value so it
+  // reads in the user's own timezone.
+  function whenPhrase(displayDt) {
+    var p = parts(displayDt);
+    if (!p.time) return 'the start time';
+    var wd = p.weekday.charAt(0) + p.weekday.substring(1).toLowerCase();
+    var mo = p.month.charAt(0) + p.month.substring(1).toLowerCase();
+    return p.time + ' on ' + wd + ' ' + p.day + ' ' + mo;
+  }
+
+  // --- handle check-in / check-out posted from the client ---
+  data.notice = '';
+
+  if (input && input.action) {
+    var res = new GlideRecord('x_1903615_worksp_0_reservation_tracker');
+
+    if (!res.get(input.sysId)) {
+      data.notice = "That reservation couldn't be found.";
+
+    } else if (res.getValue('reserved_for') !== gs.getUserID()) {
+      // Only act on a record this user actually owns.
+      data.notice = "That reservation isn't yours to change.";
+
+    } else if (input.action === 'checkin') {
+      var cStart = res.getValue('work_start');
+      var cEnd   = res.getValue('work_end');
+      var startMs = cStart ? new GlideDateTime(cStart).getNumericValue() : 0;
+      var endMs   = cEnd   ? new GlideDateTime(cEnd).getNumericValue()   : 0;
+      var opensMs = startMs - (CHECKIN_LEAD_MIN * 60 * 1000);
+
+      if (res.getValue('reservation_status') !== 'pending_check_in') {
+        data.notice = 'This reservation is no longer waiting for check-in.';
+
+      } else if (startMs && nowMs < opensMs) {
+        // The guard: too early. Tell them exactly when it opens.
+        data.notice = 'You can check in from ' +
+                      whenPhrase(res.getDisplayValue('work_start')) + '.';
+
+      } else if (endMs && nowMs > endMs) {
+        data.notice = 'This reservation has already ended.';
+
+      } else {
+        res.setValue('reservation_status', 'checked_in');
+        res.work_notes = 'Reservation checked in by ' + gs.getUserDisplayName();
+        res.update();
+      }
+
+    } else if (input.action === 'checkout') {
+      if (res.getValue('reservation_status') !== 'checked_in') {
+        data.notice = 'You need to check in before checking out.';
+      } else {
+        res.setValue('reservation_status', 'checked_out');
+        res.setValue('state', 3);   // Closed Complete
+        res.work_notes = 'Reservation checked out by ' + gs.getUserDisplayName();
+        res.update();
+      }
+    }
+  }
+
+  var rows = [];
+
+  // --- 1. Real reservation records ---
+  var linked = [];                     // RITMs that already produced a tracker
+
+  var gr = new GlideRecord('x_1903615_worksp_0_reservation_tracker');
+  gr.addQuery('reserved_for', gs.getUserID());
+  gr.orderBy('work_start');
+  gr.query();
+
+  while (gr.next()) {
+    var startRaw = gr.getValue('work_start');
+    var endRaw   = gr.getValue('work_end');
+    var s = parts(gr.getDisplayValue('work_start'));
+    var e = parts(gr.getDisplayValue('work_end'));
+    var status = gr.getValue('reservation_status');
+
+    var req = gr.getValue('request_number');
+    if (req) linked.push(req);
+
+    var rEndMs = endRaw ? new GlideDateTime(endRaw).getNumericValue() : 0;
+    var closed = CLOSED.indexOf(status) > -1;
+    var pct    = progressPct(startRaw, endRaw);
+
+    rows.push({
+      sysId:        gr.getUniqueValue(),
+      number:       gr.getValue('number'),
+      workspace:    gr.getDisplayValue('workspace'),
+      location:     gr.getDisplayValue('location'),
+      statusLabel:  gr.getDisplayValue('reservation_status'),
+      tint:         TINTS[status] || 'quiet',
+      startWeekday: s.weekday,
+      startDay:     s.day,
+      startMonth:   s.month,
+      startTime:    s.time,
+      endWeekday:   e.weekday,
+      endDay:       e.day,
+      endMonth:     e.month,
+      endTime:      e.time,
+      multiDay:     s.ymd !== e.ymd,
+      duration:     spanLabel(s.ymd, e.ymd),
+      progress:     closed ? 100 : pct,
+      live:         !closed && pct > 0 && pct < 100,
+      done:         closed || pct >= 100,
+      pending:      false,
+      canCheckIn:   status === 'pending_check_in',
+      canCheckOut:  status === 'checked_in',
+      isPast:       closed || (rEndMs > 0 && rEndMs < nowMs),
+      sortMs:       startRaw ? new GlideDateTime(startRaw).getNumericValue() : 0
+    });
+  }
+
+  // --- 2. Requests still awaiting approval ---
+  var ritm = new GlideRecord('sc_req_item');
+  ritm.addQuery('request.requested_for', gs.getUserID());
+  ritm.addQuery('cat_item', 'fe1e919e93c6c3108c8874dcebba10d0');
+  ritm.addQuery('active', true);
+  if (linked.length) {
+    ritm.addQuery('sys_id', 'NOT IN', linked.join(','));
+  }
+  ritm.query();
+
+  while (ritm.next()) {
+    var vStart = '', vEnd = '', vSpace = '', vLoc = '';
+    try {
+      vStart = ritm.variables.start_date_time.getDisplayValue();
+      vEnd   = ritm.variables.end_date_time.getDisplayValue();
+      vSpace = ritm.variables.select_workspace.getDisplayValue();
+      vLoc   = ritm.variables.location.getDisplayValue();
+    } catch (err) {
+      gs.warn('WRM pending row: variable read failed - ' + err);
+    }
+
+    var ps = parts(vStart);
+    var pe = parts(vEnd);
+    var pEndMs = vEnd ? new GlideDateTime(vEnd).getNumericValue() : 0;
+
+    rows.push({
+      sysId:        '',
+      number:       ritm.getValue('number'),
+      workspace:    vSpace || 'Workspace reservation',
+      location:     vLoc,
+      statusLabel:  'Pending approval',
+      tint:         'quiet',
+      startWeekday: ps.weekday,
+      startDay:     ps.day,
+      startMonth:   ps.month,
+      startTime:    ps.time,
+      endWeekday:   pe.weekday,
+      endDay:       pe.day,
+      endMonth:     pe.month,
+      endTime:      pe.time,
+      multiDay:     ps.ymd !== pe.ymd,
+      duration:     spanLabel(ps.ymd, pe.ymd),
+      progress:     0,
+      live:         false,
+      done:         false,
+      pending:      true,
+      canCheckIn:   false,
+      canCheckOut:  false,
+      isPast:       pEndMs > 0 && pEndMs < nowMs,
+      sortMs:       vStart ? new GlideDateTime(vStart).getNumericValue() : 0
+    });
+  }
+
+  // --- 3. Split and sort ---
+  data.upcoming = [];
+  data.past     = [];
+
+  for (var i = 0; i < rows.length; i++) {
+    if (rows[i].isPast) {
+      data.past.push(rows[i]);
+    } else {
+      data.upcoming.push(rows[i]);
+    }
+  }
+
+  // Soonest first for upcoming, most recent first for history.
+  data.upcoming.sort(function(a, b) { return a.sortMs - b.sortMs; });
+  data.past.sort(function(a, b) { return b.sortMs - a.sortMs; });
+
+  data.count     = data.upcoming.length;
+  data.pastCount = data.past.length;
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 05:11:49</sys_created_on>
+        <sys_id>8ba0d0e6935a47108c8874dcebba10e3</sys_id>
+        <sys_mod_count>26</sys_mod_count>
+        <sys_name>WRM My Reservations</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_widget_8ba0d0e6935a47108c8874dcebba10e3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 07:27:40</sys_updated_on>
+        <template><![CDATA[<div class="wrm-res">
+
+  <div class="wrm-res-head">
+    <div class="wrm-notice" ng-if="data.notice">
+    <i class="fa fa-info-circle"></i> {{data.notice}}
+  </div>
+    <h2>My reservations</h2>
+    <span class="wrm-res-count">{{data.count}} upcoming</span>
+  </div>
+
+  <div class="wrm-res-rows" ng-if="data.count > 0">
+    <div class="wrm-res-row" ng-repeat="r in data.upcoming">
+      <div class="wrm-when">
+        <div class="wrm-when-labels" ng-class="{'two': r.multiDay}">
+          <span>{{r.startWeekday}} {{r.startDay}} {{r.startMonth}}</span>
+          <span ng-if="r.multiDay">{{r.endWeekday}} {{r.endDay}} {{r.endMonth}}</span>
+        </div>
+        <div class="wrm-when-rail">
+          <span class="tm">{{r.startTime}}</span>
+          <span class="dot start"></span>
+          <span class="track"><span class="fill" ng-style="{width: r.progress + '%'}"></span></span>
+          <span class="dot end" ng-class="{'done': r.done}"></span>
+          <span class="tm">{{r.endTime}}</span>
+        </div>
+        <div class="wrm-when-dur">
+          <span ng-if="!r.live">{{r.duration}}</span>
+          <span ng-if="r.live" class="live">In progress</span>
+        </div>
+      </div>
+      <div class="wrm-res-main">
+        <div class="t">{{r.workspace}}</div>
+        <div class="s">{{r.location}}</div>
+        <div class="n">{{r.number}}</div>
+      </div>
+      <span class="wrm-res-pill" ng-class="r.tint">{{r.statusLabel}}</span>
+      <div class="wrm-res-actions">
+        <button ng-if="r.canCheckIn" ng-click="act(r, 'checkin')" class="wrm-res-btn">Check in</button>
+        <button ng-if="r.canCheckOut" ng-click="act(r, 'checkout')"]]></template>
+    </sp_widget>
+</record_update>

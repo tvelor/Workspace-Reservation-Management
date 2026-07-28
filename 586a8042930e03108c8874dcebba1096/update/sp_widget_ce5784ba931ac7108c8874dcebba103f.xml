@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.wrm-qa h2 {&#13;
+  margin: 0 0 12px;&#13;
+  font-size: 22px;&#13;
+  color: var(--ink);&#13;
+}&#13;
+&#13;
+.wrm-qa-btn {&#13;
+  display: block;&#13;
+  width: 100%;&#13;
+  text-align: center;&#13;
+  font-size: 14px;&#13;
+  font-weight: 500;&#13;
+  padding: 12px 18px;&#13;
+  margin-bottom: 9px;&#13;
+  border-radius: var(--r-pill);&#13;
+  background: transparent;&#13;
+  color: var(--ink-2);&#13;
+  box-shadow: inset 0 0 0 1px var(--line);&#13;
+  text-decoration: none;&#13;
+}&#13;
+.wrm-qa-btn:hover,&#13;
+.wrm-qa-btn:focus {&#13;
+  background: var(--surface-2);&#13;
+  color: var(--ink);&#13;
+  text-decoration: none;&#13;
+}&#13;
+.wrm-qa-btn:focus-visible {&#13;
+  outline: 2px solid var(--clay);&#13;
+  outline-offset: 3px;&#13;
+}&#13;
+&#13;
+.wrm-qa-btn.primary {&#13;
+  background: var(--clay);&#13;
+  color: var(--on-clay);&#13;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.22);&#13;
+}&#13;
+.wrm-qa-btn.primary:hover,&#13;
+.wrm-qa-btn.primary:focus {&#13;
+  background: var(--clay-press);&#13;
+  color: var(--on-clay);&#13;
+}&#13;
+&#13;
+.wrm-qa-btn:last-child { margin-bottom: 0; }</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>wrm_quick_actions</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>WRM Quick Actions</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 23:09:49</sys_created_on>
+        <sys_id>ce5784ba931ac7108c8874dcebba103f</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>WRM Quick Actions</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_widget_ce5784ba931ac7108c8874dcebba103f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 23:32:01</sys_updated_on>
+        <template><![CDATA[<div class="wrm-qa">
+  <h2>Quick actions</h2>
+
+  <a href="#wrm-faq" class="wrm-qa-btn">
+    Common questions
+  </a>
+
+  <a href="?id=sc_cat_item&sys_id=d71f7be693d6c7108c8874dcebba10bb" class="wrm-qa-btn">
+    Contact the workspace team
+  </a>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

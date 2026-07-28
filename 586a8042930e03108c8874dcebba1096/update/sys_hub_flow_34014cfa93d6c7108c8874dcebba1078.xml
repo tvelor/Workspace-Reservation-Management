@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_flow">
+    <sys_hub_flow action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>true</active>
+        <annotation/>
+        <attributes>browserActivatedIn=chrome,integrationActivatedIn=standalone,labelCacheCleanUpExecuted=true,timeFromCreateToActivate=264000,viewActivatedIn=naturalLanguage</attributes>
+        <authored_on_release_version>28100</authored_on_release_version>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <copied_from/>
+        <copied_from_name/>
+        <description/>
+        <display_name_after_preview/>
+        <flow_priority>MEDIUM</flow_priority>
+        <generation_source/>
+        <internal_name>route_workspace_support_request</internal_name>
+        <label_cache>[{"name":"Service Catalog_1.request_item","label":"Trigger - Service Catalog➛Requested Item Record","reference":"sc_req_item","reference_display":"Requested Item","type":"reference","base_type":"reference","usedInstances":{"cb4956c1-1905-4c2b-aa75-89b7a57c74ab":["ah_requested_item"]},"attributes":{"default_search_field":"number"}}]</label_cache>
+        <master_snapshot>150284be93d6c7108c8874dcebba1045</master_snapshot>
+        <master_snapshot_digest/>
+        <name>Route Workspace Support Request</name>
+        <natlang/>
+        <outputs/>
+        <pre_compiled>false</pre_compiled>
+        <remote_trigger_id>2d0284be93d6c7108c8874dcebba108f</remote_trigger_id>
+        <run_as>system</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <show_draft_actions>false</show_draft_actions>
+        <show_triggered_flows>false</show_triggered_flows>
+        <status>published</status>
+        <substatus/>
+        <sys_class_name>sys_hub_flow</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:41:17</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>34014cfa93d6c7108c8874dcebba1078</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>Route Workspace Support Request</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sys_hub_flow_34014cfa93d6c7108c8874dcebba1078</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:45:43</sys_updated_on>
+        <type>flow</type>
+        <updation_source/>
+        <version>2</version>
+        <version_record>f90284be93d6c7108c8874dcebba10c4</version_record>
+    </sys_hub_flow>
+    <sys_translated_text action="delete_multiple" query="documentkey=34014cfa93d6c7108c8874dcebba1078"/>
+    <sys_variable_value action="delete_multiple" query="document_key=34014cfa93d6c7108c8874dcebba1078"/>
+    <sys_flow_catalog_trigger action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <catalog_item/>
+        <name/>
+        <published_version/>
+        <run_flow_in>background</run_flow_in>
+        <sys_class_name>sys_flow_catalog_trigger</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:45:43</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>2d0284be93d6c7108c8874dcebba108f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_overrides/>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:45:43</sys_updated_on>
+        <trigger_definition/>
+    </sys_flow_catalog_trigger>
+    <sys_trigger_runner_mapping action="delete_multiple" query="identifier=34014cfa93d6c7108c8874dcebba1078"/>
+    <sys_hub_flow_stage action="delete_multiple" query="flow=34014cfa93d6c7108c8874dcebba1078"/>
+    <sys_flow_cat_variable_model action="delete_multiple" query="id=34014cfa93d6c7108c8874dcebba1078^sys_idNOT INf801ccfa93d6c7108c8874dcebba10b8"/>
+    <sys_flow_cat_variable_model action="INSERT_OR_UPDATE">
+        <id>34014cfa93d6c7108c8874dcebba1078</id>
+        <name>Route Workspace Support Request</name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:41:17</sys_created_on>
+        <sys_id>f801ccfa93d6c7108c8874dcebba10b8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:41:17</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=f801ccfa93d6c7108c8874dcebba10b8"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=34014cfa93d6c7108c8874dcebba1078^sys_idNOT IN8911443e93d6c7108c8874dcebba106a,9d11443e93d6c7108c8874dcebba10a9"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>default_search_field=number,element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>request_item</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Request Item</label>
+        <mandatory>true</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Route Workspace Support Request">34014cfa93d6c7108c8874dcebba1078</model>
+        <model_id>34014cfa93d6c7108c8874dcebba1078</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_34014cfa93d6c7108c8874dcebba1078</name>
+        <next_element/>
+        <order>100</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference display_value="" name="sc_req_item">sc_req_item</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:41:35</sys_created_on>
+        <sys_id>8911443e93d6c7108c8874dcebba106a</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:45:37</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=8911443e93d6c7108c8874dcebba106a"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,test_input_hidden=true,uiType=table_name,uiTypeLabel=Table Name</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value>sc_req_item</default_value>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>table_name</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="">table_name</internal_type>
+        <label>Table Name</label>
+        <mandatory>false</mandatory>
+        <max_length>40</max_length>
+        <model display_value="Route Workspace Support Request">34014cfa93d6c7108c8874dcebba1078</model>
+        <model_id>34014cfa93d6c7108c8874dcebba1078</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_34014cfa93d6c7108c8874dcebba1078</name>
+        <next_element/>
+        <order>100</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:41:35</sys_created_on>
+        <sys_id>9d11443e93d6c7108c8874dcebba10a9</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:45:41</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=9d11443e93d6c7108c8874dcebba10a9"/>
+    <sys_hub_flow_output action="delete_multiple" query="model=34014cfa93d6c7108c8874dcebba1078"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=34014cfa93d6c7108c8874dcebba1078"/>
+    <sys_hub_trigger_instance_v2 action="delete_multiple" query="flow=34014cfa93d6c7108c8874dcebba1078^sys_idNOT IN4511003e93d6c7108c8874dcebba1091"/>
+    <sys_hub_trigger_instance_v2 action="INSERT_OR_UPDATE">
+        <comment/>
+        <display_text/>
+        <flow display_value="Route Workspace Support Request">34014cfa93d6c7108c8874dcebba1078</flow>
+        <generation_source/>
+        <name>Service Catalog</name>
+        <published_version/>
+        <remote_sys_id/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:41:34</sys_created_on>
+        <sys_id>4511003e93d6c7108c8874dcebba1091</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:45:41</sys_updated_on>
+        <trigger_definition display_value="Service Catalog">c43a1011c36813002841b63b12d3ae15</trigger_definition>
+        <trigger_inputs>H4sIAAAAAAAA/61TTW/bMAz9K4FOG5CDk6zNktswoECAbgWarpdiMGSJcoTJkifJbr2g/32kPxK3M4YB3U2iyMfHx6eHIzM8A8O27LaysyvjHmc7y+ZM2wjecnPXlICP4uC0AIx3h2sdIts+HJm656aihIyLH7l3lZWYpK5HmIowtZ2dM2bvJChemfiecncFzwmBznswICJItlXcBMDItzC+fdEhaJv3gef5iIByHv5O4GXGG9p+n7OCW8mj8805ybviDorS8AinoPMSPNsukmTOaiK6b8JOdl0tL6i/r2xKDFNNstf9NHiUOiBYc3+OiIM20oNF5ZFCyT0iRMI/vnrS1OIy2SRivdys18tktUoSdZEpoYRYf1wkl4uLDQJOr36SWHzlg/Fk8BTBypFgf6rjgcsba86BAxqsm6rgT0H/QvAPCeUpwDFEP/HpmvZqDEIQi9A60Py71eopr/aDJGSmKawXrqmnzDZIQb7ou33+/wQXbya4JIKddDdl1A7Nwla0Wp4ZqglN6BbuQWBJGr3OcyzEImeqwn6d8kXPfuTSKuC2oCRH0IqH77E/uMfbYZ1X2raU+kfjBDenG4/YOasi6XdkXNYcK8jR0WOP59YV6c+KKtp/MvRK24koIQivy/hJRF3D6dP+BvLQA67rBAAA</trigger_inputs>
+        <trigger_outputs/>
+        <trigger_type>service_catalog</trigger_type>
+        <updation_source/>
+    </sys_hub_trigger_instance_v2>
+    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=34014cfa93d6c7108c8874dcebba1078^sys_idNOT IN8c61007e93d6c7108c8874dcebba10d9"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Create Catalog Task">af51fd0e73141300612c273ffff6a785</action_type>
+        <action_type_parent display_value="Create Catalog Task">f597c41073081300612c273ffff6a767</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>af51fd0e73141300612c273ffff6a785</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Route Workspace Support Request">34014cfa93d6c7108c8874dcebba1078</flow>
+        <generation_source/>
+        <order>1</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:42:53</sys_created_on>
+        <sys_id>8c61007e93d6c7108c8874dcebba10d9</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2026-07-28 23:03:50</sys_updated_on>
+        <ui_id>cb4956c1-1905-4c2b-aa75-89b7a57c74ab</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1YUY/iNhD+KyhPrYRoAizJ8XbdFVKl9k5aTnsPxylyHAesNUnOduC2aP97x7ENCYEstHCiavOW8dj+xjPfjMdfNg6NnbGDkjsviV3iD7yhN3DdkdfHfX+QwDdCfhA4XSdFS6I0F6FEESNh+d91VogVSi4wyMUzSGIqcoZenhoDeEFZzEnqjL987To54rCCJNwZb/aGToXEUEQYqH5SgDofNKAjOOVLrsQN2e+H1sh4rHC5XYd8lySNCQBKEBOk6yxRGiOZ8ZethBMUf0wZCCQv4H9BUwkLOkr3u6B/wraBq9QSAhZiose2v6E5Ly1OHpBEU1gIy4IbVbzIKCZCn01MElQweV+VaYWPuaRZqqeUZprZGSuW6Qd9Ks52gaZ7zMDDMfcVArCSXB2HMtBYn0wX2frRGjOhaXlyZpBlGLHtH5KS06iQCjbEnQgF5jS3UEsl2IYwsoQNwiXKc5rOw5xnK1ouCqYse3MGP72EZWsAI+g87SGs7O6BV1BvAvKHUvyEOFUr/wHLwGTYnak5pTkgFioWwF3Oa9cRL+KeISF2ZwTOCb8VCro+MWN0qI9XTSmRv4edV8TY99o1XPIHbYGL3FqMcvKtIEKSOKSSLCt82mymhK/ArZ17MIxl89DrGeVS9fW1SbWzOXYCVMuxRwu085sG2mKD4dou4utUe6zIDdO8dqZpYu2IZjQOMG3QrzMN/A3wLLBDpGsY9sMpeAluJVOCOF5MKGHKsWmxjHTU1zh3LW5l4JUw5lmeG6OvRK2B3xqvo1pYikXGpTKkXFD5Zceuzxl/FjkCdokiz0GvY4K4Sao21fPYdgJ6y7apwt55qGFvt8xwToC70/ke4aZWaNjWP7OuHaeb13fd261tly9a1yHQFWpQe6jhWjglKmmICjsAB4AsDZ3zrMhnhesO4s3MUmPmjGcVXryfg6aYOd2ZXqEcHuJ+4Htk9G6A0dD33AAHgT+MMYki5Ll3fqkOVoc0PlH/QMG7XaBn1uG33WUzw8Q664D/7B2XLMF4SULtz717rhnsPJlBkxMGF8sJo7tGTthdIg+lBnPB6XzSKjeQJvR941+fJWiaF1L06q3QG5kjaQ3FqF+LvDWispI33CZD7a3+PD6cAMLy4bOG0MBkuBBlGSMo3ScB+PeXiYFmCDC8GAGGt1sRy3vZsVbPDP5HS+YbMVd5AtnmV2w6s73WLfa9xI9UhYhHuFEhoqjtjjnVd8xLM6b2WmIrgM279YbumHXnN3V3F2PUga4O0LV1dXu23UBN+ec9nX6b+jEdHbQY61CU+1/xpSRqDdrKa56NxZXBWb2tugO4cAwjdIRuo7EKkzAr3RimZN31RoGLg2MTRu+aE4Io8ZP+kQlxsj+hSfCbxHjmHfVtZ9kMY8n3VPFWiyNt68oKsYgK/EzkXm6ZqpHOr3bIpJfR/13s3396TSDFw9nt/AAxQcqTvPpDLE0xK2ISLsFGymH6FgOR22dZbXNldcLDNddLbFVEVnBwjz3KZoTr5AND62S3y08/XzCVff0LRm0Sh0IZAAA=</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=8c61007e93d6c7108c8874dcebba10d9"/>
+    <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=34014cfa93d6c7108c8874dcebba1078"/>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=34014cfa93d6c7108c8874dcebba1078"/>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=34014cfa93d6c7108c8874dcebba1078"/>
+    <sys_hub_flow_variable action="delete_multiple" query="model=34014cfa93d6c7108c8874dcebba1078"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>request_item</element>
+        <help/>
+        <hint/>
+        <label>Request Item</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_34014cfa93d6c7108c8874dcebba1078</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:41:35</sys_created_on>
+        <sys_id>1511443e93d6c7108c8874dcebba10a5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:41:35</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>table_name</element>
+        <help/>
+        <hint/>
+        <label>Table Name</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_34014cfa93d6c7108c8874dcebba1078</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:41:36</sys_created_on>
+        <sys_id>9111443e93d6c7108c8874dcebba10c4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:41:36</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_34014cfa93d6c7108c8874dcebba1078"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_34014cfa93d6c7108c8874dcebba1078"/>
+    <sys_hub_flow_snapshot action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>true</active>
+        <annotation/>
+        <attributes>browserActivatedIn=chrome,integrationActivatedIn=standalone,labelCacheCleanUpExecuted=true,viewActivatedIn=naturalLanguage</attributes>
+        <authored_on_release_version>28100</authored_on_release_version>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <copied_from/>
+        <copied_from_name/>
+        <description/>
+        <flow_priority>MEDIUM</flow_priority>
+        <internal_name>route_workspace_support_request</internal_name>
+        <label_cache>[{"name":"Service Catalog_1.request_item","label":"Trigger - Service Catalog➛Requested Item Record","reference":"sc_req_item","reference_display":"Requested Item","type":"reference","base_type":"reference","usedInstances":{"cb4956c1-1905-4c2b-aa75-89b7a57c74ab":["ah_requested_item"]},"attributes":{"default_search_field":"number"}}]</label_cache>
+        <master>true</master>
+        <name>Route Workspace Support Request</name>
+        <natlang/>
+        <outputs/>
+        <parent_flow display_value="Route Workspace Support Request">34014cfa93d6c7108c8874dcebba1078</parent_flow>
+        <remote_trigger_id/>
+        <run_as>system</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <status>published</status>
+        <sys_class_name>sys_hub_flow_snapshot</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:45:42</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>150284be93d6c7108c8874dcebba1045</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:45:42</sys_updated_on>
+        <type>flow</type>
+        <version>2</version>
+    </sys_hub_flow_snapshot>
+    <sys_translated_text action="delete_multiple" query="documentkey=150284be93d6c7108c8874dcebba1045"/>
+    <sys_variable_value action="delete_multiple" query="document_key=150284be93d6c7108c8874dcebba1045"/>
+    <sys_hub_flow_stage action="delete_multiple" query="flow=150284be93d6c7108c8874dcebba1045"/>
+    <sys_flow_cat_variable_model action="delete_multiple" query="id=150284be93d6c7108c8874dcebba1045^sys_idNOT IN550284be93d6c7108c8874dcebba1047"/>
+    <sys_flow_cat_variable_model action="INSERT_OR_UPDATE">
+        <id>150284be93d6c7108c8874dcebba1045</id>
+        <name>Route Workspace Support Request</name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:45:42</sys_created_on>
+        <sys_id>550284be93d6c7108c8874dcebba1047</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:45:42</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=550284be93d6c7108c8874dcebba1047"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=150284be93d6c7108c8874dcebba1045^sys_idNOT INad0284be93d6c7108c8874dcebba105e,dd0284be93d6c7108c8874dcebba1048"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>default_search_field=number,element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>request_item</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Request Item</label>
+        <mandatory>true</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Route Workspace Support Request">150284be93d6c7108c8874dcebba1045</model>
+        <model_id>150284be93d6c7108c8874dcebba1045</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_input_150284be93d6c7108c8874dcebba1045</name>
+        <next_element/>
+        <order>100</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference display_value="" name="sc_req_item">sc_req_item</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:45:42</sys_created_on>
+        <sys_id>ad0284be93d6c7108c8874dcebba105e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:45:42</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=ad0284be93d6c7108c8874dcebba105e"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,test_input_hidden=true,uiType=table_name,uiTypeLabel=Table Name</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value>sc_req_item</default_value>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>table_name</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="">table_name</internal_type>
+        <label>Table Name</label>
+        <mandatory>false</mandatory>
+        <max_length>40</max_length>
+        <model display_value="Route Workspace Support Request">150284be93d6c7108c8874dcebba1045</model>
+        <model_id>150284be93d6c7108c8874dcebba1045</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_input_150284be93d6c7108c8874dcebba1045</name>
+        <next_element/>
+        <order>100</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:45:42</sys_created_on>
+        <sys_id>dd0284be93d6c7108c8874dcebba1048</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:45:42</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=dd0284be93d6c7108c8874dcebba1048"/>
+    <sys_hub_flow_output action="delete_multiple" query="model=150284be93d6c7108c8874dcebba1045"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=150284be93d6c7108c8874dcebba1045"/>
+    <sys_hub_trigger_instance_v2 action="delete_multiple" query="flow=150284be93d6c7108c8874dcebba1045^sys_idNOT IN2d0284be93d6c7108c8874dcebba1073"/>
+    <sys_hub_trigger_instance_v2 action="INSERT_OR_UPDATE">
+        <comment/>
+        <display_text/>
+        <flow display_value="Route Workspace Support Request">150284be93d6c7108c8874dcebba1045</flow>
+        <generation_source/>
+        <name>Service Catalog</name>
+        <published_version/>
+        <remote_sys_id/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:45:42</sys_created_on>
+        <sys_id>2d0284be93d6c7108c8874dcebba1073</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:45:42</sys_updated_on>
+        <trigger_definition display_value="Service Catalog">c43a1011c36813002841b63b12d3ae15</trigger_definition>
+        <trigger_inputs>H4sIAAAAAAAA/61TTW/bMAz9K4FOG5CDk6zNktswoECAbgWarpdiMGSJcoTJkifJbr2g/32kPxK3M4YB3U2iyMfHx6eHIzM8A8O27LaysyvjHmc7y+ZM2wjecnPXlICP4uC0AIx3h2sdIts+HJm656aihIyLH7l3lZWYpK5HmIowtZ2dM2bvJChemfiecncFzwmBznswICJItlXcBMDItzC+fdEhaJv3gef5iIByHv5O4GXGG9p+n7OCW8mj8805ybviDorS8AinoPMSPNsukmTOaiK6b8JOdl0tL6i/r2xKDFNNstf9NHiUOiBYc3+OiIM20oNF5ZFCyT0iRMI/vnrS1OIy2SRivdys18tktUoSdZEpoYRYf1wkl4uLDQJOr36SWHzlg/Fk8BTBypFgf6rjgcsba86BAxqsm6rgT0H/QvAPCeUpwDFEP/HpmvZqDEIQi9A60Py71eopr/aDJGSmKawXrqmnzDZIQb7ou33+/wQXbya4JIKddDdl1A7Nwla0Wp4ZqglN6BbuQWBJGr3OcyzEImeqwn6d8kXPfuTSKuC2oCRH0IqH77E/uMfbYZ1X2raU+kfjBDenG4/YOasi6XdkXNYcK8jR0WOP59YV6c+KKtp/MvRK24koIQivy/hJRF3D6dP+BvLQA67rBAAA</trigger_inputs>
+        <trigger_outputs/>
+        <trigger_type>service_catalog</trigger_type>
+        <updation_source/>
+    </sys_hub_trigger_instance_v2>
+    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=150284be93d6c7108c8874dcebba1045^sys_idNOT INed0284be93d6c7108c8874dcebba1071"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Create Catalog Task">af51fd0e73141300612c273ffff6a785</action_type>
+        <action_type_parent display_value="Create Catalog Task">f597c41073081300612c273ffff6a767</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>af51fd0e73141300612c273ffff6a785</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Route Workspace Support Request">150284be93d6c7108c8874dcebba1045</flow>
+        <generation_source/>
+        <order>1</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:45:42</sys_created_on>
+        <sys_id>ed0284be93d6c7108c8874dcebba1071</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:45:42</sys_updated_on>
+        <ui_id>cb4956c1-1905-4c2b-aa75-89b7a57c74ab</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1YUY/iNhD+KyhPrYRoAizJ8XbdFVKl9k5aTnsPxylyHAesNUnOduC2aP97x7ENCYEstHCiavOW8dj+xjPfjMdfNg6NnbGDkjsviV3iD7yhN3DdkdfHfX+QwDdCfhA4XSdFS6I0F6FEESNh+d91VogVSi4wyMUzSGIqcoZenhoDeEFZzEnqjL987To54rCCJNwZb/aGToXEUEQYqH5SgDofNKAjOOVLrsQN2e+H1sh4rHC5XYd8lySNCQBKEBOk6yxRGiOZ8ZethBMUf0wZCCQv4H9BUwkLOkr3u6B/wraBq9QSAhZiose2v6E5Ly1OHpBEU1gIy4IbVbzIKCZCn01MElQweV+VaYWPuaRZqqeUZprZGSuW6Qd9Ks52gaZ7zMDDMfcVArCSXB2HMtBYn0wX2frRGjOhaXlyZpBlGLHtH5KS06iQCjbEnQgF5jS3UEsl2IYwsoQNwiXKc5rOw5xnK1ouCqYse3MGP72EZWsAI+g87SGs7O6BV1BvAvKHUvyEOFUr/wHLwGTYnak5pTkgFioWwF3Oa9cRL+KeISF2ZwTOCb8VCro+MWN0qI9XTSmRv4edV8TY99o1XPIHbYGL3FqMcvKtIEKSOKSSLCt82mymhK/ArZ17MIxl89DrGeVS9fW1SbWzOXYCVMuxRwu085sG2mKD4dou4utUe6zIDdO8dqZpYu2IZjQOMG3QrzMN/A3wLLBDpGsY9sMpeAluJVOCOF5MKGHKsWmxjHTU1zh3LW5l4JUw5lmeG6OvRK2B3xqvo1pYikXGpTKkXFD5Zceuzxl/FjkCdokiz0GvY4K4Sao21fPYdgJ6y7apwt55qGFvt8xwToC70/ke4aZWaNjWP7OuHaeb13fd261tly9a1yHQFWpQe6jhWjglKmmICjsAB4AsDZ3zrMhnhesO4s3MUmPmjGcVXryfg6aYOd2ZXqEcHuJ+4Htk9G6A0dD33AAHgT+MMYki5Ll3fqkOVoc0PlH/QMG7XaBn1uG33WUzw8Q664D/7B2XLMF4SULtz717rhnsPJlBkxMGF8sJo7tGTthdIg+lBnPB6XzSKjeQJvR941+fJWiaF1L06q3QG5kjaQ3FqF+LvDWispI33CZD7a3+PD6cAMLy4bOG0MBkuBBlGSMo3ScB+PeXiYFmCDC8GAGGt1sRy3vZsVbPDP5HS+YbMVd5AtnmV2w6s73WLfa9xI9UhYhHuFEhoqjtjjnVd8xLM6b2WmIrgM279YbumHXnN3V3F2PUga4O0LV1dXu23UBN+ec9nX6b+jEdHbQY61CU+1/xpSRqDdrKa56NxZXBWb2tugO4cAwjdIRuo7EKkzAr3RimZN31RoGLg2MTRu+aE4Io8ZP+kQlxsj+hSfCbxHjmHfVtZ9kMY8n3VPFWiyNt68oKsYgK/EzkXm6ZqpHOr3bIpJfR/13s3396TSDFw9nt/AAxQcqTvPpDLE0xK2ISLsFGymH6FgOR22dZbXNldcLDNddLbFVEVnBwjz3KZoTr5AND62S3y08/XzCVff0LRm0Sh0IZAAA=</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=ed0284be93d6c7108c8874dcebba1071"/>
+    <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=150284be93d6c7108c8874dcebba1045"/>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=150284be93d6c7108c8874dcebba1045"/>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=150284be93d6c7108c8874dcebba1045"/>
+    <sys_hub_flow_variable action="delete_multiple" query="model=150284be93d6c7108c8874dcebba1045"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>table_name</element>
+        <help/>
+        <hint/>
+        <label>Table Name</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_150284be93d6c7108c8874dcebba1045</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:45:42</sys_created_on>
+        <sys_id>a10284be93d6c7108c8874dcebba105b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:45:42</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>request_item</element>
+        <help/>
+        <hint/>
+        <label>Request Item</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_150284be93d6c7108c8874dcebba1045</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:45:42</sys_created_on>
+        <sys_id>e90284be93d6c7108c8874dcebba1065</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:45:42</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_150284be93d6c7108c8874dcebba1045"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_150284be93d6c7108c8874dcebba1045"/>
+    <sys_hub_flow action="UPDATE">
+        <sys_id>34014cfa93d6c7108c8874dcebba1078</sys_id>
+        <latest_snapshot>150284be93d6c7108c8874dcebba1045</latest_snapshot>
+        <compiler_build>glide-zurich-07-01-2025__patch10-05-22-2026_06-12-2026_2311.zip</compiler_build>
+        <version_record/>
+    </sys_hub_flow>
+    <sys_flow_trigger_plan action="delete_multiple" query="plan_id=34014cfa93d6c7108c8874dcebba1078^sys_idNOT INad0284be93d6c7108c8874dcebba1090"/>
+    <sys_flow_trigger_plan action="INSERT_OR_UPDATE">
+        <binding_strategy>com.snc.process_flow.engine.binding.RunAlways</binding_strategy>
+        <plan>{"type":"PlanProxy","persistor":{"@class":".ChunkingPlanPersistor","table":"sys_flow_trigger_plan","id":"ad0284be93d6c7108c8874dcebba1090","name":"plan","plan_signature":null}}</plan>
+        <plan_id>34014cfa93d6c7108c8874dcebba1078</plan_id>
+        <snapshot>cb2648f6931ac7108c8874dcebba101c</snapshot>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:45:43</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>ad0284be93d6c7108c8874dcebba1090</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_overrides/>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 22:45:43</sys_updated_on>
+        <trigger display_value="">2d0284be93d6c7108c8874dcebba108f</trigger>
+    </sys_flow_trigger_plan>
+    <sys_flow_subflow_plan action="delete_multiple" query="plan_id=34014cfa93d6c7108c8874dcebba1078"/>
+</record_update>
