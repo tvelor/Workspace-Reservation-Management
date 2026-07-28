@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.wrm-cta {&#13;
+  background: var(--surface);&#13;
+  border: 1px solid var(--line);&#13;
+  border-radius: var(--r-card);&#13;
+  padding: 22px 24px;&#13;
+  margin-bottom: 22px;&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  gap: 20px;&#13;
+  flex-wrap: wrap;&#13;
+}&#13;
+&#13;
+.wrm-cta-text { flex: 1; min-width: 240px; }&#13;
+.wrm-cta-text h2 { margin: 0 0 4px; font-size: 20px; color: var(--ink); }&#13;
+.wrm-cta-text p  { margin: 0; font-size: 14px; color: var(--ink-2); }&#13;
+&#13;
+.wrm-cta-btn {&#13;
+  background: var(--clay);&#13;
+  color: var(--on-clay);&#13;
+  font-size: 14px;&#13;
+  font-weight: 500;&#13;
+  padding: 11px 24px;&#13;
+  border-radius: var(--r-pill);&#13;
+  text-decoration: none;&#13;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.22);&#13;
+  white-space: nowrap;&#13;
+}&#13;
+&#13;
+.wrm-cta-btn:hover,&#13;
+.wrm-cta-btn:focus {&#13;
+  background: var(--clay-press);&#13;
+  color: var(--on-clay);&#13;
+  text-decoration: none;&#13;
+}&#13;
+&#13;
+.wrm-cta-btn:focus-visible {&#13;
+  outline: 2px solid var(--clay);&#13;
+  outline-offset: 3px;&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>wrm_request_reservation</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>WRM Request Reservation</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  // sys_id of the Workspace Reservation Request catalog item
+  data.catItemId = 'fe1e919e93c6c3108c8874dcebba10d0';
+
+  // Build the portal URL for that item. The HTML template
+  // reads this as {{data.catUrl}} on the button's href.
+  data.catUrl = '?id=sc_cat_item&sys_id=' + data.catItemId;
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 03:31:18</sys_created_on>
+        <sys_id>83493716939647108c8874dcebba10b6</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>WRM Request Reservation</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_widget_83493716939647108c8874dcebba10b6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 03:32:37</sys_updated_on>
+        <template><![CDATA[<div class="wrm-cta">
+  <div class="wrm-cta-text">
+    <h2>Need a workspace?</h2>
+    <p>Book a desk, room, or collaboration space for a date and time that suits you.</p>
+  </div>
+  <a href="{{data.catUrl}}" class="wrm-cta-btn">Request a reservation</a>
+</div>]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_theme">
+    <sp_theme action="INSERT_OR_UPDATE">
+        <css_variables>// SCSS variables — compiled at build time, so these must be&#13;
+// literal hex values. They cannot reference the CSS custom&#13;
+// properties in the include; that's a different layer.&#13;
+&#13;
+$body-bg:        #F6F2EA;&#13;
+$text-color:     #3A342C;&#13;
+$brand-primary:  #B0705A;&#13;
+$brand-color:    #B0705A;&#13;
+$link-color:     #B0705A;&#13;
+$link-hover-color: #99604C;&#13;
+&#13;
+$panel-bg:           #FFFDF9;&#13;
+$panel-default-border: #E2DACC;&#13;
+&#13;
+// Header bar. Stock SP headers use the inverse navbar classes.&#13;
+$navbar-inverse-bg:               #FFFDF9;&#13;
+$navbar-inverse-color:            #6B6157;&#13;
+$navbar-inverse-link-color:       #6B6157;&#13;
+$navbar-inverse-link-hover-color: #3A342C;&#13;
+$navbar-inverse-link-active-bg:   transparent;&#13;
+$navbar-inverse-border:           #E2DACC;</css_variables>
+        <footer/>
+        <footer_fixed>false</footer_fixed>
+        <header/>
+        <matching_now_experience_theme/>
+        <name>Vellum</name>
+        <navbar_fixed>true</navbar_fixed>
+        <sys_class_name>sp_theme</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 02:12:50</sys_created_on>
+        <sys_id>07476f9e93d247108c8874dcebba10ff</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Vellum</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_theme_07476f9e93d247108c8874dcebba10ff</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 02:12:50</sys_updated_on>
+        <turn_off_scss_compilation>false</turn_off_scss_compilation>
+    </sp_theme>
+</record_update>

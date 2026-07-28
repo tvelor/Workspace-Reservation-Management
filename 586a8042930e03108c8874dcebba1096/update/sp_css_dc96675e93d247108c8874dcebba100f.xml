@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_css">
+    <sp_css action="INSERT_OR_UPDATE">
+        <css>/* ============================================================&#13;
+   VELLUM — WRM Service Portal theme&#13;
+   Light is the default. Dark is applied by adding the class&#13;
+   "dark" to &lt;body&gt;, which we wire up in a later story.&#13;
+   ============================================================ */&#13;
+&#13;
+:root {&#13;
+  /* --- neutrals: paper and ink --- */&#13;
+  --paper:     #F6F2EA;  /* page background */&#13;
+  --surface:   #FFFDF9;  /* cards, panels  */&#13;
+  --surface-2: #F0EBE1;  /* hover, thumbs  */&#13;
+  --ink:       #3A342C;  /* primary text   */&#13;
+  --ink-2:     #6B6157;  /* secondary text */&#13;
+  --ink-3:     #8B8175;  /* labels, hints  */&#13;
+  --line:      #E2DACC;  /* borders        */&#13;
+&#13;
+  /* --- the single accent --- */&#13;
+  --clay:       #B0705A;&#13;
+  --clay-press: #99604C;  /* hover / active */&#13;
+  --on-clay:    #FFFDF9;  /* text on clay   */&#13;
+&#13;
+  /* --- status tints: these map to available_status --- */&#13;
+  --free-bg: #E4EEEC;  --free-fg: #3F6862;&#13;
+  --held-bg: #F2EADA;  --held-fg: #7E6634;&#13;
+  --out-bg:  #F4E5E2;  --out-fg:  #8A5750;&#13;
+&#13;
+  /* --- the signature: sharp corner is ALWAYS bottom-left.&#13;
+         Order is top-left, top-right, bottom-right, bottom-left. --- */&#13;
+  --r-pill:  99px 99px 99px 4px;&#13;
+  --r-soft:  12px 12px 12px 3px;&#13;
+  --r-input: 10px 10px 10px 3px;&#13;
+  --r-card:  18px 18px 18px 3px;&#13;
+}&#13;
+&#13;
+/* Dark mode: same variable names, different values, so no&#13;
+   component CSS below this point ever needs to know about it. */&#13;
+body.dark {&#13;
+  --paper: #1E1B18; --surface: #26221E; --surface-2: #2E2924;&#13;
+  --ink:   #EDE7DD; --ink-2:   #B8AFA3; --ink-3:     #9A9086;&#13;
+  --line:  #3B352F;&#13;
+  --clay:  #C98D74; --clay-press: #D89C83; --on-clay: #241F1B;&#13;
+  --free-bg: #26302E; --free-fg: #93BAB3;&#13;
+  --held-bg: #332E24; --held-fg: #C7AC77;&#13;
+  --out-bg:  #332826; --out-fg:  #C99B93;&#13;
+}&#13;
+&#13;
+/* ---------- base ---------- */&#13;
+body { background: var(--paper); color: var(--ink); }&#13;
+.navbar, .sp-page-root { background: var(--paper); }&#13;
+&#13;
+/* ---------- Bootstrap overrides ----------&#13;
+   ServiceNow's compiled CSS already sets radius on these, so we&#13;
+   have to be at least as specific. Scoping to .sp-page usually&#13;
+   wins without needing !important — if a control stays square,&#13;
+   that's the first thing to check. */&#13;
+.sp-page .btn,&#13;
+.sp-page .label,&#13;
+.sp-page .badge      { border-radius: var(--r-pill); }&#13;
+&#13;
+.sp-page .panel,&#13;
+.sp-page .well       { border-radius: var(--r-card);&#13;
+                       background: var(--surface);&#13;
+                       border-color: var(--line); }&#13;
+&#13;
+.sp-page .form-control,&#13;
+.sp-page .input-group-addon { border-radius: var(--r-input);&#13;
+                              background: var(--surface);&#13;
+                              border-color: var(--line);&#13;
+                              color: var(--ink); }&#13;
+&#13;
+/* ---------- buttons ---------- */&#13;
+.sp-page .btn-primary {&#13;
+  background: var(--clay);&#13;
+  border-color: var(--clay);&#13;
+  color: var(--on-clay);&#13;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.22);&#13;
+}&#13;
+.sp-page .btn-primary:hover,&#13;
+.sp-page .btn-primary:focus {&#13;
+  background: var(--clay-press);&#13;
+  border-color: var(--clay-press);&#13;
+}&#13;
+.sp-page .btn-default {&#13;
+  background: transparent;&#13;
+  border-color: var(--line);&#13;
+  color: var(--ink-2);&#13;
+}&#13;
+/* Keyboard users need to see where they are. */&#13;
+.sp-page .btn:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }&#13;
+&#13;
+/* ---------- required-field chips on catalog items ----------&#13;
+   Catalog uses its own classes here, not Bootstrap's&#13;
+   .label-danger. Buttons also carry a UA border, so we&#13;
+   flatten that too. */&#13;
+.sc-reqd-info-btn,&#13;
+.sc-field-error-label {&#13;
+  background: var(--out-bg) !important;&#13;
+  color: var(--out-fg) !important;&#13;
+  border: 1px solid var(--out-bg) !important;&#13;
+  border-radius: var(--r-pill);&#13;
+  font-weight: 500;&#13;
+}&#13;
+&#13;
+.sc-reqd-info-btn:hover,&#13;
+.sc-reqd-info-btn:focus {&#13;
+  background: var(--out-fg) !important;&#13;
+  color: var(--surface) !important;&#13;
+}</css>
+        <name>Vellum — WRM tokens</name>
+        <sys_class_name>sp_css</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 02:08:57</sys_created_on>
+        <sys_id>dc96675e93d247108c8874dcebba100f</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Vellum — WRM tokens</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_css_dc96675e93d247108c8874dcebba100f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 03:47:46</sys_updated_on>
+        <turn_off_scss_compilation>false</turn_off_scss_compilation>
+    </sp_css>
+</record_update>

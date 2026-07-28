@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <css/>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <human_readable_url_structure/>
+        <id>wrm_landing</id>
+        <internal>false</internal>
+        <omit_watcher>false</omit_watcher>
+        <public>false</public>
+        <roles>x_1903615_worksp_0.wrm_user</roles>
+        <seo_script/>
+        <short_description>Landing page for the Workspace Reservations Portal — available workspaces and reservation request.</short_description>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 02:20:59</sys_created_on>
+        <sys_id>fca8ab52931647108c8874dcebba1097</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>wrm_landing</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_page_fca8ab52931647108c8874dcebba1097</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 02:29:32</sys_updated_on>
+        <title>Workspace Reservations</title>
+        <use_seo_script>false</use_seo_script>
+    </sp_page>
+    <sys_translated_text action="delete_multiple" query="documentkey=fca8ab52931647108c8874dcebba1097"/>
+</record_update>

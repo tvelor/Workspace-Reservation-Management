@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.wrm-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }&#13;
+.wrm-head h2 { margin: 0; font-size: 22px; color: var(--ink); }&#13;
+.wrm-count { font-size: 13px; color: var(--ink-3); }&#13;
+&#13;
+.wrm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }&#13;
+&#13;
+.wrm-card {&#13;
+  background: var(--surface);&#13;
+  border: 1px solid var(--line);&#13;
+  border-radius: var(--r-soft);&#13;
+  overflow: hidden;&#13;
+  display: flex; flex-direction: column;&#13;
+}&#13;
+.wrm-thumb { height: 110px; background: var(--surface-2); display: flex; align-items: center; justify-content: center; }&#13;
+.wrm-thumb img { width: 100%; height: 100%; object-fit: cover; }&#13;
+.wrm-noimg { font-size: 12px; color: var(--ink-3); padding: 0 12px; text-align: center; }&#13;
+&#13;
+.wrm-body { padding: 13px; display: flex; flex-direction: column; gap: 8px; flex: 1; }&#13;
+.wrm-name { font-size: 14px; font-weight: 500; color: var(--ink); }&#13;
+.wrm-sub  { font-size: 11px; color: var(--ink-3); }&#13;
+.wrm-foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }&#13;
+&#13;
+.wrm-pill {&#13;
+  font-size: 11px; padding: 5px 12px;&#13;
+  border-radius: var(--r-pill);&#13;
+  background: var(--free-bg); color: var(--free-fg);&#13;
+}&#13;
+.wrm-cap { font-size: 11px; color: var(--ink-3); }&#13;
+&#13;
+.wrm-empty {&#13;
+  text-align: center; padding: 38px 20px;&#13;
+  background: var(--surface);&#13;
+  border: 1px dashed var(--line);&#13;
+  border-radius: var(--r-card);&#13;
+  color: var(--ink-2);&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>Card grid of workspaces with status available. Landing page of the WRM portal.</description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>wrm_available_workspaces</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>WRM Available Workspaces</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  data.workspaces = [];
+
+  var gr = new GlideRecord('x_1903615_worksp_0_workspace_options');
+  // Story asks for AVAILABLE workspaces only. Confirm 'available'
+  // is the stored value once you've run the sys_choice dump.
+  gr.addQuery('status', 'available');
+  gr.orderBy('workspace_name');
+  gr.query();
+
+  while (gr.next()) {
+    var raw = gr.getValue('image');
+    var url = '';
+
+    if (raw) {
+      // user_image fields don't store a URL. Depending on release
+      // the column holds either a sys_attachment sys_id or a
+      // filename on the shadow table. Handle both, and log what
+      // we actually got so we can simplify this later.
+      if (raw.indexOf('.iix') > -1 || raw.indexOf('.') > -1) {
+        url = raw.charAt(0) === '/' ? raw : '/' + raw;
+      } else {
+        url = '/sys_attachment.do?sys_id=' + raw;
+      }
+      gs.info('WRM image raw value: [' + raw + '] -> ' + url);
+    }
+
+    data.workspaces.push({
+      sys_id:   gr.getUniqueValue(),
+      name:     gr.getDisplayValue('workspace_name'),
+      type:     gr.getDisplayValue('workspace_type'),
+      location: gr.getDisplayValue('location'),
+      status:   gr.getDisplayValue('status'),
+      capacity: gr.getValue('max_occupancy'),
+      imageUrl: url
+    });
+  }
+
+  data.count = data.workspaces.length;
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 02:45:11</sys_created_on>
+        <sys_id>4d9e279e931647108c8874dcebba103c</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>WRM Available Workspaces</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_widget_4d9e279e931647108c8874dcebba103c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 02:45:37</sys_updated_on>
+        <template><![CDATA[<div class="wrm-grid-wrap">
+  <div class="wrm-head">
+    <h2>Available workspaces</h2>
+    <span class="wrm-count">{{data.count}} free now</span>
+  </div>
+
+  <div class="wrm-grid">
+    <div class="wrm-card" ng-repeat="w in data.workspaces">
+
+      <div class="wrm-thumb">
+        <img ng-if="w.imageUrl" ng-src="{{w.imageUrl}}" alt="{{w.name}}">
+        <span ng-if="!w.imageUrl" class="wrm-noimg">{{w.name}}</span>
+      </div>
+
+      <div class="wrm-body">
+        <div class="wrm-name">{{w.name}}</div>
+        <div class="wrm-sub">{{w.type}}<span ng-if="w.location"> &middot; {{w.location}}</span></div>
+
+        <div class="wrm-foot">
+          <span class="wrm-pill">{{w.status}}</span>
+          <span class="wrm-cap" ng-if="w.capacity">Seats {{w.capacity}}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="wrm-empty" ng-if="data.count === 0">
+    <h3>No workspaces are free right now</h3>
+    <p>Everything on this floor is either booked or out of service. Try another location.</p>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>
