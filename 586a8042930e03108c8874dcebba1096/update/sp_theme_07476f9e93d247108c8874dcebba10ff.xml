@@ -21,9 +21,9 @@ $navbar-inverse-link-color:       #6B6157;&#13;
 $navbar-inverse-link-hover-color: #3A342C;&#13;
 $navbar-inverse-link-active-bg:   transparent;&#13;
 $navbar-inverse-border:           #E2DACC;</css_variables>
-        <footer/>
+        <footer display_value="">f10038fe935ec7108c8874dcebba101c</footer>
         <footer_fixed>false</footer_fixed>
-        <header/>
+        <header display_value="">60d7a836931ec7108c8874dcebba10e4</header>
         <matching_now_experience_theme/>
         <name>Vellum</name>
         <navbar_fixed>true</navbar_fixed>
@@ -31,14 +31,14 @@ $navbar-inverse-border:           #E2DACC;</css_variables>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-28 02:12:50</sys_created_on>
         <sys_id>07476f9e93d247108c8874dcebba10ff</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>Vellum</sys_name>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name>sp_theme_07476f9e93d247108c8874dcebba10ff</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-28 02:12:50</sys_updated_on>
+        <sys_updated_on>2026-07-29 02:07:40</sys_updated_on>
         <turn_off_scss_compilation>false</turn_off_scss_compilation>
     </sp_theme>
 </record_update>

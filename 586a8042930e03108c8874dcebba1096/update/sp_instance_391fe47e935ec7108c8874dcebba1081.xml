@@ -32,23 +32,23 @@
         <roles/>
         <short_description/>
         <size>md</size>
-        <sp_column display_value="2">9a7ac072935ac7108c8874dcebba10d5</sp_column>
-        <sp_widget display_value="WRM Quick Actions">ce5784ba931ac7108c8874dcebba103f</sp_widget>
+        <sp_column display_value="1">fe0f247e935ec7108c8874dcebba10e7</sp_column>
+        <sp_widget display_value="WRM FAQ">d5cc7ba293d6c7108c8874dcebba1066</sp_widget>
         <sys_class_name>sp_instance</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-28 23:22:49</sys_created_on>
-        <sys_id>958ac072935ac7108c8874dcebba10e5</sys_id>
+        <sys_created_on>2026-07-29 02:02:36</sys_created_on>
+        <sys_id>391fe47e935ec7108c8874dcebba1081</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name/>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
-        <sys_update_name>sp_instance_958ac072935ac7108c8874dcebba10e5</sys_update_name>
+        <sys_update_name>sp_instance_391fe47e935ec7108c8874dcebba1081</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-28 23:22:49</sys_updated_on>
+        <sys_updated_on>2026-07-29 02:02:36</sys_updated_on>
         <title/>
         <url/>
         <widget_parameters/>
     </sp_instance>
-    <sys_translated_text action="delete_multiple" query="documentkey=958ac072935ac7108c8874dcebba10e5"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=391fe47e935ec7108c8874dcebba1081"/>
 </record_update>

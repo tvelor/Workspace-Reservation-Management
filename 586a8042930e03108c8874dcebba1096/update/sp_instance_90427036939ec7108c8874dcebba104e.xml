@@ -10,7 +10,7 @@
         <css/>
         <glyph/>
         <id/>
-        <order>2</order>
+        <order>4</order>
         <placeholder_dimensions>{&#13;	"mobile": {&#13;		"height": "250px",&#13;		"width": "100%"&#13;	},&#13;	"desktop": {&#13;		"height": "250px",&#13;		"width": "100%"&#13;	},&#13;	"tablet": {&#13;		"height": "250px",&#13;		"width": "100%"&#13;	}&#13;}</placeholder_dimensions>
         <placeholder_dimensions_script><![CDATA[function evaluateConfig(options) { return {	"mobile": {		"height": "250px",		"width": "100%"	},	"desktop": {		"height": "250px",		"width": "100%"	},	"tablet": {		"height": "250px",		"width": "100%"	}}; }]]></placeholder_dimensions_script>
         <placeholder_template>&lt;!-- 
@@ -32,23 +32,23 @@
         <roles/>
         <short_description/>
         <size>md</size>
-        <sp_column display_value="1">36403f52935647108c8874dcebba101c</sp_column>
-        <sp_widget display_value="WRM FAQ">d5cc7ba293d6c7108c8874dcebba1066</sp_widget>
+        <sp_column display_value="1">b4ca4c72935ac7108c8874dcebba10e7</sp_column>
+        <sp_widget display_value="WRM Quick Actions">ce5784ba931ac7108c8874dcebba103f</sp_widget>
         <sys_class_name>sp_instance</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-28 22:25:13</sys_created_on>
-        <sys_id>e15d7fe293d6c7108c8874dcebba106b</sys_id>
-        <sys_mod_count>27</sys_mod_count>
+        <sys_created_on>2026-07-29 02:16:25</sys_created_on>
+        <sys_id>90427036939ec7108c8874dcebba104e</sys_id>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name/>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
-        <sys_update_name>sp_instance_e15d7fe293d6c7108c8874dcebba106b</sys_update_name>
+        <sys_update_name>sp_instance_90427036939ec7108c8874dcebba104e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-29 00:28:58</sys_updated_on>
+        <sys_updated_on>2026-07-29 03:52:34</sys_updated_on>
         <title/>
         <url/>
         <widget_parameters/>
     </sp_instance>
-    <sys_translated_text action="delete_multiple" query="documentkey=e15d7fe293d6c7108c8874dcebba106b"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=90427036939ec7108c8874dcebba104e"/>
 </record_update>

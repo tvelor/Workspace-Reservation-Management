@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
+    <sp_container action="DELETE">
+        <background_color/>
+        <background_image/>
+        <background_style>default</background_style>
+        <bootstrap_alt>false</bootstrap_alt>
+        <class_name/>
+        <container_class_name/>
+        <name>Workspace Reservations - Container 5</name>
+        <order>5</order>
+        <semantic_tag/>
+        <sp_page display_value="wrm_landing">fca8ab52931647108c8874dcebba1097</sp_page>
+        <subheader>false</subheader>
+        <sys_class_name>sp_container</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 23:14:58</sys_created_on>
+        <sys_id>d6b8447e931ac7108c8874dcebba109a</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Workspace Reservations - Container 5</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_container_d6b8447e931ac7108c8874dcebba109a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 23:24:19</sys_updated_on>
+        <title/>
+        <width>container</width>
+    </sp_container>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</application>
+        <file_path/>
+        <instance_id>5b8062d13b3f9694a80ce0bf55e45a19</instance_id>
+        <instance_name>dev295661</instance_name>
+        <name>sp_container_d6b8447e931ac7108c8874dcebba109a</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container"><sp_container action="INSERT_OR_UPDATE"><background_color/><background_image/><background_style>default</background_style><bootstrap_alt>false</bootstrap_alt><class_name/><container_class_name/><name>Workspace Reservations - Container 5</name><order>5</order><semantic_tag/><sp_page display_value="wrm_landing">fca8ab52931647108c8874dcebba1097</sp_page><subheader>false</subheader><sys_class_name>sp_container</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-07-28 23:14:58</sys_created_on><sys_id>d6b8447e931ac7108c8874dcebba109a</sys_id><sys_mod_count>3</sys_mod_count><sys_name>Workspace Reservations - Container 5</sys_name><sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package><sys_policy/><sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope><sys_update_name>sp_container_d6b8447e931ac7108c8874dcebba109a</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-07-28 23:24:19</sys_updated_on><title/><width>container</width></sp_container></record_update>]]></payload>
+        <payload_hash>1647457872</payload_hash>
+        <record_name>Workspace Reservations - Container 5</record_name>
+        <reverted_from/>
+        <source>02a384ea93d647108c8874dcebba104c</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 23:24:19</sys_created_on>
+        <sys_id>87da40b2935ac7108c8874dcebba10b9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19fab0b1ada0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 23:24:19</sys_updated_on>
+        <type>Container</type>
+        <update_guid>c3da40b20a5ac710068aa57d1e4dddb8</update_guid>
+        <update_guid_history>c3da40b20a5ac710068aa57d1e4dddb8:1647457872,2eaa8872255ac7108cfa52c8327ceb7b:-408169327,993a88320c5ac710b5d4ed9ba7e2515f:1831170770,d2b8447e461ac71092db7e59c798de9e:-224456429</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Workspace Reservations - Container 5">5432fcf2939ec7108c8874dcebba1010</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-29 02:16:09</sys_created_on>
+        <sys_db_object display_value="" name="sp_container">sp_container</sys_db_object>
+        <sys_id>1635750043bc4093830240745c9b0309</sys_id>
+        <sys_metadata>d6b8447e931ac7108c8874dcebba109a</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Workspace Reservations - Container 5</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_scope_delete display_value="">14c313a8f537498087dc70da5ab4b840</sys_scope_delete>
+        <sys_update_name>sp_container_d6b8447e931ac7108c8874dcebba109a</sys_update_name>
+        <sys_update_version display_value="sp_container_d6b8447e931ac7108c8874dcebba109a">87da40b2935ac7108c8874dcebba10b9</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-29 02:16:09</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

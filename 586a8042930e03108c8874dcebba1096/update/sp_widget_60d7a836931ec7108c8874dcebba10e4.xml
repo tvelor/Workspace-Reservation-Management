@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope) {
+
+  // $sp.getParameter doesn't resolve for theme-level widgets,
+  // so read the page id straight from the URL.
+  var m = window.location.search.match(/[?&]id=([^&]+)/);
+  $scope.pageId = m ? m[1] : 'wrm_landing';
+
+  // Dark mode only applies to our own pages. Catalog pages use
+  // stock Bootstrap styling that doesn't read our variables, so
+  // it would render half-dark and unreadable.
+  var OURS = ['wrm_landing', 'wrm_spaces', 'wrm_reservations', 'wrm_help'];
+  var supported = OURS.indexOf($scope.pageId) > -1;
+
+  var KEY = 'wrm-dark';
+
+  function apply(on) {
+    if (on && supported) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }
+
+  $scope.dark = localStorage.getItem(KEY) === '1';
+  $scope.darkAvailable = supported;
+  apply($scope.dark);
+
+  $scope.toggleDark = function() {
+    $scope.dark = !$scope.dark;
+    localStorage.setItem(KEY, $scope.dark ? '1' : '0');
+    apply($scope.dark);
+  };
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.wrm-hd {&#13;
+  background: var(--surface);&#13;
+  border-bottom: 1px solid var(--line);&#13;
+}&#13;
+.wrm-hd-inner {&#13;
+  max-width: 1400px; margin: 0 auto;&#13;
+  padding: 13px 20px;&#13;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;&#13;
+}&#13;
+&#13;
+.wrm-hd-brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }&#13;
+.wrm-hd-brand:hover { text-decoration: none; }&#13;
+.wrm-hd-brand .mark {&#13;
+  width: 20px; height: 20px; background: var(--clay);&#13;
+  border-radius: var(--r-pill); flex: none;&#13;
+}&#13;
+.wrm-hd-brand .word { font-size: 15px; font-weight: 500; color: var(--ink); }&#13;
+&#13;
+.wrm-hd-live {&#13;
+  display: inline-flex; align-items: center; gap: 7px;&#13;
+  font-size: 12px; padding: 5px 13px;&#13;
+  background: var(--free-bg); color: var(--free-fg);&#13;
+  border-radius: var(--r-pill);&#13;
+}&#13;
+.wrm-hd-live .dot {&#13;
+  width: 6px; height: 6px; border-radius: 50%;&#13;
+  background: currentColor; flex: none;&#13;
+}&#13;
+.wrm-hd-live.low { background: var(--out-bg); color: var(--out-fg); }&#13;
+&#13;
+.wrm-hd-nav { display: flex; gap: 20px; margin-left: auto; }&#13;
+.wrm-hd-nav a {&#13;
+  font-size: 13px; color: var(--ink-2); text-decoration: none;&#13;
+  padding-bottom: 2px; border-bottom: 2px solid transparent;&#13;
+}&#13;
+.wrm-hd-nav a:hover {&#13;
+  color: var(--ink); text-decoration: none; border-bottom-color: var(--clay);&#13;
+}&#13;
+.wrm-hd-nav a.on {&#13;
+  color: var(--ink);&#13;
+  border-bottom-color: var(--clay);&#13;
+}&#13;
+&#13;
+.wrm-hd-mode {&#13;
+  background: transparent; border: 1px solid var(--line);&#13;
+  color: var(--ink-2); width: 30px; height: 30px;&#13;
+  border-radius: var(--r-pill); cursor: pointer;&#13;
+  display: flex; align-items: center; justify-content: center;&#13;
+  font-size: 13px; flex: none;&#13;
+}&#13;
+.wrm-hd-mode:hover { color: var(--clay); border-color: var(--clay); }&#13;
+&#13;
+.wrm-hd-user { display: flex; align-items: center; gap: 11px; }&#13;
+.wrm-hd-user .mine { font-size: 12px; color: var(--ink-3); }&#13;
+.wrm-hd-user .av {&#13;
+  width: 28px; height: 28px; border-radius: var(--r-pill);&#13;
+  background: var(--surface-2); color: var(--ink-2);&#13;
+  font-size: 11px; display: flex; align-items: center; justify-content: center;&#13;
+  flex: none;&#13;
+}&#13;
+&#13;
+@media (max-width: 640px) {&#13;
+  .wrm-hd-nav { margin-left: 0; width: 100%; order: 3; }&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>wrm_header</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>WRM Header</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  var u = gs.getUser();
+  var name = u.getFirstName() || u.getName();
+  data.userName = name;
+
+  // Initials for the avatar circle.
+  var f = (u.getFirstName() || '').charAt(0);
+  var l = (u.getLastName()  || '').charAt(0);
+  data.initials = (f + l).toUpperCase() || name.charAt(0).toUpperCase();
+
+  // Live availability, carried in the chrome on every page.
+  // One count, so it's cheap enough to run on every request.
+  var free = new GlideRecord('x_1903615_worksp_0_workspace_options');
+  free.addQuery('status', 'available');
+  free.query();
+  data.free = free.getRowCount();
+
+  // This user's live reservations, so the nav can badge them.
+  var mine = new GlideRecord('x_1903615_worksp_0_reservation_tracker');
+  mine.addQuery('reserved_for', gs.getUserID());
+  mine.addQuery('reservation_status', 'IN', 'pending_check_in,checked_in');
+  mine.query();
+  data.mine = mine.getRowCount();
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-29 01:31:43</sys_created_on>
+        <sys_id>60d7a836931ec7108c8874dcebba10e4</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>WRM Header</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_widget_60d7a836931ec7108c8874dcebba10e4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-29 03:29:43</sys_updated_on>
+        <template><![CDATA[<script>
+(function() {
+  var m = window.location.search.match(/[?&]id=([^&]+)/);
+  var page = m ? m[1] : 'wrm_landing';
+  var ours = ['wrm_landing','wrm_spaces','wrm_reservations','wrm_help'];
+  var dark = localStorage.getItem('wrm-dark') === '1';
+  if (dark && ours.indexOf(page) > -1) {
+    document.body.classList.add('dark');
+  } else {
+    document.body.classList.remove('dark');
+  }
+})();
+</script>
+
+<div class="wrm-hd">
+  <div class="wrm-hd-inner">
+
+    <a href="?id=wrm_landing" class="wrm-hd-brand">
+      <span class="mark"></span>
+      <span class="word">Workspace</span>
+    </a>
+
+    <span class="wrm-hd-live" ng-class="{'low': data.free < 5}">
+      <span class="dot"></span>{{data.free}} free now
+    </span>
+
+    <nav class="wrm-hd-nav">
+      <a href="?id=wrm_landing" ng-class="{'on': pageId === 'wrm_landing'}">Home</a>
+      <a href="?id=wrm_spaces" ng-class="{'on': pageId === 'wrm_spaces'}">Find a space</a>
+      <a href="?id=wrm_reservations" ng-class="{'on': pageId === 'wrm_reservations'}">My reservations</a>
+      <a href="?id=wrm_help" ng-class="{'on': pageId === 'wrm_help'}">Help</a>
+    </nav>
+
+    <button class="wrm-hd-mode" ng-if="darkAvailable" ng-click="toggleDark()"
+            aria-label="Toggle dark mode"
+            title="{{dark ? 'Switch to light' : 'Switch to dark'}}">
+      <i class="fa" ng-class="dark ? 'fa-sun-o' : 'fa-moon-o'"></i>
+    </button>
+
+    <div class="wrm-hd-user">
+      <span class="mine" ng-if="data.mine">{{data.mine}} booked</span>
+      <span class="av" title="{{data.userName}}">{{data.initials}}</span>
+    </div>
+
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

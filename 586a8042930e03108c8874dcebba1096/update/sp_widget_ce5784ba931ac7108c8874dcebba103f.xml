@@ -6,49 +6,28 @@
   var c = this;
 };]]></client_script>
         <controller_as>c</controller_as>
-        <css>.wrm-qa h2 {&#13;
-  margin: 0 0 12px;&#13;
-  font-size: 22px;&#13;
-  color: var(--ink);&#13;
+        <css>.wrm-qa h2 { margin: 0 0 12px; font-size: 22px; color: var(--ink); }&#13;
+&#13;
+.wrm-qa-grid {&#13;
+  display: grid;&#13;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));&#13;
+  gap: 12px;&#13;
 }&#13;
 &#13;
-.wrm-qa-btn {&#13;
+.wrm-qa-card {&#13;
   display: block;&#13;
-  width: 100%;&#13;
-  text-align: center;&#13;
-  font-size: 14px;&#13;
-  font-weight: 500;&#13;
-  padding: 12px 18px;&#13;
-  margin-bottom: 9px;&#13;
-  border-radius: var(--r-pill);&#13;
-  background: transparent;&#13;
-  color: var(--ink-2);&#13;
-  box-shadow: inset 0 0 0 1px var(--line);&#13;
+  background: var(--surface);&#13;
+  border: 1px solid var(--line);&#13;
+  border-radius: var(--r-soft);&#13;
+  padding: 16px 18px;&#13;
   text-decoration: none;&#13;
 }&#13;
-.wrm-qa-btn:hover,&#13;
-.wrm-qa-btn:focus {&#13;
-  background: var(--surface-2);&#13;
-  color: var(--ink);&#13;
+.wrm-qa-card:hover {&#13;
+  border-color: var(--clay);&#13;
   text-decoration: none;&#13;
 }&#13;
-.wrm-qa-btn:focus-visible {&#13;
-  outline: 2px solid var(--clay);&#13;
-  outline-offset: 3px;&#13;
-}&#13;
-&#13;
-.wrm-qa-btn.primary {&#13;
-  background: var(--clay);&#13;
-  color: var(--on-clay);&#13;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.22);&#13;
-}&#13;
-.wrm-qa-btn.primary:hover,&#13;
-.wrm-qa-btn.primary:focus {&#13;
-  background: var(--clay-press);&#13;
-  color: var(--on-clay);&#13;
-}&#13;
-&#13;
-.wrm-qa-btn:last-child { margin-bottom: 0; }</css>
+.wrm-qa-card .t { display: block; font-size: 15px; color: var(--ink); margin-bottom: 3px; }&#13;
+.wrm-qa-card .s { display: block; font-size: 12px; color: var(--ink-3); }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -74,25 +53,30 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-28 23:09:49</sys_created_on>
         <sys_id>ce5784ba931ac7108c8874dcebba103f</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name>WRM Quick Actions</sys_name>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name>sp_widget_ce5784ba931ac7108c8874dcebba103f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-28 23:32:01</sys_updated_on>
+        <sys_updated_on>2026-07-29 02:39:05</sys_updated_on>
         <template><![CDATA[<div class="wrm-qa">
-  <h2>Quick actions</h2>
-
-  <a href="#wrm-faq" class="wrm-qa-btn">
-    Common questions
-  </a>
-
-  <a href="?id=sc_cat_item&sys_id=d71f7be693d6c7108c8874dcebba10bb" class="wrm-qa-btn">
-    Contact the workspace team
-  </a>
-
+  <h2></h2>
+  <div class="wrm-qa-grid">
+    <a href="?id=wrm_spaces" class="wrm-qa-card">
+      <span class="t">Find a space</span>
+      <span class="s">Browse what's free this week and next</span>
+    </a>
+    <a href="?id=wrm_reservations" class="wrm-qa-card">
+      <span class="t">My reservations</span>
+      <span class="s">Check in, check out, see what's booked</span>
+    </a>
+    <a href="?id=wrm_help" class="wrm-qa-card">
+      <span class="t">Help</span>
+      <span class="s">Common questions and how to reach us</span>
+    </a>
+  </div>
 </div>]]></template>
     </sp_widget>
 </record_update>

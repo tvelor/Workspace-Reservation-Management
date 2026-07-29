@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.wrm-cap-summary {&#13;
+  background: var(--surface);&#13;
+  border: 1px solid var(--line);&#13;
+  border-radius: var(--r-card);&#13;
+  padding: 16px 18px;&#13;
+  margin-bottom: 12px;&#13;
+}&#13;
+.wrm-cap-summary .line { font-size: 16px; color: var(--ink); line-height: 1.55; }&#13;
+.wrm-cap-summary .line strong { font-weight: 500; }&#13;
+.wrm-cap-summary .sub { font-size: 13px; color: var(--ink-3); margin-top: 5px; }&#13;
+&#13;
+.wrm-cap-rows {&#13;
+  background: var(--surface);&#13;
+  border: 1px solid var(--line);&#13;
+  border-radius: var(--r-card);&#13;
+  padding: 8px 18px 14px;&#13;
+}&#13;
+&#13;
+.wrm-cap-rows .row {&#13;
+  display: flex; align-items: center; gap: 12px;&#13;
+  padding: 8px 0;&#13;
+  border-top: 1px solid var(--line);&#13;
+}&#13;
+.wrm-cap-rows .row:first-child { border-top: 0; }&#13;
+&#13;
+.wrm-cap-rows .nm { width: 130px; flex: none; font-size: 12px; color: var(--ink); }&#13;
+.wrm-cap-rows .ct { flex: none; font-size: 11px; color: var(--ink-3); }&#13;
+&#13;
+.wrm-cap-rows .dots { display: flex; gap: 5px; flex: 1; flex-wrap: wrap; }&#13;
+.wrm-cap-rows .dots i {&#13;
+  width: 11px; height: 11px; border-radius: 50%; display: block;&#13;
+}&#13;
+.wrm-cap-rows .dots i.free   { background: var(--free-fg); opacity: .55; }&#13;
+.wrm-cap-rows .dots i.booked { background: var(--held-fg); opacity: .45; }&#13;
+.wrm-cap-rows .dots i.maint  { background: var(--out-fg);  opacity: .45; }&#13;
+&#13;
+.wrm-cap-rows .key {&#13;
+  display: flex; gap: 16px;&#13;
+  margin-top: 10px; padding-top: 11px;&#13;
+  border-top: 1px solid var(--line);&#13;
+  font-size: 11px; color: var(--ink-3);&#13;
+}&#13;
+.wrm-cap-rows .key i {&#13;
+  display: inline-block; width: 9px; height: 9px;&#13;
+  border-radius: 50%; margin-right: 5px;&#13;
+}&#13;
+.wrm-cap-rows .key i.free   { background: var(--free-fg); opacity: .55; }&#13;
+.wrm-cap-rows .key i.booked { background: var(--held-fg); opacity: .45; }&#13;
+.wrm-cap-rows .key i.maint  { background: var(--out-fg);  opacity: .45; }</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>wrm_building_capacity</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>WRM Building Capacity</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+  var HOLDING = 'pending_check_in,checked_in';
+  var todayYmd = new GlideDateTime().getDisplayValue().split(' ')[0];
+
+  // Which workspaces are held at some point today.
+  var heldToday = {};
+  var res = new GlideRecord('x_1903615_worksp_0_reservation_tracker');
+  res.addQuery('reservation_status', 'IN', HOLDING);
+  res.query();
+  while (res.next()) {
+    var sDisp = res.getDisplayValue('work_start');
+    var eDisp = res.getDisplayValue('work_end');
+    if (!sDisp || !eDisp) continue;
+
+    var sYmd = sDisp.split(' ')[0];
+    var eYmd = eDisp.split(' ')[0];
+
+    if (sYmd <= todayYmd && eYmd >= todayYmd) {
+      heldToday[res.getValue('workspace')] = true;
+    }
+  }
+
+  // Grouped by workspace type — a real field, rather than a
+  // building name parsed out of the location label.
+  var types = {};
+  var maintCount = 0;
+
+  var gr = new GlideRecord('x_1903615_worksp_0_workspace_options');
+  gr.addQuery('status', '!=', 'decommissioned');
+  gr.orderBy('workspace_name');
+  gr.query();
+
+  while (gr.next()) {
+    var label = gr.getDisplayValue('workspace_type') || 'Other';
+
+    if (!types[label]) {
+      types[label] = { name: label, total: 0, free: 0, dots: [] };
+    }
+
+    var state;
+    if (gr.getValue('status') === 'under_maintenance') {
+      state = 'maint';
+      maintCount++;
+    } else if (heldToday[gr.getUniqueValue()]) {
+      state = 'booked';
+    } else {
+      state = 'free';
+      types[label].free++;
+    }
+
+    types[label].total++;
+    types[label].dots.push(state);
+  }
+
+  // Free dots first, then booked, then maintenance — so the row
+  // reads as a bar rather than a scatter.
+  var ORDER = { free: 0, booked: 1, maint: 2 };
+
+  data.types = [];
+  var best = null;
+  var fullTypes = [];
+
+  for (var k in types) {
+    var row = types[k];
+    row.dots.sort(function(a, c) { return ORDER[a] - ORDER[c]; });
+    data.types.push(row);
+
+    if (!best || row.free > best.free) best = row;
+    if (row.free === 0) fullTypes.push(row.name);
+  }
+
+  data.types.sort(function(a, c) { return c.free - a.free; });
+
+  // --- the summary sentence ---
+  data.headline = '';
+  if (best && best.free > 0) {
+    data.headline      = best.name;
+    data.headlineFree  = best.free;
+    data.headlineTotal = best.total;
+  }
+
+  var bits = [];
+  if (fullTypes.length === 1) {
+    bits.push('No ' + fullTypes[0].toLowerCase() + ' is free today.');
+  } else if (fullTypes.length > 1) {
+    bits.push(fullTypes.length + ' types are fully booked.');
+  }
+  if (maintCount === 1) {
+    bits.push('One space is out for maintenance.');
+  } else if (maintCount > 1) {
+    bits.push(maintCount + ' spaces are out for maintenance.');
+  }
+  data.detail = bits.join(' ');
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-29 03:37:19</sys_created_on>
+        <sys_id>5584c17a93120b108c8874dcebba10cd</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>WRM Building Capacity</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_widget_5584c17a93120b108c8874dcebba10cd</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-29 04:02:19</sys_updated_on>
+        <template><![CDATA[<div class="wrm-cap">
+
+  <div class="wrm-cap-summary" ng-if="data.headline">
+    <div class="line">
+      <strong>{{data.headline}}</strong> has the most space today,
+      {{data.headlineFree}} of {{data.headlineTotal}} free.
+    </div>
+    <div class="sub" ng-if="data.detail">{{data.detail}}</div>
+  </div>
+
+  <div class="wrm-cap-rows">
+    <div class="row" ng-repeat="b in data.types track by b.name">
+      <span class="nm">{{b.name}}</span>
+      <span class="dots">
+        <i ng-repeat="d in b.dots track by $index" ng-class="d"></i>
+      </span>
+      <span class="ct">{{b.free}} free</span>
+    </div>
+
+    <div class="key">
+      <span><i class="free"></i>Free</span>
+      <span><i class="booked"></i>Booked</span>
+      <span><i class="maint"></i>Maintenance</span>
+    </div>
+  </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

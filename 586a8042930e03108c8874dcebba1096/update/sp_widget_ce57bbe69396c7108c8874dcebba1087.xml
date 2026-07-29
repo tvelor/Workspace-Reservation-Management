@@ -31,7 +31,10 @@
   color: var(--ink);&#13;
 }&#13;
 .wrm-metric .n.free { color: var(--free-fg); }&#13;
-.wrm-metric .n.out  { color: var(--out-fg); }</css>
+.wrm-metric .n.out  { color: var(--out-fg); }&#13;
+&#13;
+.wrm-metric { display: block; text-decoration: none; }&#13;
+.wrm-metric:hover { border-color: var(--clay); text-decoration: none; }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -74,27 +77,27 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-28 21:59:25</sys_created_on>
         <sys_id>ce57bbe69396c7108c8874dcebba1087</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>WRM Availability Metrics</sys_name>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name>sp_widget_ce57bbe69396c7108c8874dcebba1087</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-28 22:01:02</sys_updated_on>
+        <sys_updated_on>2026-07-29 04:10:20</sys_updated_on>
         <template><![CDATA[<div class="wrm-metrics">
-  <div class="wrm-metric">
+  <a href="?id=wrm_spaces" class="wrm-metric">
     <div class="l">Available now</div>
     <div class="n free">{{data.available}}</div>
-  </div>
-  <div class="wrm-metric">
-    <div class="l">Your upcoming</div>
+  </a>
+  <a href="?id=wrm_reservations" class="wrm-metric">
+    <div class="l">Confirmed bookings</div>
     <div class="n">{{data.upcoming}}</div>
-  </div>
-  <div class="wrm-metric">
+  </a>
+  <a href="?id=wrm_spaces" class="wrm-metric">
     <div class="l">Under maintenance</div>
     <div class="n out">{{data.maintenance}}</div>
-  </div>
+  </a>
 </div>]]></template>
     </sp_widget>
 </record_update>

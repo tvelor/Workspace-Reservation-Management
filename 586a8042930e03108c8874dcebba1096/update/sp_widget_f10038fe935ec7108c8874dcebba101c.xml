@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.wrm-ft {&#13;
+  background: var(--surface);&#13;
+  border-top: 1px solid var(--line);&#13;
+  margin-top: 40px;&#13;
+}&#13;
+.wrm-ft-inner {&#13;
+  max-width: 1400px; margin: 0 auto;&#13;
+  padding: 24px 20px;&#13;
+  display: flex; align-items: flex-start; gap: 28px; flex-wrap: wrap;&#13;
+}&#13;
+&#13;
+.wrm-ft-brand { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }&#13;
+.wrm-ft-brand .mark {&#13;
+  width: 18px; height: 18px; background: var(--clay);&#13;
+  border-radius: var(--r-pill); flex: none;&#13;
+}&#13;
+.wrm-ft-brand .word { font-size: 14px; font-weight: 500; color: var(--ink); }&#13;
+.wrm-ft-brand .tag { font-size: 12px; color: var(--ink-3); }&#13;
+&#13;
+.wrm-ft-links { display: flex; gap: 20px; flex-wrap: wrap; margin-left: auto; }&#13;
+.wrm-ft-links a { font-size: 12px; color: var(--ink-2); text-decoration: none; }&#13;
+.wrm-ft-links a:hover { color: var(--clay); text-decoration: none; }&#13;
+&#13;
+.wrm-ft-legal { font-size: 11px; color: var(--ink-3); width: 100%; }</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>wrm_footer</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>WRM Footer</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  data.year = new GlideDateTime().getDisplayValue().substring(0, 4);
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-29 02:07:27</sys_created_on>
+        <sys_id>f10038fe935ec7108c8874dcebba101c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>WRM Footer</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_widget_f10038fe935ec7108c8874dcebba101c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-29 02:07:27</sys_updated_on>
+        <template><![CDATA[<div class="wrm-ft">
+  <div class="wrm-ft-inner">
+
+    <div class="wrm-ft-brand">
+      <span class="mark"></span>
+      <span class="word">Workspace</span>
+      <span class="tag">Book it. Check in. Get on with your day.</span>
+    </div>
+
+    <nav class="wrm-ft-links">
+      <a href="?id=wrm_spaces">Find a space</a>
+      <a href="?id=wrm_reservations">My reservations</a>
+      <a href="?id=wrm_help">Help</a>
+      <a href="?id=sc_cat_item&sys_id=d71f7be693d6c7108c8874dcebba10bb">Contact the team</a>
+    </nav>
+
+    <div class="wrm-ft-legal">&copy; {{data.year}} Workspace Reservation Management</div>
+
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

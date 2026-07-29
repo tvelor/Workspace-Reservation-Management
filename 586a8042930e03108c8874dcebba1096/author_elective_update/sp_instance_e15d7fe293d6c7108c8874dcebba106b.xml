@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="DELETE">
+        <active>true</active>
+        <advanced_placeholder_dimensions>false</advanced_placeholder_dimensions>
+        <async_load>false</async_load>
+        <async_load_device_type>desktop,tablet,mobile</async_load_device_type>
+        <async_load_trigger>viewport</async_load_trigger>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <placeholder_dimensions>{&#13;	"mobile": {&#13;		"height": "250px",&#13;		"width": "100%"&#13;	},&#13;	"desktop": {&#13;		"height": "250px",&#13;		"width": "100%"&#13;	},&#13;	"tablet": {&#13;		"height": "250px",&#13;		"width": "100%"&#13;	}&#13;}</placeholder_dimensions>
+        <placeholder_dimensions_script><![CDATA[function evaluateConfig(options) { return {	"mobile": {		"height": "250px",		"width": "100%"	},	"desktop": {		"height": "250px",		"width": "100%"	},	"tablet": {		"height": "250px",		"width": "100%"	}}; }]]></placeholder_dimensions_script>
+        <placeholder_template>&lt;!-- 
+	AngularJS template with configurable options.
+	Use the `options` object to control dynamic behavior.
+	Example: Display an element when max row count is 10:
+	&lt;div ng-if="options.maxRowCount === 10"&gt;&lt;/div&gt;
+	The `skeleton-container` class is used for loading placeholders.
+--&gt;
+	&lt;div class="skeleton-container"&gt;
+	&lt;!-- Header Skeleton --&gt;
+	&lt;div class="skeleton-box skeleton-header"&gt;&lt;/div&gt;
+	&lt;!-- Body Skeleton --&gt;
+	&lt;div class="skeleton-box skeleton-line"&gt;&lt;/div&gt;
+	&lt;div class="skeleton-box skeleton-line small"&gt;&lt;/div&gt;
+	&lt;div class="skeleton-box skeleton-line medium"&gt;&lt;/div&gt;
+&lt;/div&gt;</placeholder_template>
+        <preserve_placeholder_size>false</preserve_placeholder_size>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">36403f52935647108c8874dcebba101c</sp_column>
+        <sp_widget display_value="WRM FAQ">d5cc7ba293d6c7108c8874dcebba1066</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-28 22:25:13</sys_created_on>
+        <sys_id>e15d7fe293d6c7108c8874dcebba106b</sys_id>
+        <sys_mod_count>28</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_instance_e15d7fe293d6c7108c8874dcebba106b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-29 02:03:19</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters/>
+    </sp_instance>
+    <sys_translated_text action="DELETE" query="documentkey=e15d7fe293d6c7108c8874dcebba106b"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</application>
+        <file_path/>
+        <instance_id>5b8062d13b3f9694a80ce0bf55e45a19</instance_id>
+        <instance_name>dev295661</instance_name>
+        <name>sp_instance_e15d7fe293d6c7108c8874dcebba106b</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_instance"&gt;&lt;sp_instance action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;advanced_placeholder_dimensions&gt;false&lt;/advanced_placeholder_dimensions&gt;&lt;async_load&gt;false&lt;/async_load&gt;&lt;async_load_device_type&gt;desktop,tablet,mobile&lt;/async_load_device_type&gt;&lt;async_load_trigger&gt;viewport&lt;/async_load_trigger&gt;&lt;class_name/&gt;&lt;color&gt;default&lt;/color&gt;&lt;css/&gt;&lt;glyph/&gt;&lt;id/&gt;&lt;order&gt;1&lt;/order&gt;&lt;placeholder_dimensions&gt;{&amp;#13;	"mobile": {&amp;#13;		"height": "250px",&amp;#13;		"width": "100%"&amp;#13;	},&amp;#13;	"desktop": {&amp;#13;		"height": "250px",&amp;#13;		"width": "100%"&amp;#13;	},&amp;#13;	"tablet": {&amp;#13;		"height": "250px",&amp;#13;		"width": "100%"&amp;#13;	}&amp;#13;}&lt;/placeholder_dimensions&gt;&lt;placeholder_dimensions_script&gt;&lt;![CDATA[function evaluateConfig(options) { return {	"mobile": {		"height": "250px",		"width": "100%"	},	"desktop": {		"height": "250px",		"width": "100%"	},	"tablet": {		"height": "250px",		"width": "100%"	}}; }]]&gt;&lt;/placeholder_dimensions_script&gt;&lt;placeholder_template&gt;&amp;lt;!-- 
+	AngularJS template with configurable options.
+	Use the `options` object to control dynamic behavior.
+	Example: Display an element when max row count is 10:
+	&amp;lt;div ng-if="options.maxRowCount === 10"&amp;gt;&amp;lt;/div&amp;gt;
+	The `skeleton-container` class is used for loading placeholders.
+--&amp;gt;
+	&amp;lt;div class="skeleton-container"&amp;gt;
+	&amp;lt;!-- Header Skeleton --&amp;gt;
+	&amp;lt;div class="skeleton-box skeleton-header"&amp;gt;&amp;lt;/div&amp;gt;
+	&amp;lt;!-- Body Skeleton --&amp;gt;
+	&amp;lt;div class="skeleton-box skeleton-line"&amp;gt;&amp;lt;/div&amp;gt;
+	&amp;lt;div class="skeleton-box skeleton-line small"&amp;gt;&amp;lt;/div&amp;gt;
+	&amp;lt;div class="skeleton-box skeleton-line medium"&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/placeholder_template&gt;&lt;preserve_placeholder_size&gt;false&lt;/preserve_placeholder_size&gt;&lt;roles/&gt;&lt;short_description/&gt;&lt;size&gt;md&lt;/size&gt;&lt;sp_column display_value="1"&gt;36403f52935647108c8874dcebba101c&lt;/sp_column&gt;&lt;sp_widget display_value="WRM FAQ"&gt;d5cc7ba293d6c7108c8874dcebba1066&lt;/sp_widget&gt;&lt;sys_class_name&gt;sp_instance&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-28 22:25:13&lt;/sys_created_on&gt;&lt;sys_id&gt;e15d7fe293d6c7108c8874dcebba106b&lt;/sys_id&gt;&lt;sys_mod_count&gt;28&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0"&gt;586a8042930e03108c8874dcebba1096&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Workspace Reservation Management"&gt;586a8042930e03108c8874dcebba1096&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_instance_e15d7fe293d6c7108c8874dcebba106b&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-29 02:03:19&lt;/sys_updated_on&gt;&lt;title/&gt;&lt;url/&gt;&lt;widget_parameters/&gt;&lt;/sp_instance&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=e15d7fe293d6c7108c8874dcebba106b"/&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1194434695</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>02a384ea93d647108c8874dcebba104c</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-29 02:03:19</sys_created_on>
+        <sys_id>584f6c7e935ec7108c8874dcebba1016</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19fab9cacb80000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-29 02:03:19</sys_updated_on>
+        <type>Instance</type>
+        <update_guid>584f6c7ede5ec7101a07649e7c8c3215</update_guid>
+        <update_guid_history>584f6c7ede5ec7101a07649e7c8c3215:-1194434695,42a9947211dac710b4c2b39f76699e2d:-1540438214,3999d072f9dac710a5437d2dbaac5d9a:-1886441733,bc891072d7dac7104401958b3a379494:2062522044,23d898fe2b9ac710a3d474a815d87cb5:1716518525,e6c8d4fee99ac710402f501302938aec:2062522044,ae9810fe9a9ac710dc35b037a44f7ec3:-1886441733,017a8072045ac7102dca7ecb344f4fdc:-1540438214,976a4072d45ac710fd64f30393a808bf:-1886441733,5c6a00724e5ac710010e8fd4e710c837:2062522044,265acc32415ac710507a8ed3eb3ce84a:1716518525,660a04328d5ac7108026dc32a2b7da38:1370515006,110ac032525ac7106e450c308dfe0e52:1716518525,e80a8032c95ac71047fb2afc64317365:2062522044,f5f900320c5ac710011670396f8470fb:-1886441733,ecf90032955ac710efa426a533aaaf3a:2062522044,0fe9ccfe9c1ac71095c5c3a89ab25a35:1716518525,72d94cfe031ac710243d4986ac9c0517:1370515006,11d90cfed01ac710d065fe7c6fc02c37:1716518525,4bc988fe141ac710c2655d59ed540ada:2062522044,e4c908fec61ac7109a6b361feac2e0dc:1716518525,0e99c0fe8c1ac710f8f75e17319a71ea:1370515006,cf98407eb61ac7108600990586408c10:1716518525,2d98007e781ac71068d20ca8e5a40f24:2062522044,3388cc3e431ac710b72643998c8b4645:-1886441733,4d780c3e111ac710649df40e00b30614:2062522044,ea58083e141ac7105991322ff9067708:-1886441733,6a48843ed41ac7108a8cd57cd2bf4a0b:2062522044,e15d7fe27fd6c710f2ba10e2dc0ad66e:1716518525</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">bd6f20be935ec7108c8874dcebba109b</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-29 02:03:58</sys_created_on>
+        <sys_db_object display_value="" name="sp_instance">sp_instance</sys_db_object>
+        <sys_id>4bbf23a0bbd149e0bd8abdd6cff0a790</sys_id>
+        <sys_metadata>e15d7fe293d6c7108c8874dcebba106b</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_scope_delete display_value="">14c313a8f537498087dc70da5ab4b840</sys_scope_delete>
+        <sys_update_name>sp_instance_e15d7fe293d6c7108c8874dcebba106b</sys_update_name>
+        <sys_update_version display_value="sp_instance_e15d7fe293d6c7108c8874dcebba106b">584f6c7e935ec7108c8874dcebba1016</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-29 02:03:58</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

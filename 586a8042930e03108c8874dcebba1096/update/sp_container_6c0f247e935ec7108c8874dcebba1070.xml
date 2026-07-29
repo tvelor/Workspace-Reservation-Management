@@ -6,23 +6,23 @@
         <bootstrap_alt>false</bootstrap_alt>
         <class_name/>
         <container_class_name/>
-        <name>Workspace Reservations - Container 5</name>
-        <order>5</order>
+        <name>Help - Container 1</name>
+        <order>1</order>
         <semantic_tag/>
-        <sp_page display_value="wrm_landing">fca8ab52931647108c8874dcebba1097</sp_page>
+        <sp_page display_value="wrm_help">c23e68fa935ec7108c8874dcebba10de</sp_page>
         <subheader>false</subheader>
         <sys_class_name>sp_container</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-28 23:14:58</sys_created_on>
-        <sys_id>d6b8447e931ac7108c8874dcebba109a</sys_id>
-        <sys_mod_count>3</sys_mod_count>
-        <sys_name>Workspace Reservations - Container 5</sys_name>
+        <sys_created_on>2026-07-29 02:02:15</sys_created_on>
+        <sys_id>6c0f247e935ec7108c8874dcebba1070</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Help - Container 1</sys_name>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
-        <sys_update_name>sp_container_d6b8447e931ac7108c8874dcebba109a</sys_update_name>
+        <sys_update_name>sp_container_6c0f247e935ec7108c8874dcebba1070</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-28 23:24:19</sys_updated_on>
+        <sys_updated_on>2026-07-29 02:02:15</sys_updated_on>
         <title/>
         <width>container</width>
     </sp_container>
