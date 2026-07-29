@@ -20,25 +20,6 @@
             <element>workspace_type</element>
             <hint/>
             <inactive>false</inactive>
-            <label>Collaboration Space</label>
-            <language>en</language>
-            <name>x_1903615_worksp_0_workspace_options</name>
-            <sequence>0</sequence>
-            <synonyms/>
-            <sys_created_by>system</sys_created_by>
-            <sys_created_on>2026-07-19 06:50:46</sys_created_on>
-            <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>system</sys_updated_by>
-            <sys_updated_on>2026-07-19 06:50:46</sys_updated_on>
-            <value>Collaboration Space</value>
-        </sys_choice>
-        <sys_choice action="INSERT_OR_UPDATE">
-            <dependent_value/>
-            <element>workspace_type</element>
-            <hint/>
-            <inactive>false</inactive>
             <label>Private Office</label>
             <language>en</language>
             <name>x_1903615_worksp_0_workspace_options</name>
@@ -48,10 +29,10 @@
             <sys_created_on>2026-07-19 06:50:46</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>system</sys_updated_by>
-            <sys_updated_on>2026-07-19 06:50:46</sys_updated_on>
-            <value>Private Office</value>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-29 00:11:22</sys_updated_on>
+            <value>private_space</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
@@ -67,10 +48,10 @@
             <sys_created_on>2026-07-19 06:50:45</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>system</sys_updated_by>
-            <sys_updated_on>2026-07-19 06:50:45</sys_updated_on>
-            <value>Training Room</value>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-29 00:11:13</sys_updated_on>
+            <value>training_room</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>

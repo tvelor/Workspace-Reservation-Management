@@ -17,11 +17,10 @@
         <element choice="1" label="Workspace type" max_length="40" name="workspace_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Collaboration space" sequence="15" value="collaboration_space"/>
-                <element inactive_on_update="false" label="Training Room" sequence="0" value="Training Room"/>
+                <element inactive_on_update="false" label="Training Room" sequence="0" value="training_room"/>
                 <element inactive_on_update="false" label="Meeting room" sequence="20" value="meeting_room"/>
                 <element inactive_on_update="false" label="Hot desk" sequence="5" value="hot_desk"/>
-                <element inactive_on_update="false" label="Private Office" sequence="0" value="Private Office"/>
-                <element inactive_on_update="false" label="Collaboration Space" sequence="0" value="Collaboration Space"/>
+                <element inactive_on_update="false" label="Private Office" sequence="0" value="private_space"/>
                 <element inactive_on_update="false" label="Focus room" sequence="10" value="focus_room"/>
             </choice>
         </element>

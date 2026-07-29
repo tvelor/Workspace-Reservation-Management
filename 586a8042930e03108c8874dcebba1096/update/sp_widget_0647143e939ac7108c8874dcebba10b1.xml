@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope) {
+  var c = this;
+
+  $scope.week     = 0;      // 0 = this week, 1 = next week
+  $scope.dayYmd   = '';     // selected day, empty = no day filter
+  $scope.typeVal  = '';
+  $scope.selected = null;   // workspace shown in the detail panel
+  $scope.selectedStrip = [];
+
+  $scope.visibleDays = [];  // the five day tiles on show
+  $scope.filtered    = [];  // everything matching the filters
+  $scope.shown       = [];  // the slice actually rendered
+  $scope.showAll     = false;
+
+  var PAGE = 8;             // cards shown before "show all"
+
+  // Everything below recomputes only when something actually
+  // changes. Calling a function directly from ng-repeat returns a
+  // new array every digest, which makes Angular re-render in a
+  // loop and the count disagree with the grid.
+  function recompute() {
+    // Any filter change closes the detail panel — leaving it open
+    // shows a space that may no longer be in the results.
+    $scope.selected = null;
+    $scope.selectedStrip = [];
+
+    var offset = $scope.week * 5;
+
+    $scope.visibleDays = $scope.data.days.slice(offset, offset + 5);
+
+    // Index of the selected day within the full ten, or -1.
+    var dayIdx = -1;
+    if ($scope.dayYmd) {
+      for (var i = 0; i < $scope.data.days.length; i++) {
+        if ($scope.data.days[i].ymd === $scope.dayYmd) {
+          dayIdx = i;
+          break;
+        }
+      }
+    }
+
+    var out = [];
+    var list = $scope.data.workspaces;
+
+    for (var j = 0; j < list.length; j++) {
+      var w = list[j];
+
+      if ($scope.typeVal && w.typeVal !== $scope.typeVal) continue;
+      if (dayIdx > -1 && w.days[dayIdx] !== 'free') continue;
+
+      // Precompute what the card needs so the template reads
+      // plain properties rather than calling functions.
+      w.viewStrip = w.days.slice(offset, offset + 5);
+
+      var free = 0;
+      for (var k = 0; k < w.viewStrip.length; k++) {
+        if (w.viewStrip[k] === 'free') free++;
+      }
+      w.viewFree = free;
+
+      out.push(w);
+    }
+
+    $scope.filtered = out;
+    $scope.shown = $scope.showAll ? out : out.slice(0, PAGE);
+  }
+
+  $scope.setWeek = function(n) {
+    $scope.week = n;
+    $scope.dayYmd = '';     // a day in the old week makes no sense now
+    recompute();
+  };
+
+  $scope.toggleDay = function(ymd) {
+    $scope.dayYmd = ($scope.dayYmd === ymd) ? '' : ymd;
+    recompute();
+  };
+
+  // Must be a function: ng-repeat gives each pill its own child
+  // scope, so an inline assignment would set it on the pill.
+  $scope.setType = function(v) {
+    $scope.typeVal = v;
+    recompute();
+  };
+
+  $scope.clearFilters = function() {
+    $scope.typeVal = '';
+    $scope.dayYmd  = '';
+    recompute();
+  };
+
+  $scope.toggleAll = function() {
+    $scope.showAll = !$scope.showAll;
+    $scope.shown = $scope.showAll
+                 ? $scope.filtered
+                 : $scope.filtered.slice(0, PAGE);
+  };
+
+  // --- detail panel ---
+
+  $scope.open = function(w) {
+    $scope.selected = w;
+
+    // Ten day/state pairs, built once when the panel opens.
+    var full = [];
+    for (var i = 0; i < $scope.data.days.length; i++) {
+      full.push({
+        day:   $scope.data.days[i],
+        state: w.days[i]
+      });
+    }
+    $scope.selectedStrip = full;
+  };
+
+  $scope.close = function() {
+    $scope.selected = null;
+    $scope.selectedStrip = [];
+  };
+
+  recompute();
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.wrm-wk-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }&#13;
+.wrm-wk-head h2 { margin: 0; font-size: 22px; color: var(--ink); }&#13;
+&#13;
+.wrm-wk-toggle { margin-left: auto; display: flex; gap: 6px; }&#13;
+.wrm-wk-toggle button {&#13;
+  font-size: 12px; padding: 6px 14px; border: 1px solid var(--line);&#13;
+  background: var(--surface); color: var(--ink-2);&#13;
+  border-radius: var(--r-pill); cursor: pointer;&#13;
+}&#13;
+.wrm-wk-toggle button.on { background: var(--ink); border-color: var(--ink); color: var(--paper); }&#13;
+&#13;
+.wrm-wk-bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 12px; }&#13;
+.wrm-wk-day {&#13;
+  background: var(--surface); border: 1px solid var(--line);&#13;
+  border-radius: var(--r-soft); padding: 10px 8px; text-align: center; cursor: pointer;&#13;
+}&#13;
+.wrm-wk-day .lbl { display: block; font-size: 10px; letter-spacing: .07em; color: var(--ink-3); }&#13;
+.wrm-wk-day .num { display: block; font-size: 20px; line-height: 1.3; color: var(--ink); }&#13;
+.wrm-wk-day .sub { display: block; font-size: 10px; color: var(--ink-3); }&#13;
+.wrm-wk-day.today { border-color: var(--ink-3); }&#13;
+.wrm-wk-day.on { background: var(--clay); border-color: var(--clay); }&#13;
+.wrm-wk-day.on .lbl, .wrm-wk-day.on .num, .wrm-wk-day.on .sub { color: var(--on-clay); }&#13;
+&#13;
+.wrm-wk-pills { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 8px; }&#13;
+.wrm-wk-pills button {&#13;
+  font-size: 12px; padding: 6px 14px; border: 1px solid var(--line);&#13;
+  background: var(--surface); color: var(--ink-2);&#13;
+  border-radius: var(--r-pill); cursor: pointer;&#13;
+}&#13;
+.wrm-wk-pills button.on { background: var(--ink); border-color: var(--ink); color: var(--paper); }&#13;
+&#13;
+.wrm-wk-count { font-size: 12px; color: var(--ink-3); margin: 12px 0; }&#13;
+.wrm-wk-count .clear {&#13;
+  background: none; border: 0; color: var(--clay);&#13;
+  font-size: 12px; cursor: pointer; padding: 0 0 0 10px;&#13;
+}&#13;
+&#13;
+.wrm-wk-detail {&#13;
+  position: relative;&#13;
+  background: var(--surface);&#13;
+  border: 1px solid var(--line);&#13;
+  border-radius: var(--r-card);&#13;
+  padding: 18px 20px;&#13;
+  margin: 14px 0 4px;&#13;
+}&#13;
+.wrm-wk-detail .close {&#13;
+  position: absolute; top: 10px; right: 12px;&#13;
+  background: none; border: 0; font-size: 22px; line-height: 1;&#13;
+  color: var(--ink-3); cursor: pointer; padding: 4px 8px;&#13;
+}&#13;
+.wrm-wk-detail .close:hover { color: var(--ink); }&#13;
+&#13;
+.dl-top { display: flex; gap: 18px; flex-wrap: wrap; }&#13;
+.dl-img {&#13;
+  width: 200px; height: 130px; flex: none;&#13;
+  background: var(--surface-2); border-radius: var(--r-soft); overflow: hidden;&#13;
+}&#13;
+.dl-img img { width: 100%; height: 100%; object-fit: cover; }&#13;
+.dl-info { flex: 1; min-width: 240px; }&#13;
+.dl-name { font-size: 19px; color: var(--ink); }&#13;
+.dl-sub { font-size: 12px; color: var(--ink-3); margin: 3px 0 10px; }&#13;
+&#13;
+.dl-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 10px; }&#13;
+.dl-tags .tag {&#13;
+  font-size: 11px; padding: 4px 11px;&#13;
+  background: var(--surface-2); color: var(--ink-2);&#13;
+  border-radius: var(--r-pill);&#13;
+}&#13;
+.dl-tags .tag.maint { background: var(--out-bg); color: var(--out-fg); }&#13;
+&#13;
+.dl-desc { font-size: 13px; color: var(--ink-2); margin: 0 0 12px; }&#13;
+&#13;
+.dl-book {&#13;
+  display: inline-block;&#13;
+  font-size: 13px; font-weight: 500;&#13;
+  background: var(--clay); color: var(--on-clay);&#13;
+  padding: 9px 20px; border-radius: var(--r-pill);&#13;
+  text-decoration: none;&#13;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.22);&#13;
+}&#13;
+.dl-book:hover, .dl-book:focus { background: var(--clay-press); color: var(--on-clay); text-decoration: none; }&#13;
+&#13;
+.dl-avail { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 14px; }&#13;
+.dl-avail-head { font-size: 11px; letter-spacing: .08em; color: var(--ink-3); margin-bottom: 10px; }&#13;
+.dl-days { display: grid; grid-template-columns: repeat(10, 1fr); gap: 5px; }&#13;
+.dl-day { text-align: center; }&#13;
+.dl-day .d { display: block; font-size: 9px; letter-spacing: .06em; color: var(--ink-3); }&#13;
+.dl-day .n { display: block; font-size: 12px; color: var(--ink-2); margin-bottom: 4px; }&#13;
+.dl-day .blk { display: block; height: 22px; border-radius: 3px; }&#13;
+.dl-day .blk.free  { background: var(--free-bg); }&#13;
+.dl-day .blk.taken { background: var(--held-bg); }&#13;
+.dl-day .blk.maint { background: var(--out-bg); }&#13;
+&#13;
+.dl-key { display: flex; gap: 16px; margin-top: 11px; font-size: 11px; color: var(--ink-3); }&#13;
+.dl-key i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; }&#13;
+.dl-key i.free  { background: var(--free-bg); }&#13;
+.dl-key i.taken { background: var(--held-bg); }&#13;
+.dl-key i.maint { background: var(--out-bg); }&#13;
+&#13;
+.wrm-wk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }&#13;
+.wrm-wk-card {&#13;
+  background: var(--surface); border: 1px solid var(--line);&#13;
+  border-radius: var(--r-soft); overflow: hidden; cursor: pointer;&#13;
+}&#13;
+.wrm-wk-card:hover { border-color: var(--ink-3); }&#13;
+.wrm-wk-card.sel { border-color: var(--clay); }&#13;
+.wrm-wk-card.dim { opacity: .62; }&#13;
+.wrm-wk-card .thumb { height: 62px; background: var(--surface-2); }&#13;
+.wrm-wk-card .thumb img { width: 100%; height: 100%; object-fit: cover; }&#13;
+.wrm-wk-card .body { padding: 12px 13px; }&#13;
+.wrm-wk-card .nm { font-size: 14px; color: var(--ink); }&#13;
+.wrm-wk-card .sub { font-size: 11px; color: var(--ink-3); margin: 2px 0 10px; }&#13;
+&#13;
+.wrm-wk-card .strip { display: flex; gap: 4px; }&#13;
+.wrm-wk-card .strip span { flex: 1; height: 20px; border-radius: 3px; }&#13;
+.wrm-wk-card .strip span.free  { background: var(--free-bg); }&#13;
+.wrm-wk-card .strip span.taken { background: var(--held-bg); }&#13;
+.wrm-wk-card .strip span.maint { background: var(--out-bg); }&#13;
+&#13;
+.wrm-wk-card .foot { margin-top: 11px; }&#13;
+.wrm-wk-card .note { font-size: 11px; color: var(--out-fg); }&#13;
+.wrm-wk-card .note.free { color: var(--free-fg); }&#13;
+&#13;
+.wrm-wk-more { text-align: center; margin-top: 14px; }&#13;
+.wrm-wk-more button {&#13;
+  font-size: 13px; padding: 9px 22px;&#13;
+  background: transparent; color: var(--ink-2);&#13;
+  border: 1px solid var(--line); border-radius: var(--r-pill);&#13;
+  cursor: pointer;&#13;
+}&#13;
+.wrm-wk-more button:hover { background: var(--surface-2); color: var(--ink); }&#13;
+&#13;
+.wrm-wk-empty {&#13;
+  text-align: center; padding: 38px 20px;&#13;
+  background: var(--surface); border: 1px dashed var(--line);&#13;
+  border-radius: var(--r-card); color: var(--ink-2);&#13;
+}&#13;
+.wrm-wk-empty h3 { margin: 0 0 6px; font-size: 17px; color: var(--ink); }&#13;
+.wrm-wk-empty p { margin: 0; font-size: 13px; }</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>wrm_workspace_week</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>WRM Workspace Week</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+  var WEEKDAYS = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  var MONTHS   = ['JAN','FEB','MAR','APR','MAY','JUN',
+                  'JUL','AUG','SEP','OCT','NOV','DEC'];
+
+  // Reservation statuses that actually hold a workspace.
+  var HOLDING = 'pending_check_in,checked_in';
+
+  // --- 1. Work out the ten weekdays: this Monday to next Friday ---
+
+  var todayYmd = new GlideDateTime().getDisplayValue().split(' ')[0];
+  var tp = todayYmd.split('-');
+  var todayUtc = Date.UTC(+tp[0], +tp[1] - 1, +tp[2]);
+
+  // Step back to Monday. getUTCDay: 0 = Sunday.
+  var dow = new Date(todayUtc).getUTCDay();
+  var backToMonday = (dow === 0) ? 6 : (dow - 1);
+  var mondayUtc = todayUtc - (backToMonday * 86400000);
+
+  function ymd(ms) {
+    var d = new Date(ms);
+    var m = d.getUTCMonth() + 1;
+    var day = d.getUTCDate();
+    return d.getUTCFullYear() + '-' +
+           (m < 10 ? '0' + m : m) + '-' +
+           (day < 10 ? '0' + day : day);
+  }
+
+  var days = [];   // ten entries, index 0-4 this week, 5-9 next week
+  for (var w = 0; w < 2; w++) {
+    for (var i = 0; i < 5; i++) {
+      var ms = mondayUtc + ((w * 7 + i) * 86400000);
+      var d = new Date(ms);
+      days.push({
+        ymd:     ymd(ms),
+        weekday: WEEKDAYS[d.getUTCDay()],
+        dayNum:  ('0' + d.getUTCDate()).slice(-2),
+        month:   MONTHS[d.getUTCMonth()],
+        isToday: ymd(ms) === todayYmd,
+        free:    0
+      });
+    }
+  }
+
+  var windowStart = days[0].ymd;
+  var windowEnd   = days[9].ymd;
+
+  // --- 2. Which workspaces are held on which days ---
+
+  var held = {};   // { workspaceSysId: { 'YYYY-MM-DD': true } }
+
+  var res = new GlideRecord('x_1903615_worksp_0_reservation_tracker');
+  res.addQuery('reservation_status', 'IN', HOLDING);
+  res.query();
+
+  while (res.next()) {
+    var wsId = res.getValue('workspace');
+    if (!wsId) continue;
+
+    var sDisp = res.getDisplayValue('work_start');
+    var eDisp = res.getDisplayValue('work_end');
+    if (!sDisp || !eDisp) continue;
+
+    var sYmd = sDisp.split(' ')[0];
+    var eYmd = eDisp.split(' ')[0];
+
+    if (eYmd < windowStart || sYmd > windowEnd) continue;
+
+    if (!held[wsId]) held[wsId] = {};
+
+    var sParts = sYmd.split('-');
+    var eParts = eYmd.split('-');
+    var cur = Date.UTC(+sParts[0], +sParts[1] - 1, +sParts[2]);
+    var end = Date.UTC(+eParts[0], +eParts[1] - 1, +eParts[2]);
+
+    while (cur <= end) {
+      held[wsId][ymd(cur)] = true;
+      cur += 86400000;
+    }
+  }
+
+  // --- 3. Build the workspace rows ---
+
+  data.workspaces = [];
+  var typeSet = {};
+
+  var gr = new GlideRecord('x_1903615_worksp_0_workspace_options');
+  // Decommissioned spaces shouldn't appear at all.
+  gr.addQuery('status', '!=', 'decommissioned');
+  gr.orderBy('workspace_name');
+  gr.query();
+
+  while (gr.next()) {
+    var id      = gr.getUniqueValue();
+    var status  = gr.getValue('status');
+    var typeVal = gr.getValue('workspace_type');
+    var typeLbl = gr.getDisplayValue('workspace_type');
+
+    if (typeVal) typeSet[typeVal] = typeLbl;
+
+    // Image: user_image fields hold an attachment reference.
+    var raw = gr.getValue('image');
+    var url = '';
+    if (raw) {
+      url = raw.indexOf('.') > -1
+          ? (raw.charAt(0) === '/' ? raw : '/' + raw)
+          : '/sys_attachment.do?sys_id=' + raw;
+    }
+
+    var dayStates = [];
+    for (var k = 0; k < days.length; k++) {
+      var state;
+      if (status === 'under_maintenance') {
+        state = 'maint';
+      } else if (held[id] && held[id][days[k].ymd]) {
+        state = 'taken';
+      } else {
+        state = 'free';
+      }
+      if (state === 'free') days[k].free++;
+      dayStates.push(state);
+    }
+
+    data.workspaces.push({
+      sysId:       id,
+      name:        gr.getDisplayValue('workspace_name'),
+      typeVal:     typeVal,
+      typeLabel:   typeLbl,
+      location:    gr.getDisplayValue('location'),
+      capacity:    gr.getValue('max_occupancy'),
+      description: gr.getValue('workspace_description'),
+      imageUrl:    url,
+      maint:       status === 'under_maintenance',
+      days:        dayStates
+    });
+  }
+
+  data.days = days;
+
+  // --- 4. Filter pill options ---
+
+  data.types = [];
+  for (var t in typeSet) {
+    data.types.push({ value: t, label: typeSet[t] });
+  }
+  data.types.sort(function(a, b) { return a.label < b.label ? -1 : 1; });
+
+  // Catalog item to book against.
+  data.bookUrl = '?id=sc_cat_item&sys_id=fe1e919e93c6c3108c8874dcebba10d0';
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-29 00:22:47</sys_created_on>
+        <sys_id>0647143e939ac7108c8874dcebba10b1</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>WRM Workspace Week</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_widget_0647143e939ac7108c8874dcebba10b1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-29 01:10:29</sys_updated_on>
+        <template><![CDATA[<div class="wrm-wk">
+
+  <div class="wrm-wk-head">
+    <h2>Available workspaces</h2>
+    <div class="wrm-wk-toggle">
+      <button ng-click="setWeek(0)" ng-class="{'on': week === 0}">This week</button>
+      <button ng-click="setWeek(1)" ng-class="{'on': week === 1}">Next week</button>
+    </div>
+  </div>
+
+  <div class="wrm-wk-bar">
+    <button class="wrm-wk-day"
+            ng-repeat="d in visibleDays track by d.ymd"
+            ng-click="toggleDay(d.ymd)"
+            ng-class="{'on': dayYmd === d.ymd, 'today': d.isToday}">
+      <span class="lbl">{{d.weekday}} {{d.dayNum}}</span>
+      <span class="num">{{d.free}}</span>
+      <span class="sub">free</span>
+    </button>
+  </div>
+
+  <div class="wrm-wk-pills">
+    <button ng-click="setType('')" ng-class="{'on': !typeVal}">All types</button>
+    <button ng-repeat="t in data.types track by t.value"
+            ng-click="setType(t.value)"
+            ng-class="{'on': typeVal === t.value}">{{t.label}}</button>
+  </div>
+
+  <div class="wrm-wk-detail" ng-if="selected">
+    <button class="close" ng-click="close()" aria-label="Close details">&times;</button>
+
+    <div class="dl-top">
+      <div class="dl-img">
+        <img ng-if="selected.imageUrl" ng-src="{{selected.imageUrl}}" alt="{{selected.name}}">
+      </div>
+      <div class="dl-info">
+        <div class="dl-name">{{selected.name}}</div>
+        <div class="dl-sub">{{selected.typeLabel}}<span ng-if="selected.location"> &middot; {{selected.location}}</span></div>
+        <div class="dl-tags">
+          <span class="tag" ng-if="selected.capacity">Seats {{selected.capacity}}</span>
+          <span class="tag maint" ng-if="selected.maint">Under maintenance</span>
+        </div>
+        <p class="dl-desc" ng-if="selected.description">{{selected.description}}</p>
+        <a ng-if="!selected.maint" href="{{data.bookUrl}}" class="dl-book">Book this space</a>
+      </div>
+    </div>
+
+    <div class="dl-avail">
+      <div class="dl-avail-head">Availability &mdash; next two weeks</div>
+      <div class="dl-days">
+        <div class="dl-day" ng-repeat="p in selectedStrip track by $index">
+          <span class="d">{{p.day.weekday}}</span>
+          <span class="n">{{p.day.dayNum}}</span>
+          <span class="blk" ng-class="p.state"></span>
+        </div>
+      </div>
+      <div class="dl-key">
+        <span><i class="k free"></i>Free</span>
+        <span><i class="k taken"></i>Booked</span>
+        <span><i class="k maint"></i>Maintenance</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrm-wk-count">
+    {{filtered.length}} of {{data.workspaces.length}} spaces
+    <button ng-if="typeVal || dayYmd" ng-click="clearFilters()" class="clear">Clear filters</button>
+  </div>
+
+  <div class="wrm-wk-grid">
+    <div class="wrm-wk-card"
+         ng-repeat="w in shown track by w.sysId"
+         ng-click="open(w)"
+         ng-class="{'dim': w.maint, 'sel': selected.sysId === w.sysId}">
+      <div class="thumb">
+        <img ng-if="w.imageUrl" ng-src="{{w.imageUrl}}" alt="{{w.name}}">
+      </div>
+      <div class="body">
+        <div class="nm">{{w.name}}</div>
+        <div class="sub">{{w.typeLabel}}<span ng-if="w.location"> &middot; {{w.location}}</span></div>
+
+        <div class="strip">
+          <span ng-repeat="s in w.viewStrip track by $index" ng-class="s"></span>
+        </div>
+
+        <div class="foot">
+          <span class="note" ng-if="w.maint">Under maintenance</span>
+          <span class="note free" ng-if="!w.maint">{{w.viewFree}} of 5 days free</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrm-wk-more" ng-if="filtered.length > 8">
+    <button ng-click="toggleAll()">
+      {{showAll ? 'Show fewer' : 'Show all ' + filtered.length + ' spaces'}}
+    </button>
+  </div>
+
+  <div class="wrm-wk-empty" ng-if="filtered.length === 0">
+    <h3>Nothing matches</h3>
+    <p>Try a different day or clear the filters.</p>
+  </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>
