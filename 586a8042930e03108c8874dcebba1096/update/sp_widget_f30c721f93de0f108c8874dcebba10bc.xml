@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.wrm-pulse {&#13;
+  background: var(--surface);&#13;
+  border: 1px solid var(--line);&#13;
+  border-radius: var(--r-card);&#13;
+  padding: 16px 18px;&#13;
+}&#13;
+&#13;
+.wrm-pulse-head {&#13;
+  display: flex; align-items: baseline; gap: 12px;&#13;
+  flex-wrap: wrap; margin-bottom: 12px;&#13;
+}&#13;
+.wrm-pulse-head .line { font-size: 14px; color: var(--ink); }&#13;
+.wrm-pulse-head .key { font-size: 11px; color: var(--ink-3); margin-left: auto; }&#13;
+&#13;
+.wrm-pulse-bars {&#13;
+  display: grid;&#13;
+  grid-template-columns: repeat(10, 1fr);&#13;
+  gap: 6px;&#13;
+  align-items: end;&#13;
+  height: 58px;&#13;
+}&#13;
+.wrm-pulse-bars .col { height: 100%; display: flex; align-items: flex-end; }&#13;
+.wrm-pulse-bars .bar {&#13;
+  display: block; width: 100%;&#13;
+  background: var(--free-fg);&#13;
+  opacity: .32;&#13;
+  border-radius: 3px 3px 0 0;&#13;
+}&#13;
+.wrm-pulse-bars .bar.today { opacity: .6; background: var(--clay); }&#13;
+&#13;
+.wrm-pulse-labels {&#13;
+  display: grid;&#13;
+  grid-template-columns: repeat(10, 1fr);&#13;
+  gap: 6px;&#13;
+  margin-top: 6px;&#13;
+}&#13;
+.wrm-pulse-labels .col { text-align: center; }&#13;
+.wrm-pulse-labels .wd { display: block; font-size: 9px; letter-spacing: .06em; color: var(--ink-3); }&#13;
+.wrm-pulse-labels .dn { display: block; font-size: 10px; color: var(--ink-3); }&#13;
+.wrm-pulse-labels .col.today .wd,&#13;
+.wrm-pulse-labels .col.today .dn { color: var(--clay); }</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>wrm_office_pulse</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>WRM Office Pulse</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+  var WEEKDAYS = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  var HOLDING = 'pending_check_in,checked_in';
+
+  var todayYmd = new GlideDateTime().getDisplayValue().split(' ')[0];
+  var tp = todayYmd.split('-');
+  var todayUtc = Date.UTC(+tp[0], +tp[1] - 1, +tp[2]);
+
+  function ymd(ms) {
+    var d = new Date(ms);
+    var m = d.getUTCMonth() + 1;
+    var day = d.getUTCDate();
+    return d.getUTCFullYear() + '-' +
+           (m < 10 ? '0' + m : m) + '-' +
+           (day < 10 ? '0' + day : day);
+  }
+
+  // The next ten weekdays, starting today. Weekends are skipped
+  // rather than shown empty — nobody books a desk on Sunday.
+  var days = [];
+  var cursor = todayUtc;
+  while (days.length < 10) {
+    var d = new Date(cursor);
+    var dow = d.getUTCDay();
+    if (dow !== 0 && dow !== 6) {
+      days.push({
+        ymd:     ymd(cursor),
+        weekday: WEEKDAYS[dow],
+        dayNum:  ('0' + d.getUTCDate()).slice(-2),
+        isToday: ymd(cursor) === todayYmd,
+        booked:  0
+      });
+    }
+    cursor += 86400000;
+  }
+
+  var firstYmd = days[0].ymd;
+  var lastYmd  = days[days.length - 1].ymd;
+
+  // Total bookable spaces, so the bars mean something.
+  var ws = new GlideRecord('x_1903615_worksp_0_workspace_options');
+  ws.addQuery('status', '!=', 'decommissioned');
+  ws.addQuery('status', '!=', 'under_maintenance');
+  ws.query();
+  var totalSpaces = ws.getRowCount() || 1;
+
+  // Count reservations touching each day.
+  var res = new GlideRecord('x_1903615_worksp_0_reservation_tracker');
+  res.addQuery('reservation_status', 'IN', HOLDING);
+  res.query();
+
+  while (res.next()) {
+    var sDisp = res.getDisplayValue('work_start');
+    var eDisp = res.getDisplayValue('work_end');
+    if (!sDisp || !eDisp) continue;
+
+    var sYmd = sDisp.split(' ')[0];
+    var eYmd = eDisp.split(' ')[0];
+    if (eYmd < firstYmd || sYmd > lastYmd) continue;
+
+    for (var i = 0; i < days.length; i++) {
+      if (sYmd <= days[i].ymd && eYmd >= days[i].ymd) {
+        days[i].booked++;
+      }
+    }
+  }
+
+  // Height as a percentage of the busiest day, so the chart uses
+  // its full range rather than hugging the floor.
+  var peak = 0;
+  for (var j = 0; j < days.length; j++) {
+    if (days[j].booked > peak) peak = days[j].booked;
+  }
+
+  var quietest = null;
+  for (var k = 0; k < days.length; k++) {
+    days[k].pct = peak > 0 ? Math.round((days[k].booked / peak) * 100) : 0;
+    // A visible stub even on an empty day.
+    if (days[k].pct < 8) days[k].pct = 8;
+
+    days[k].occupancy = Math.round((days[k].booked / totalSpaces) * 100);
+
+    if (!quietest || days[k].booked < quietest.booked) quietest = days[k];
+  }
+
+  data.days = days;
+
+  // Only worth naming a quietest day if the days actually differ.
+  data.headline = '';
+  if (peak > 0 && quietest) {
+    var full = { MON:'Monday', TUE:'Tuesday', WED:'Wednesday',
+                 THU:'Thursday', FRI:'Friday' };
+    data.headline = (full[quietest.weekday] || quietest.weekday) +
+                    ' the ' + parseInt(quietest.dayNum, 10) + ' is the quietest day coming up.';
+  } else {
+    data.headline = 'Nothing is booked over the next two weeks.';
+  }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-31 01:36:55</sys_created_on>
+        <sys_id>f30c721f93de0f108c8874dcebba10bc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>WRM Office Pulse</sys_name>
+        <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
+        <sys_update_name>sp_widget_f30c721f93de0f108c8874dcebba10bc</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-31 01:36:55</sys_updated_on>
+        <template><![CDATA[<div class="wrm-pulse">
+  <div class="wrm-pulse-head">
+    <span class="line">{{data.headline}}</span>
+    <span class="key">Taller means busier</span>
+  </div>
+
+  <div class="wrm-pulse-bars">
+    <div class="col" ng-repeat="d in data.days track by d.ymd"
+         title="{{d.booked}} booked, {{d.occupancy}}% of spaces">
+      <span class="bar" ng-style="{height: d.pct + '%'}" ng-class="{'today': d.isToday}"></span>
+    </div>
+  </div>
+
+  <div class="wrm-pulse-labels">
+    <div class="col" ng-repeat="d in data.days track by d.ymd" ng-class="{'today': d.isToday}">
+      <span class="wd">{{d.weekday}}</span>
+      <span class="dn">{{d.dayNum}}</span>
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

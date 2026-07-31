@@ -6,55 +6,97 @@
   var c = this;
 };]]></client_script>
         <controller_as>c</controller_as>
-        <css>.wrm-cap-summary {&#13;
+        <css>.wrm-cap {&#13;
   background: var(--surface);&#13;
   border: 1px solid var(--line);&#13;
   border-radius: var(--r-card);&#13;
-  padding: 16px 18px;&#13;
-  margin-bottom: 12px;&#13;
-}&#13;
-.wrm-cap-summary .line { font-size: 16px; color: var(--ink); line-height: 1.55; }&#13;
-.wrm-cap-summary .line strong { font-weight: 500; }&#13;
-.wrm-cap-summary .sub { font-size: 13px; color: var(--ink-3); margin-top: 5px; }&#13;
-&#13;
-.wrm-cap-rows {&#13;
-  background: var(--surface);&#13;
-  border: 1px solid var(--line);&#13;
-  border-radius: var(--r-card);&#13;
-  padding: 8px 18px 14px;&#13;
+  overflow: hidden;&#13;
 }&#13;
 &#13;
-.wrm-cap-rows .row {&#13;
+/* ---------- headline ---------- */&#13;
+&#13;
+.wrm-cap-top { padding: 16px 18px 14px; }&#13;
+.wrm-cap-top .line { font-size: 16px; color: var(--ink); line-height: 1.5; }&#13;
+.wrm-cap-top .line strong { font-weight: 500; }&#13;
+&#13;
+.wrm-cap-top .meta {&#13;
+  display: flex; align-items: baseline; gap: 10px;&#13;
+  flex-wrap: wrap; margin-top: 5px;&#13;
+}&#13;
+.wrm-cap-top .sub { font-size: 13px; color: var(--ink-3); }&#13;
+.wrm-cap-top .toggle {&#13;
+  margin-left: auto;&#13;
+  background: none; border: 0; padding: 0;&#13;
+  font-size: 12px; color: var(--clay); cursor: pointer;&#13;
+}&#13;
+.wrm-cap-top .toggle:hover { text-decoration: underline; }&#13;
+&#13;
+/* ---------- type breakdown ---------- */&#13;
+&#13;
+.wrm-cap-types { border-top: 1px solid var(--line); padding: 6px 18px 12px; }&#13;
+&#13;
+.wrm-cap-types .row {&#13;
   display: flex; align-items: center; gap: 12px;&#13;
-  padding: 8px 0;&#13;
+  padding: 7px 0;&#13;
   border-top: 1px solid var(--line);&#13;
 }&#13;
-.wrm-cap-rows .row:first-child { border-top: 0; }&#13;
+.wrm-cap-types .row:first-child { border-top: 0; }&#13;
 &#13;
-.wrm-cap-rows .nm { width: 130px; flex: none; font-size: 12px; color: var(--ink); }&#13;
-.wrm-cap-rows .ct { flex: none; font-size: 11px; color: var(--ink-3); }&#13;
+.wrm-cap-types .nm { width: 130px; flex: none; font-size: 12px; color: var(--ink); }&#13;
+.wrm-cap-types .ct { flex: none; font-size: 11px; color: var(--ink-3); }&#13;
 &#13;
-.wrm-cap-rows .dots { display: flex; gap: 5px; flex: 1; flex-wrap: wrap; }&#13;
-.wrm-cap-rows .dots i {&#13;
-  width: 11px; height: 11px; border-radius: 50%; display: block;&#13;
-}&#13;
-.wrm-cap-rows .dots i.free   { background: var(--free-fg); opacity: .55; }&#13;
-.wrm-cap-rows .dots i.booked { background: var(--held-fg); opacity: .45; }&#13;
-.wrm-cap-rows .dots i.maint  { background: var(--out-fg);  opacity: .45; }&#13;
+.wrm-cap-types .dots { display: flex; gap: 5px; flex: 1; flex-wrap: wrap; }&#13;
+.wrm-cap-types .dots i { width: 10px; height: 10px; border-radius: 50%; display: block; }&#13;
+.wrm-cap-types .dots i.free   { background: var(--free-fg); opacity: .55; }&#13;
+.wrm-cap-types .dots i.booked { background: var(--held-fg); opacity: .45; }&#13;
+.wrm-cap-types .dots i.maint  { background: var(--out-fg);  opacity: .45; }&#13;
 &#13;
-.wrm-cap-rows .key {&#13;
+.wrm-cap-types .key {&#13;
   display: flex; gap: 16px;&#13;
   margin-top: 10px; padding-top: 11px;&#13;
   border-top: 1px solid var(--line);&#13;
   font-size: 11px; color: var(--ink-3);&#13;
 }&#13;
-.wrm-cap-rows .key i {&#13;
+.wrm-cap-types .key i {&#13;
   display: inline-block; width: 9px; height: 9px;&#13;
   border-radius: 50%; margin-right: 5px;&#13;
 }&#13;
-.wrm-cap-rows .key i.free   { background: var(--free-fg); opacity: .55; }&#13;
-.wrm-cap-rows .key i.booked { background: var(--held-fg); opacity: .45; }&#13;
-.wrm-cap-rows .key i.maint  { background: var(--out-fg);  opacity: .45; }</css>
+.wrm-cap-types .key i.free   { background: var(--free-fg); opacity: .55; }&#13;
+.wrm-cap-types .key i.booked { background: var(--held-fg); opacity: .45; }&#13;
+.wrm-cap-types .key i.maint  { background: var(--out-fg);  opacity: .45; }&#13;
+&#13;
+/* ---------- pulse ---------- */&#13;
+&#13;
+.wrm-cap-pulse { border-top: 1px solid var(--line); padding: 14px 18px 16px; }&#13;
+&#13;
+.wrm-cap-pulse .phead {&#13;
+  display: flex; align-items: baseline; gap: 12px;&#13;
+  flex-wrap: wrap; margin-bottom: 11px;&#13;
+}&#13;
+.wrm-cap-pulse .pline { font-size: 13px; color: var(--ink); }&#13;
+.wrm-cap-pulse .pkey { font-size: 11px; color: var(--ink-3); margin-left: auto; }&#13;
+&#13;
+.wrm-cap-pulse .bars {&#13;
+  display: grid; grid-template-columns: repeat(10, 1fr);&#13;
+  gap: 6px; align-items: end; height: 50px;&#13;
+}&#13;
+.wrm-cap-pulse .bars .col { height: 100%; display: flex; align-items: flex-end; }&#13;
+.wrm-cap-pulse .bars .bar {&#13;
+  display: block; width: 100%;&#13;
+  background: var(--free-fg); opacity: .32;&#13;
+  border-radius: 3px 3px 0 0;&#13;
+}&#13;
+.wrm-cap-pulse .bars .bar.today { background: var(--clay); opacity: .6; }&#13;
+&#13;
+.wrm-cap-pulse .labels {&#13;
+  display: grid; grid-template-columns: repeat(10, 1fr);&#13;
+  gap: 6px; margin-top: 6px;&#13;
+}&#13;
+.wrm-cap-pulse .labels .col { text-align: center; }&#13;
+.wrm-cap-pulse .labels .wd { display: block; font-size: 9px; letter-spacing: .06em; color: var(--ink-3); }&#13;
+.wrm-cap-pulse .labels .dn { display: block; font-size: 10px; color: var(--ink-3); }&#13;
+.wrm-cap-pulse .labels .col.today .wd,&#13;
+.wrm-cap-pulse .labels .col.today .dn { color: var(--clay); }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -72,14 +114,52 @@
         <roles/>
         <script><![CDATA[(function() {
 
-  var HOLDING = 'pending_check_in,checked_in';
-  var todayYmd = new GlideDateTime().getDisplayValue().split(' ')[0];
+  var WEEKDAYS_FULL = { MON:'Monday', TUE:'Tuesday', WED:'Wednesday',
+                        THU:'Thursday', FRI:'Friday' };
+  var WEEKDAYS = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  var HOLDING  = 'pending_check_in,checked_in';
 
-  // Which workspaces are held at some point today.
+  var todayYmd = new GlideDateTime().getDisplayValue().split(' ')[0];
+  var tp = todayYmd.split('-');
+  var todayUtc = Date.UTC(+tp[0], +tp[1] - 1, +tp[2]);
+
+  function ymd(ms) {
+    var d = new Date(ms);
+    var m = d.getUTCMonth() + 1;
+    var day = d.getUTCDate();
+    return d.getUTCFullYear() + '-' +
+           (m < 10 ? '0' + m : m) + '-' +
+           (day < 10 ? '0' + day : day);
+  }
+
+  // --- 1. The next ten weekdays ---
+  var days = [];
+  var cursor = todayUtc;
+  while (days.length < 10) {
+    var d = new Date(cursor);
+    var dow = d.getUTCDay();
+    if (dow !== 0 && dow !== 6) {
+      days.push({
+        ymd:     ymd(cursor),
+        weekday: WEEKDAYS[dow],
+        dayNum:  ('0' + d.getUTCDate()).slice(-2),
+        isToday: ymd(cursor) === todayYmd,
+        booked:  0
+      });
+    }
+    cursor += 86400000;
+  }
+
+  var firstYmd = days[0].ymd;
+  var lastYmd  = days[days.length - 1].ymd;
+
+  // --- 2. Reservations touching those days, and today's holds ---
   var heldToday = {};
+
   var res = new GlideRecord('x_1903615_worksp_0_reservation_tracker');
   res.addQuery('reservation_status', 'IN', HOLDING);
   res.query();
+
   while (res.next()) {
     var sDisp = res.getDisplayValue('work_start');
     var eDisp = res.getDisplayValue('work_end');
@@ -91,12 +171,19 @@
     if (sYmd <= todayYmd && eYmd >= todayYmd) {
       heldToday[res.getValue('workspace')] = true;
     }
+
+    if (eYmd < firstYmd || sYmd > lastYmd) continue;
+    for (var i = 0; i < days.length; i++) {
+      if (sYmd <= days[i].ymd && eYmd >= days[i].ymd) {
+        days[i].booked++;
+      }
+    }
   }
 
-  // Grouped by workspace type — a real field, rather than a
-  // building name parsed out of the location label.
+  // --- 3. Group today's spaces by type ---
   var types = {};
   var maintCount = 0;
+  var bookable = 0;
 
   var gr = new GlideRecord('x_1903615_worksp_0_workspace_options');
   gr.addQuery('status', '!=', 'decommissioned');
@@ -105,7 +192,6 @@
 
   while (gr.next()) {
     var label = gr.getDisplayValue('workspace_type') || 'Other';
-
     if (!types[label]) {
       types[label] = { name: label, total: 0, free: 0, dots: [] };
     }
@@ -114,19 +200,20 @@
     if (gr.getValue('status') === 'under_maintenance') {
       state = 'maint';
       maintCount++;
-    } else if (heldToday[gr.getUniqueValue()]) {
-      state = 'booked';
     } else {
-      state = 'free';
-      types[label].free++;
+      bookable++;
+      if (heldToday[gr.getUniqueValue()]) {
+        state = 'booked';
+      } else {
+        state = 'free';
+        types[label].free++;
+      }
     }
 
     types[label].total++;
     types[label].dots.push(state);
   }
 
-  // Free dots first, then booked, then maintenance — so the row
-  // reads as a bar rather than a scatter.
   var ORDER = { free: 0, booked: 1, maint: 2 };
 
   data.types = [];
@@ -137,14 +224,12 @@
     var row = types[k];
     row.dots.sort(function(a, c) { return ORDER[a] - ORDER[c]; });
     data.types.push(row);
-
     if (!best || row.free > best.free) best = row;
     if (row.free === 0) fullTypes.push(row.name);
   }
 
   data.types.sort(function(a, c) { return c.free - a.free; });
 
-  // --- the summary sentence ---
   data.headline = '';
   if (best && best.free > 0) {
     data.headline      = best.name;
@@ -165,43 +250,99 @@
   }
   data.detail = bits.join(' ');
 
+  // --- 4. The pulse ---
+  // Bars scale against total bookable capacity, not against the
+  // busiest day. Scaling to peak makes a single reservation look
+  // like a full office.
+  if (bookable < 1) bookable = 1;
+
+  var peak = 0;
+  var quietest = null;
+
+  for (var j = 0; j < days.length; j++) {
+    days[j].occupancy = Math.round((days[j].booked / bookable) * 100);
+    days[j].pct = days[j].occupancy;
+    if (days[j].pct < 4) days[j].pct = 4;   // a visible stub
+
+    if (days[j].booked > peak) peak = days[j].booked;
+    if (!quietest || days[j].booked < quietest.booked) quietest = days[j];
+  }
+
+  data.days = days;
+
+  // If almost nothing is booked, naming a "quietest day" is noise.
+  var peakPct = Math.round((peak / bookable) * 100);
+  if (peakPct < 15) {
+    data.pulseLine = 'The office is quiet for the next two weeks.';
+  } else {
+    data.pulseLine = (WEEKDAYS_FULL[quietest.weekday] || quietest.weekday) +
+                     ' ' + parseInt(quietest.dayNum, 10) +
+                     ' is the quietest day coming up.';
+  }
+
 })();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-29 03:37:19</sys_created_on>
         <sys_id>5584c17a93120b108c8874dcebba10cd</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>WRM Building Capacity</sys_name>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name>sp_widget_5584c17a93120b108c8874dcebba10cd</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-29 04:02:19</sys_updated_on>
+        <sys_updated_on>2026-07-31 02:01:37</sys_updated_on>
         <template><![CDATA[<div class="wrm-cap">
 
-  <div class="wrm-cap-summary" ng-if="data.headline">
-    <div class="line">
+  <div class="wrm-cap-top">
+    <div class="line" ng-if="data.headline">
       <strong>{{data.headline}}</strong> has the most space today,
       {{data.headlineFree}} of {{data.headlineTotal}} free.
     </div>
-    <div class="sub" ng-if="data.detail">{{data.detail}}</div>
+    <div class="meta">
+      <span class="sub" ng-if="data.detail">{{data.detail}}</span>
+      <button class="toggle" ng-click="showTypes = !showTypes">
+        {{showTypes ? 'Hide' : 'Show by type'}}
+      </button>
+    </div>
   </div>
 
-  <div class="wrm-cap-rows">
-    <div class="row" ng-repeat="b in data.types track by b.name">
-      <span class="nm">{{b.name}}</span>
+  <div class="wrm-cap-types" ng-if="showTypes">
+    <div class="row" ng-repeat="t in data.types track by t.name">
+      <span class="nm">{{t.name}}</span>
       <span class="dots">
-        <i ng-repeat="d in b.dots track by $index" ng-class="d"></i>
+        <i ng-repeat="d in t.dots track by $index" ng-class="d"></i>
       </span>
-      <span class="ct">{{b.free}} free</span>
+      <span class="ct">{{t.free}} free</span>
     </div>
 
     <div class="key">
       <span><i class="free"></i>Free</span>
       <span><i class="booked"></i>Booked</span>
       <span><i class="maint"></i>Maintenance</span>
+    </div>
+  </div>
+
+  <div class="wrm-cap-pulse">
+    <div class="phead">
+      <span class="pline">{{data.pulseLine}}</span>
+      <span class="pkey">Taller means busier</span>
+    </div>
+
+    <div class="bars">
+      <div class="col" ng-repeat="d in data.days track by d.ymd"
+           title="{{d.booked}} booked · {{d.occupancy}}% of spaces">
+        <span class="bar" ng-style="{height: d.pct + '%'}" ng-class="{'today': d.isToday}"></span>
+      </div>
+    </div>
+
+    <div class="labels">
+      <div class="col" ng-repeat="d in data.days track by d.ymd" ng-class="{'today': d.isToday}">
+        <span class="wd">{{d.weekday}}</span>
+        <span class="dn">{{d.dayNum}}</span>
+      </div>
     </div>
   </div>
 

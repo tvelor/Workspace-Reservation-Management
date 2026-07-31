@@ -8,30 +8,21 @@
   $scope.dayYmd   = '';     // selected day, empty = no day filter
   $scope.typeVal  = '';
   $scope.selected = null;   // workspace shown in the detail panel
-  $scope.selectedStrip = [];
 
-  $scope.visibleDays = [];  // the five day tiles on show
-  $scope.filtered    = [];  // everything matching the filters
-  $scope.shown       = [];  // the slice actually rendered
+  $scope.visibleDays = [];
+  $scope.filtered    = [];
+  $scope.shown       = [];
   $scope.showAll     = false;
 
-  var PAGE = 8;             // cards shown before "show all"
+  var PAGE = 8;
 
-  // Everything below recomputes only when something actually
-  // changes. Calling a function directly from ng-repeat returns a
-  // new array every digest, which makes Angular re-render in a
-  // loop and the count disagree with the grid.
   function recompute() {
-    // Any filter change closes the detail panel — leaving it open
-    // shows a space that may no longer be in the results.
+    // Any filter change closes the detail panel.
     $scope.selected = null;
-    $scope.selectedStrip = [];
 
     var offset = $scope.week * 5;
-
     $scope.visibleDays = $scope.data.days.slice(offset, offset + 5);
 
-    // Index of the selected day within the full ten, or -1.
     var dayIdx = -1;
     if ($scope.dayYmd) {
       for (var i = 0; i < $scope.data.days.length; i++) {
@@ -51,8 +42,6 @@
       if ($scope.typeVal && w.typeVal !== $scope.typeVal) continue;
       if (dayIdx > -1 && w.days[dayIdx] !== 'free') continue;
 
-      // Precompute what the card needs so the template reads
-      // plain properties rather than calling functions.
       w.viewStrip = w.days.slice(offset, offset + 5);
 
       var free = 0;
@@ -70,7 +59,7 @@
 
   $scope.setWeek = function(n) {
     $scope.week = n;
-    $scope.dayYmd = '';     // a day in the old week makes no sense now
+    $scope.dayYmd = '';
     recompute();
   };
 
@@ -79,8 +68,6 @@
     recompute();
   };
 
-  // Must be a function: ng-repeat gives each pill its own child
-  // scope, so an inline assignment would set it on the pill.
   $scope.setType = function(v) {
     $scope.typeVal = v;
     recompute();
@@ -99,25 +86,35 @@
                  : $scope.filtered.slice(0, PAGE);
   };
 
-  // --- detail panel ---
+  // Book link for a whole run, carrying the workspace and dates.
+  // The catalog item's onLoad script reads these back out.
+  $scope.runUrl = function(w, run) {
+    return $scope.data.bookBase +
+           '&wrm_ws=' + w.sysId +
+           '&wrm_ws_label=' + encodeURIComponent(w.name) +
+           '&wrm_start=' + encodeURIComponent(run.startYmd + ' 09:00:00') +
+           '&wrm_end='   + encodeURIComponent(run.endYmd   + ' 17:00:00');
+  };
+
+  // Book link with no dates, for the panel's main button.
+  $scope.spaceUrl = function(w) {
+    return $scope.data.bookBase +
+           '&wrm_ws=' + w.sysId +
+           '&wrm_ws_label=' + encodeURIComponent(w.name);
+  };
 
   $scope.open = function(w) {
     $scope.selected = w;
 
-    // Ten day/state pairs, built once when the panel opens.
-    var full = [];
-    for (var i = 0; i < $scope.data.days.length; i++) {
-      full.push({
-        day:   $scope.data.days[i],
-        state: w.days[i]
-      });
-    }
-    $scope.selectedStrip = full;
+    // Bring the panel into view — it renders above the grid.
+    setTimeout(function() {
+      var el = document.querySelector('.wrm-wk-detail');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 50);
   };
 
   $scope.close = function() {
     $scope.selected = null;
-    $scope.selectedStrip = [];
   };
 
   recompute();
@@ -159,6 +156,8 @@
   background: none; border: 0; color: var(--clay);&#13;
   font-size: 12px; cursor: pointer; padding: 0 0 0 10px;&#13;
 }&#13;
+&#13;
+/* ---------- detail panel ---------- */&#13;
 &#13;
 .wrm-wk-detail {&#13;
   position: relative;&#13;
@@ -205,22 +204,45 @@
 }&#13;
 .dl-book:hover, .dl-book:focus { background: var(--clay-press); color: var(--on-clay); text-decoration: none; }&#13;
 &#13;
-.dl-avail { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 14px; }&#13;
-.dl-avail-head { font-size: 11px; letter-spacing: .08em; color: var(--ink-3); margin-bottom: 10px; }&#13;
-.dl-days { display: grid; grid-template-columns: repeat(10, 1fr); gap: 5px; }&#13;
-.dl-day { text-align: center; }&#13;
-.dl-day .d { display: block; font-size: 9px; letter-spacing: .06em; color: var(--ink-3); }&#13;
-.dl-day .n { display: block; font-size: 12px; color: var(--ink-2); margin-bottom: 4px; }&#13;
-.dl-day .blk { display: block; height: 22px; border-radius: 3px; }&#13;
-.dl-day .blk.free  { background: var(--free-bg); }&#13;
-.dl-day .blk.taken { background: var(--held-bg); }&#13;
-.dl-day .blk.maint { background: var(--out-bg); }&#13;
+/* ---------- free runs ---------- */&#13;
 &#13;
-.dl-key { display: flex; gap: 16px; margin-top: 11px; font-size: 11px; color: var(--ink-3); }&#13;
-.dl-key i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; }&#13;
-.dl-key i.free  { background: var(--free-bg); }&#13;
-.dl-key i.taken { background: var(--held-bg); }&#13;
-.dl-key i.maint { background: var(--out-bg); }&#13;
+.dl-runs { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 14px; }&#13;
+.dl-runs-head {&#13;
+  font-size: 10px; letter-spacing: .08em; color: var(--ink-3);&#13;
+  margin-bottom: 11px; text-transform: uppercase;&#13;
+}&#13;
+&#13;
+.dl-run {&#13;
+  display: flex; align-items: center; gap: 14px;&#13;
+  padding: 9px 0;&#13;
+  border-bottom: 1px solid var(--line);&#13;
+}&#13;
+.dl-run:last-child { border-bottom: 0; }&#13;
+&#13;
+.dl-run .rail { width: 170px; flex: none; }&#13;
+.dl-run .rail .ends {&#13;
+  display: flex; justify-content: space-between;&#13;
+  font-size: 10px; letter-spacing: .07em; color: var(--ink-3);&#13;
+  margin-bottom: 4px;&#13;
+}&#13;
+.dl-run .rail .line { display: flex; align-items: center; gap: 6px; }&#13;
+.dl-run .rail .dot { width: 6px; height: 6px; border-radius: 50%; flex: none; }&#13;
+.dl-run .rail .dot.start { background: var(--clay); }&#13;
+.dl-run .rail .dot.end { border: 1px solid var(--clay); }&#13;
+.dl-run .rail .track { flex: 1; height: 2px; background: var(--line); border-radius: 2px; }&#13;
+&#13;
+.dl-run .len { flex: 1; font-size: 13px; color: var(--ink); }&#13;
+&#13;
+.dl-run .go {&#13;
+  font-size: 11px; background: var(--clay); color: var(--on-clay);&#13;
+  padding: 6px 15px; border-radius: var(--r-pill);&#13;
+  text-decoration: none; white-space: nowrap; flex: none;&#13;
+}&#13;
+.dl-run .go:hover { background: var(--clay-press); color: var(--on-clay); text-decoration: none; }&#13;
+&#13;
+.dl-none { font-size: 13px; color: var(--ink-3); padding: 6px 0; }&#13;
+&#13;
+/* ---------- card grid ---------- */&#13;
 &#13;
 .wrm-wk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }&#13;
 .wrm-wk-card {&#13;
@@ -286,7 +308,10 @@
   // Reservation statuses that actually hold a workspace.
   var HOLDING = 'pending_check_in,checked_in';
 
-  // --- 1. Work out the ten weekdays: this Monday to next Friday ---
+  // How far ahead the detail panel looks.
+  var HORIZON_DAYS = 30;
+
+  // --- 1. The ten weekday tiles for the browse grid ---
 
   var todayYmd = new GlideDateTime().getDisplayValue().split(' ')[0];
   var tp = todayYmd.split('-');
@@ -306,26 +331,50 @@
            (day < 10 ? '0' + day : day);
   }
 
-  var days = [];   // ten entries, index 0-4 this week, 5-9 next week
+  function label(ms) {
+    var d = new Date(ms);
+    return {
+      weekday: WEEKDAYS[d.getUTCDay()],
+      dayNum:  ('0' + d.getUTCDate()).slice(-2),
+      month:   MONTHS[d.getUTCMonth()]
+    };
+  }
+
+  var days = [];   // ten weekday entries for the browse grid
   for (var w = 0; w < 2; w++) {
     for (var i = 0; i < 5; i++) {
       var ms = mondayUtc + ((w * 7 + i) * 86400000);
-      var d = new Date(ms);
+      var lb = label(ms);
       days.push({
         ymd:     ymd(ms),
-        weekday: WEEKDAYS[d.getUTCDay()],
-        dayNum:  ('0' + d.getUTCDate()).slice(-2),
-        month:   MONTHS[d.getUTCMonth()],
+        weekday: lb.weekday,
+        dayNum:  lb.dayNum,
+        month:   lb.month,
         isToday: ymd(ms) === todayYmd,
         free:    0
       });
     }
   }
 
-  var windowStart = days[0].ymd;
-  var windowEnd   = days[9].ymd;
+  // --- 2. The 30-day horizon used for free runs ---
 
-  // --- 2. Which workspaces are held on which days ---
+  var horizon = [];
+  for (var h = 0; h < HORIZON_DAYS; h++) {
+    var hms = todayUtc + (h * 86400000);
+    var hd  = new Date(hms).getUTCDay();
+    horizon.push({
+      ms:        hms,
+      ymd:       ymd(hms),
+      isWeekend: (hd === 0 || hd === 6)
+    });
+  }
+
+  var windowStart = horizon[0].ymd;
+  var windowEnd   = horizon[horizon.length - 1].ymd;
+  // The browse grid may start before today, so widen the lower bound.
+  if (days[0].ymd < windowStart) windowStart = days[0].ymd;
+
+  // --- 3. Which workspaces are held on which days ---
 
   var held = {};   // { workspaceSysId: { 'YYYY-MM-DD': true } }
 
@@ -359,13 +408,12 @@
     }
   }
 
-  // --- 3. Build the workspace rows ---
+  // --- 4. Build the workspace rows ---
 
   data.workspaces = [];
   var typeSet = {};
 
   var gr = new GlideRecord('x_1903615_worksp_0_workspace_options');
-  // Decommissioned spaces shouldn't appear at all.
   gr.addQuery('status', '!=', 'decommissioned');
   gr.orderBy('workspace_name');
   gr.query();
@@ -375,10 +423,10 @@
     var status  = gr.getValue('status');
     var typeVal = gr.getValue('workspace_type');
     var typeLbl = gr.getDisplayValue('workspace_type');
+    var isMaint = status === 'under_maintenance';
 
     if (typeVal) typeSet[typeVal] = typeLbl;
 
-    // Image: user_image fields hold an attachment reference.
     var raw = gr.getValue('image');
     var url = '';
     if (raw) {
@@ -387,10 +435,11 @@
           : '/sys_attachment.do?sys_id=' + raw;
     }
 
+    // States for the ten browse-grid days.
     var dayStates = [];
     for (var k = 0; k < days.length; k++) {
       var state;
-      if (status === 'under_maintenance') {
+      if (isMaint) {
         state = 'maint';
       } else if (held[id] && held[id][days[k].ymd]) {
         state = 'taken';
@@ -399,6 +448,63 @@
       }
       if (state === 'free') days[k].free++;
       dayStates.push(state);
+    }
+
+    // Runs of consecutive free days across the 30-day horizon.
+    // Weekends don't break a run — a booking that spans a weekend
+    // is one booking — but they don't count as working days.
+    var runs = [];
+    if (!isMaint) {
+      var open = null;
+      for (var n = 0; n < horizon.length; n++) {
+        var hDay = horizon[n];
+        var taken = held[id] && held[id][hDay.ymd];
+
+        if (!taken) {
+          if (!open) {
+            open = { startMs: hDay.ms, endMs: hDay.ms, working: 0 };
+          } else {
+            open.endMs = hDay.ms;
+          }
+          if (!hDay.isWeekend) open.working++;
+        } else if (open) {
+          runs.push(open);
+          open = null;
+        }
+      }
+      if (open) runs.push(open);
+    }
+
+    // Trim trailing weekend days so a run doesn't end on a Sunday.
+    var runOut = [];
+    for (var r = 0; r < runs.length; r++) {
+      var rn = runs[r];
+      if (rn.working === 0) continue;   // weekend-only stretch
+
+      while (new Date(rn.endMs).getUTCDay() === 0 ||
+             new Date(rn.endMs).getUTCDay() === 6) {
+        rn.endMs -= 86400000;
+      }
+      while (new Date(rn.startMs).getUTCDay() === 0 ||
+             new Date(rn.startMs).getUTCDay() === 6) {
+        rn.startMs += 86400000;
+      }
+
+      var sl = label(rn.startMs);
+      var el = label(rn.endMs);
+      var single = rn.startMs === rn.endMs;
+
+      runOut.push({
+        startYmd:  ymd(rn.startMs),
+        endYmd:    ymd(rn.endMs),
+        startLbl:  sl.weekday + ' ' + sl.dayNum + ' ' + sl.month,
+        endLbl:    el.weekday + ' ' + el.dayNum + ' ' + el.month,
+        single:    single,
+        isToday:   ymd(rn.startMs) === todayYmd,
+        working:   rn.working,
+        lengthLbl: rn.working === 1 ? '1 working day'
+                                    : rn.working + ' working days'
+      });
     }
 
     data.workspaces.push({
@@ -410,14 +516,15 @@
       capacity:    gr.getValue('max_occupancy'),
       description: gr.getValue('workspace_description'),
       imageUrl:    url,
-      maint:       status === 'under_maintenance',
-      days:        dayStates
+      maint:       isMaint,
+      days:        dayStates,
+      runs:        runOut
     });
   }
 
   data.days = days;
 
-  // --- 4. Filter pill options ---
+  // --- 5. Filter pill options ---
 
   data.types = [];
   for (var t in typeSet) {
@@ -425,8 +532,9 @@
   }
   data.types.sort(function(a, b) { return a.label < b.label ? -1 : 1; });
 
-  // Catalog item to book against.
-  data.bookUrl = '?id=sc_cat_item&sys_id=fe1e919e93c6c3108c8874dcebba10d0';
+  // Catalog item to book against. The client appends the workspace
+  // and dates, which the item's onLoad script reads.
+  data.bookBase = '?id=sc_cat_item&sys_id=fe1e919e93c6c3108c8874dcebba10d0';
 
 })();]]></script>
         <servicenow>false</servicenow>
@@ -434,14 +542,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-29 00:22:47</sys_created_on>
         <sys_id>0647143e939ac7108c8874dcebba10b1</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name>WRM Workspace Week</sys_name>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name>sp_widget_0647143e939ac7108c8874dcebba10b1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-29 01:10:29</sys_updated_on>
+        <sys_updated_on>2026-07-31 01:30:32</sys_updated_on>
         <template><![CDATA[<div class="wrm-wk">
 
   <div class="wrm-wk-head">
@@ -485,23 +593,34 @@
           <span class="tag maint" ng-if="selected.maint">Under maintenance</span>
         </div>
         <p class="dl-desc" ng-if="selected.description">{{selected.description}}</p>
-        <a ng-if="!selected.maint" href="{{data.bookUrl}}" class="dl-book">Book this space</a>
+        <a ng-if="!selected.maint" href="{{spaceUrl(selected)}}" class="dl-book">Book this space</a>
       </div>
     </div>
 
-    <div class="dl-avail">
-      <div class="dl-avail-head">Availability &mdash; next two weeks</div>
-      <div class="dl-days">
-        <div class="dl-day" ng-repeat="p in selectedStrip track by $index">
-          <span class="d">{{p.day.weekday}}</span>
-          <span class="n">{{p.day.dayNum}}</span>
-          <span class="blk" ng-class="p.state"></span>
+    <div class="dl-runs" ng-if="!selected.maint">
+      <div class="dl-runs-head">When you can book it</div>
+
+      <div class="dl-run" ng-repeat="r in selected.runs track by r.startYmd">
+        <div class="rail">
+          <div class="ends">
+            <span>{{r.startLbl}}</span>
+            <span ng-if="!r.single">{{r.endLbl}}</span>
+          </div>
+          <div class="line">
+            <span class="dot start"></span>
+            <span class="track"></span>
+            <span class="dot end"></span>
+          </div>
         </div>
+        <div class="len">
+          <span ng-if="r.isToday && r.single">Today only</span>
+          <span ng-if="!(r.isToday && r.single)">{{r.lengthLbl}}</span>
+        </div>
+        <a href="{{runUrl(selected, r)}}" class="go">Book</a>
       </div>
-      <div class="dl-key">
-        <span><i class="k free"></i>Free</span>
-        <span><i class="k taken"></i>Booked</span>
-        <span><i class="k maint"></i>Maintenance</span>
+
+      <div class="dl-none" ng-if="selected.runs.length === 0">
+        Fully booked for the next 30 days.
       </div>
     </div>
   </div>
@@ -522,11 +641,9 @@
       <div class="body">
         <div class="nm">{{w.name}}</div>
         <div class="sub">{{w.typeLabel}}<span ng-if="w.location"> &middot; {{w.location}}</span></div>
-
         <div class="strip">
           <span ng-repeat="s in w.viewStrip track by $index" ng-class="s"></span>
         </div>
-
         <div class="foot">
           <span class="note" ng-if="w.maint">Under maintenance</span>
           <span class="note free" ng-if="!w.maint">{{w.viewFree}} of 5 days free</span>
