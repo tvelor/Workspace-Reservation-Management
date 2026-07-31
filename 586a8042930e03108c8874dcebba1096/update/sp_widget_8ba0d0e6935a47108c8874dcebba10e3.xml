@@ -150,7 +150,37 @@
   color: var(--ink-2);&#13;
 }&#13;
 .wrm-res-empty h3 { margin: 0 0 6px; font-size: 17px; color: var(--ink); }&#13;
-.wrm-res-empty p  { margin: 0; font-size: 13px; }</css>
+.wrm-res-empty p  { margin: 0; font-size: 13px; }&#13;
+&#13;
+.wrm-rebook { margin-top: 28px; }&#13;
+&#13;
+.wrm-rebook-cards {&#13;
+  display: flex;&#13;
+  flex-wrap: wrap;&#13;
+  gap: 12px;&#13;
+  margin-top: 10px;&#13;
+}&#13;
+&#13;
+.wrm-rebook-card {&#13;
+  flex: 1 1 220px;&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  justify-content: space-between;&#13;
+  gap: 12px;&#13;
+  background: var(--surface);&#13;
+  border: 1px solid var(--line);&#13;
+  border-radius: 12px 12px 12px 3px;&#13;
+  padding: 14px 16px;&#13;
+}&#13;
+&#13;
+.wrm-rebook-card .t { font-weight: 600; color: var(--ink); }&#13;
+.wrm-rebook-card .s { font-size: 12px; color: var(--ink-3); }&#13;
+.wrm-rebook-card .n { font-size: 11px; color: var(--ink-3); margin-top: 2px; }&#13;
+&#13;
+.wrm-rebook-card .wrm-res-btn { text-decoration: none; white-space: nowrap; }&#13;
+&#13;
+.wrm-collapse-toggle { cursor: pointer; user-select: none; }&#13;
+.wrm-collapse-toggle .fa { font-size: 10px; margin-left: 6px; }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -291,6 +321,10 @@
 
   var rows = [];
 
+  // Rebook map: one entry per distinct workspace the user has
+  // actually used before, so we can offer "book again" shortcuts.
+  var rebookMap = {};
+
   // --- 1. Real reservation records ---
   var linked = [];                     // RITMs that already produced a tracker
 
@@ -312,6 +346,24 @@
     var rEndMs = endRaw ? new GlideDateTime(endRaw).getNumericValue() : 0;
     var closed = CLOSED.indexOf(status) > -1;
     var pct    = progressPct(startRaw, endRaw);
+
+    // Count every finished stay toward its workspace's rebook card.
+    // Cancelled and no-show don't count - the user never used the space.
+    var wsId = gr.getValue('workspace');
+    if (wsId && (status === 'checked_out' ||
+        (rEndMs > 0 && rEndMs < nowMs && status !== 'cancelled' && status !== 'no_show'))) {
+      if (!rebookMap[wsId]) {
+        rebookMap[wsId] = {
+          wsId:      wsId,
+          workspace: gr.getDisplayValue('workspace'),
+          location:  gr.getDisplayValue('location'),
+          count:     0,
+          lastMs:    0
+        };
+      }
+      rebookMap[wsId].count++;
+      if (rEndMs > rebookMap[wsId].lastMs) rebookMap[wsId].lastMs = rEndMs;
+    }
 
     rows.push({
       sysId:        gr.getUniqueValue(),
@@ -396,11 +448,11 @@
 
   // --- 3. Split and sort ---
   data.upcoming = [];
-  data.past     = [];
+  var pastAll   = [];
 
   for (var i = 0; i < rows.length; i++) {
     if (rows[i].isPast) {
-      data.past.push(rows[i]);
+      pastAll.push(rows[i]);
     } else {
       data.upcoming.push(rows[i]);
     }
@@ -408,9 +460,35 @@
 
   // Soonest first for upcoming, most recent first for history.
   data.upcoming.sort(function(a, b) { return a.sortMs - b.sortMs; });
-  data.past.sort(function(a, b) { return b.sortMs - a.sortMs; });
+  pastAll.sort(function(a, b) { return b.sortMs - a.sortMs; });
 
-// Split the heading count: approved bookings and requests still
+  // Cap what we ship to the client: recent history only.
+  // pastCount keeps the true total so the heading can say "Recent 5 of 23".
+  var PAST_LIMIT = 5;
+  data.past       = pastAll.slice(0, PAST_LIMIT);
+  data.pastCount  = pastAll.length;
+  data.pastCapped = pastAll.length > PAST_LIMIT;
+
+  // --- 4. Rebook cards: distinct past workspaces, most recent first ---
+  var rebook = [];
+  for (var k in rebookMap) {
+    if (rebookMap.hasOwnProperty(k)) rebook.push(rebookMap[k]);
+  }
+  rebook.sort(function(a, b) { return b.lastMs - a.lastMs; });
+  rebook = rebook.slice(0, 4);
+
+  // Build the prefill link server-side so the template stays dumb.
+  var CATALOG_URL = '?id=sc_cat_item&sys_id=fe1e919e93c6c3108c8874dcebba10d0';
+  for (var r = 0; r < rebook.length; r++) {
+    rebook[r].timesLabel = 'Booked ' + rebook[r].count +
+                           (rebook[r].count === 1 ? ' time' : ' times');
+    rebook[r].bookUrl = CATALOG_URL +
+      '&wrm_ws=' + encodeURIComponent(rebook[r].wsId) +
+      '&wrm_ws_label=' + encodeURIComponent(rebook[r].workspace);
+  }
+  data.rebook = rebook;
+
+  // Split the heading count: approved bookings and requests still
   // waiting for approval mean different things to the user.
   var confirmedCount = 0;
   var pendingCount   = 0;
@@ -425,27 +503,22 @@
   data.count          = data.upcoming.length;
   data.confirmedCount = confirmedCount;
   data.pendingCount   = pendingCount;
-  data.pastCount      = data.past.length;
 })();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-28 05:11:49</sys_created_on>
         <sys_id>8ba0d0e6935a47108c8874dcebba10e3</sys_id>
-        <sys_mod_count>27</sys_mod_count>
+        <sys_mod_count>34</sys_mod_count>
         <sys_name>WRM My Reservations</sys_name>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name>sp_widget_8ba0d0e6935a47108c8874dcebba10e3</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-28 23:47:46</sys_updated_on>
-        <template><![CDATA[<div class="wrm-res">
-
+        <sys_updated_on>2026-07-31 05:51:37</sys_updated_on>
+        <template><![CDATA[<div class="wrm-res" id="wrm-res">
   <div class="wrm-res-head">
-    <div class="wrm-notice" ng-if="data.notice">
-    <i class="fa fa-info-circle"></i> {{data.notice}}
-  </div>
     <h2>My reservations</h2>
     <span class="wrm-res-count">
       <span ng-if="data.confirmedCount">{{data.confirmedCount}} confirmed</span>
@@ -453,7 +526,9 @@
       <span ng-if="data.pendingCount">{{data.pendingCount}} awaiting approval</span>
     </span>
   </div>
-
+  <div class="wrm-notice" ng-if="data.notice">
+    <i class="fa fa-info-circle"></i> {{data.notice}}
+  </div>
   <div class="wrm-res-rows" ng-if="data.count > 0">
     <div class="wrm-res-row" ng-repeat="r in data.upcoming">
       <div class="wrm-when">
@@ -480,7 +555,68 @@
       </div>
       <span class="wrm-res-pill" ng-class="r.tint">{{r.statusLabel}}</span>
       <div class="wrm-res-actions">
-        <button ng-if="r.canCheckIn" ng-click="act(r, 'checkin')" class="wrm-res-btn">Check in</button>
-        <button ng-if="r.canCheckOut" ng-click="act(r, 'checkout')"]]></template>
+        <button ng-if="r.canCheckIn"
+                ng-click="act(r, 'checkin')"
+                class="wrm-res-btn">Check in</button>
+        <button ng-if="r.canCheckOut"
+                ng-click="act(r, 'checkout')"
+                class="wrm-res-btn ghost">Check out</button>
+      </div>
+    </div>
+  </div>
+  <div class="wrm-res-empty" ng-if="data.count === 0">
+    <h3>Nothing booked</h3>
+    <p>Book a desk or room and it'll show up here.</p>
+  </div>
+
+  <!-- Book again: distinct workspaces from past stays -->
+  <div class="wrm-rebook" ng-if="data.rebook.length > 0">
+    <div class="wrm-past-head">Book again</div>
+    <div class="wrm-rebook-cards">
+      <div class="wrm-rebook-card" ng-repeat="b in data.rebook track by b.wsId">
+        <div class="wrm-rebook-info">
+          <div class="t">{{b.workspace}}</div>
+          <div class="s">{{b.location}}</div>
+          <div class="n">{{b.timesLabel}}</div>
+        </div>
+        <a class="wrm-res-btn ghost" ng-href="{{b.bookUrl}}">Book</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent history: collapsed by default, click heading to expand -->
+  <div class="wrm-past" ng-if="data.pastCount > 0">
+    <div class="wrm-past-head wrm-collapse-toggle" ng-click="pastOpen = !pastOpen">
+      Recent
+      <span ng-if="!data.pastCapped">&middot; {{data.pastCount}}</span>
+      <span ng-if="data.pastCapped">&middot; {{data.past.length}} of {{data.pastCount}}</span>
+      <i class="fa" ng-class="pastOpen ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+    </div>
+    <div class="wrm-res-rows past" ng-if="pastOpen">
+      <div class="wrm-res-row" ng-repeat="r in data.past">
+        <div class="wrm-when">
+          <div class="wrm-when-labels" ng-class="{'two': r.multiDay}">
+            <span>{{r.startWeekday}} {{r.startDay}} {{r.startMonth}}</span>
+            <span ng-if="r.multiDay">{{r.endWeekday}} {{r.endDay}} {{r.endMonth}}</span>
+          </div>
+          <div class="wrm-when-rail">
+            <span class="tm">{{r.startTime}}</span>
+            <span class="dot start"></span>
+            <span class="track"><span class="fill" ng-style="{width: r.progress + '%'}"></span></span>
+            <span class="dot end" ng-class="{'done': r.done}"></span>
+            <span class="tm">{{r.endTime}}</span>
+          </div>
+          <div class="wrm-when-dur">{{r.duration}}</div>
+        </div>
+        <div class="wrm-res-main">
+          <div class="t">{{r.workspace}}</div>
+          <div class="s">{{r.location}}</div>
+          <div class="n">{{r.number}}</div>
+        </div>
+        <span class="wrm-res-pill" ng-class="r.tint">{{r.statusLabel}}</span>
+      </div>
+    </div>
+  </div>
+</div>]]></template>
     </sp_widget>
 </record_update>

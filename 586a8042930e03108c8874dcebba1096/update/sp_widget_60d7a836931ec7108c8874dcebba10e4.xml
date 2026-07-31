@@ -1,38 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller = function($scope) {
+        <client_script><![CDATA[api.controller = function($scope, $rootScope) {
+
+  var OURS = ['wrm_landing', 'wrm_spaces', 'wrm_reservations', 'wrm_help'];
+  var KEY  = 'wrm-dark';
 
   // $sp.getParameter doesn't resolve for theme-level widgets,
-  // so read the page id straight from the URL.
-  var m = window.location.search.match(/[?&]id=([^&]+)/);
-  $scope.pageId = m ? m[1] : 'wrm_landing';
+  // so read the page id straight from the URL. Wrapped in a
+  // function because the SPA changes the URL without reloading,
+  // and the header widget survives those navigations.
+  function currentPage() {
+    var m = window.location.search.match(/[?&]id=([^&]+)/);
+    return m ? m[1] : 'wrm_landing';
+  }
 
   // Dark mode only applies to our own pages. Catalog pages use
   // stock Bootstrap styling that doesn't read our variables, so
   // it would render half-dark and unreadable.
-  var OURS = ['wrm_landing', 'wrm_spaces', 'wrm_reservations', 'wrm_help'];
-  var supported = OURS.indexOf($scope.pageId) > -1;
-
-  var KEY = 'wrm-dark';
-
-  function apply(on) {
-    if (on && supported) {
+  function apply() {
+    var supported = OURS.indexOf($scope.pageId) > -1;
+    $scope.darkAvailable = supported;
+    if ($scope.dark && supported) {
       document.body.classList.add('dark');
     } else {
       document.body.classList.remove('dark');
     }
   }
 
-  $scope.dark = localStorage.getItem(KEY) === '1';
-  $scope.darkAvailable = supported;
-  apply($scope.dark);
+  $scope.pageId = currentPage();
+  $scope.dark   = localStorage.getItem(KEY) === '1';
+  apply();
 
   $scope.toggleDark = function() {
     $scope.dark = !$scope.dark;
     localStorage.setItem(KEY, $scope.dark ? '1' : '0');
-    apply($scope.dark);
+    apply();
   };
+
+  // Re-evaluate on every client-side navigation: the URL changes
+  // but this controller doesn't re-run, so we listen for the
+  // route change and recompute page + dark state ourselves.
+  var off = $rootScope.$on('$locationChangeSuccess', function() {
+    $scope.pageId = currentPage();
+    apply();
+  });
+  $scope.$on('$destroy', off);
 };]]></client_script>
         <controller_as>c</controller_as>
         <css>.wrm-hd {&#13;
@@ -143,14 +156,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-29 01:31:43</sys_created_on>
         <sys_id>60d7a836931ec7108c8874dcebba10e4</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>WRM Header</sys_name>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name>sp_widget_60d7a836931ec7108c8874dcebba10e4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-29 03:29:43</sys_updated_on>
+        <sys_updated_on>2026-07-31 05:55:02</sys_updated_on>
         <template><![CDATA[<script>
 (function() {
   var m = window.location.search.match(/[?&]id=([^&]+)/);
