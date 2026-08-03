@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller = function($scope) {
+        <client_script><![CDATA[api.controller = function($scope, $rootScope) {
   var c = this;
 
   $scope.week     = 0;      // 0 = this week, 1 = next week
   $scope.dayYmd   = '';     // selected day, empty = no day filter
   $scope.typeVal  = '';
+  $scope.statusVal = '';    // '' = all, 'maint' = under maintenance only
   $scope.selected = null;   // workspace shown in the detail panel
 
   $scope.visibleDays = [];
@@ -15,6 +16,14 @@
   $scope.showAll     = false;
 
   var PAGE = 8;
+
+  // Deep links from the landing tiles arrive as ?wrm_status=...
+  // $sp.getParameter is unreliable here, so read the URL directly.
+  function statusFromUrl() {
+    var m = window.location.search.match(/[?&]wrm_status=([^&]+)/);
+    if (!m) return '';
+    return decodeURIComponent(m[1]) === 'under_maintenance' ? 'maint' : '';
+  }
 
   function recompute() {
     // Any filter change closes the detail panel.
@@ -40,6 +49,7 @@
       var w = list[j];
 
       if ($scope.typeVal && w.typeVal !== $scope.typeVal) continue;
+      if ($scope.statusVal === 'maint' && !w.maint) continue;
       if (dayIdx > -1 && w.days[dayIdx] !== 'free') continue;
 
       w.viewStrip = w.days.slice(offset, offset + 5);
@@ -73,9 +83,15 @@
     recompute();
   };
 
+  $scope.clearStatus = function() {
+    $scope.statusVal = '';
+    recompute();
+  };
+
   $scope.clearFilters = function() {
-    $scope.typeVal = '';
-    $scope.dayYmd  = '';
+    $scope.typeVal   = '';
+    $scope.dayYmd    = '';
+    $scope.statusVal = '';
     recompute();
   };
 
@@ -117,7 +133,17 @@
     $scope.selected = null;
   };
 
+  $scope.statusVal = statusFromUrl();
   recompute();
+
+  // Arriving from a landing tile is client-side navigation, so this
+  // controller may already be alive and the URL change alone won't
+  // re-run it. Re-read the param when the route changes.
+  var off = $rootScope.$on('$locationChangeSuccess', function() {
+    $scope.statusVal = statusFromUrl();
+    recompute();
+  });
+  $scope.$on('$destroy', off);
 };]]></client_script>
         <controller_as>c</controller_as>
         <css>.wrm-wk-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }&#13;
@@ -270,7 +296,20 @@
   border-radius: var(--r-card); color: var(--ink-2);&#13;
 }&#13;
 .wrm-wk-empty h3 { margin: 0 0 6px; font-size: 17px; color: var(--ink); }&#13;
-.wrm-wk-empty p { margin: 0; font-size: 13px; }</css>
+.wrm-wk-empty p { margin: 0; font-size: 13px; }&#13;
+&#13;
+&#13;
+.wrm-wk-status { margin-bottom: 8px; }&#13;
+.wrm-wk-status .chip {&#13;
+  display: inline-flex; align-items: center; gap: 6px;&#13;
+  font-size: 12px; padding: 6px 10px 6px 14px;&#13;
+  background: var(--out-bg); color: var(--out-fg);&#13;
+  border-radius: var(--r-pill);&#13;
+}&#13;
+.wrm-wk-status .chip button {&#13;
+  background: none; border: 0; color: inherit;&#13;
+  font-size: 15px; line-height: 1; cursor: pointer; padding: 0 2px;&#13;
+}</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -568,14 +607,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-29 00:22:47</sys_created_on>
         <sys_id>0647143e939ac7108c8874dcebba10b1</sys_id>
-        <sys_mod_count>13</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_name>WRM Workspace Week</sys_name>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name>sp_widget_0647143e939ac7108c8874dcebba10b1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-08-03 16:10:39</sys_updated_on>
+        <sys_updated_on>2026-08-03 16:20:22</sys_updated_on>
         <template><![CDATA[<div class="wrm-wk">
   <div class="wrm-wk-head">
     <h2>Available workspaces</h2>
@@ -599,6 +638,13 @@
     <button ng-repeat="t in data.types track by t.value"
             ng-click="setType(t.value)"
             ng-class="{'on': typeVal === t.value}">{{t.label}}</button>
+    
+  <div class="wrm-wk-status" ng-if="statusVal === 'maint'">
+    <span class="chip">Under maintenance
+      <button ng-click="clearStatus()" aria-label="Clear status filter">&times;</button>
+    </span>
+  </div>
+    
   </div>
   <div class="wrm-wk-detail" ng-if="selected">
     <button class="close" ng-click="close()" aria-label="Close details">&times;</button>
