@@ -122,7 +122,6 @@
         <controller_as>c</controller_as>
         <css>.wrm-wk-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }&#13;
 .wrm-wk-head h2 { margin: 0; font-size: 22px; color: var(--ink); }&#13;
-&#13;
 .wrm-wk-toggle { margin-left: auto; display: flex; gap: 6px; }&#13;
 .wrm-wk-toggle button {&#13;
   font-size: 12px; padding: 6px 14px; border: 1px solid var(--line);&#13;
@@ -130,7 +129,6 @@
   border-radius: var(--r-pill); cursor: pointer;&#13;
 }&#13;
 .wrm-wk-toggle button.on { background: var(--ink); border-color: var(--ink); color: var(--paper); }&#13;
-&#13;
 .wrm-wk-bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 12px; }&#13;
 .wrm-wk-day {&#13;
   background: var(--surface); border: 1px solid var(--line);&#13;
@@ -142,7 +140,6 @@
 .wrm-wk-day.today { border-color: var(--ink-3); }&#13;
 .wrm-wk-day.on { background: var(--clay); border-color: var(--clay); }&#13;
 .wrm-wk-day.on .lbl, .wrm-wk-day.on .num, .wrm-wk-day.on .sub { color: var(--on-clay); }&#13;
-&#13;
 .wrm-wk-pills { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 8px; }&#13;
 .wrm-wk-pills button {&#13;
   font-size: 12px; padding: 6px 14px; border: 1px solid var(--line);&#13;
@@ -150,15 +147,12 @@
   border-radius: var(--r-pill); cursor: pointer;&#13;
 }&#13;
 .wrm-wk-pills button.on { background: var(--ink); border-color: var(--ink); color: var(--paper); }&#13;
-&#13;
 .wrm-wk-count { font-size: 12px; color: var(--ink-3); margin: 12px 0; }&#13;
 .wrm-wk-count .clear {&#13;
   background: none; border: 0; color: var(--clay);&#13;
   font-size: 12px; cursor: pointer; padding: 0 0 0 10px;&#13;
 }&#13;
-&#13;
 /* ---------- detail panel ---------- */&#13;
-&#13;
 .wrm-wk-detail {&#13;
   position: relative;&#13;
   background: var(--surface);&#13;
@@ -173,7 +167,6 @@
   color: var(--ink-3); cursor: pointer; padding: 4px 8px;&#13;
 }&#13;
 .wrm-wk-detail .close:hover { color: var(--ink); }&#13;
-&#13;
 .dl-top { display: flex; gap: 18px; flex-wrap: wrap; }&#13;
 .dl-img {&#13;
   width: 200px; height: 130px; flex: none;&#13;
@@ -183,7 +176,6 @@
 .dl-info { flex: 1; min-width: 240px; }&#13;
 .dl-name { font-size: 19px; color: var(--ink); }&#13;
 .dl-sub { font-size: 12px; color: var(--ink-3); margin: 3px 0 10px; }&#13;
-&#13;
 .dl-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 10px; }&#13;
 .dl-tags .tag {&#13;
   font-size: 11px; padding: 4px 11px;&#13;
@@ -191,9 +183,7 @@
   border-radius: var(--r-pill);&#13;
 }&#13;
 .dl-tags .tag.maint { background: var(--out-bg); color: var(--out-fg); }&#13;
-&#13;
 .dl-desc { font-size: 13px; color: var(--ink-2); margin: 0 0 12px; }&#13;
-&#13;
 .dl-book {&#13;
   display: inline-block;&#13;
   font-size: 13px; font-weight: 500;&#13;
@@ -204,21 +194,27 @@
 }&#13;
 .dl-book:hover, .dl-book:focus { background: var(--clay-press); color: var(--on-clay); text-decoration: none; }&#13;
 &#13;
-/* ---------- free runs ---------- */&#13;
+/* Fully-booked state: same shape as the book button, visibly inert. */&#13;
+.dl-book.off {&#13;
+  background: var(--surface-2);&#13;
+  color: var(--ink-3);&#13;
+  box-shadow: inset 0 0 0 1px var(--line);&#13;
+  cursor: not-allowed;&#13;
+  pointer-events: none;&#13;
+}&#13;
 &#13;
+/* ---------- free runs ---------- */&#13;
 .dl-runs { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 14px; }&#13;
 .dl-runs-head {&#13;
   font-size: 10px; letter-spacing: .08em; color: var(--ink-3);&#13;
   margin-bottom: 11px; text-transform: uppercase;&#13;
 }&#13;
-&#13;
 .dl-run {&#13;
   display: flex; align-items: center; gap: 14px;&#13;
   padding: 9px 0;&#13;
   border-bottom: 1px solid var(--line);&#13;
 }&#13;
 .dl-run:last-child { border-bottom: 0; }&#13;
-&#13;
 .dl-run .rail { width: 170px; flex: none; }&#13;
 .dl-run .rail .ends {&#13;
   display: flex; justify-content: space-between;&#13;
@@ -230,20 +226,15 @@
 .dl-run .rail .dot.start { background: var(--clay); }&#13;
 .dl-run .rail .dot.end { border: 1px solid var(--clay); }&#13;
 .dl-run .rail .track { flex: 1; height: 2px; background: var(--line); border-radius: 2px; }&#13;
-&#13;
 .dl-run .len { flex: 1; font-size: 13px; color: var(--ink); }&#13;
-&#13;
 .dl-run .go {&#13;
   font-size: 11px; background: var(--clay); color: var(--on-clay);&#13;
   padding: 6px 15px; border-radius: var(--r-pill);&#13;
   text-decoration: none; white-space: nowrap; flex: none;&#13;
 }&#13;
 .dl-run .go:hover { background: var(--clay-press); color: var(--on-clay); text-decoration: none; }&#13;
-&#13;
 .dl-none { font-size: 13px; color: var(--ink-3); padding: 6px 0; }&#13;
-&#13;
 /* ---------- card grid ---------- */&#13;
-&#13;
 .wrm-wk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }&#13;
 .wrm-wk-card {&#13;
   background: var(--surface); border: 1px solid var(--line);&#13;
@@ -257,17 +248,14 @@
 .wrm-wk-card .body { padding: 12px 13px; }&#13;
 .wrm-wk-card .nm { font-size: 14px; color: var(--ink); }&#13;
 .wrm-wk-card .sub { font-size: 11px; color: var(--ink-3); margin: 2px 0 10px; }&#13;
-&#13;
 .wrm-wk-card .strip { display: flex; gap: 4px; }&#13;
 .wrm-wk-card .strip span { flex: 1; height: 20px; border-radius: 3px; }&#13;
 .wrm-wk-card .strip span.free  { background: var(--free-bg); }&#13;
 .wrm-wk-card .strip span.taken { background: var(--held-bg); }&#13;
 .wrm-wk-card .strip span.maint { background: var(--out-bg); }&#13;
-&#13;
 .wrm-wk-card .foot { margin-top: 11px; }&#13;
 .wrm-wk-card .note { font-size: 11px; color: var(--out-fg); }&#13;
 .wrm-wk-card .note.free { color: var(--free-fg); }&#13;
-&#13;
 .wrm-wk-more { text-align: center; margin-top: 14px; }&#13;
 .wrm-wk-more button {&#13;
   font-size: 13px; padding: 9px 22px;&#13;
@@ -276,7 +264,6 @@
   cursor: pointer;&#13;
 }&#13;
 .wrm-wk-more button:hover { background: var(--surface-2); color: var(--ink); }&#13;
-&#13;
 .wrm-wk-empty {&#13;
   text-align: center; padding: 38px 20px;&#13;
   background: var(--surface); border: 1px dashed var(--line);&#13;
@@ -307,6 +294,9 @@
 
   // Reservation statuses that actually hold a workspace.
   var HOLDING = 'pending_check_in,checked_in';
+
+  // The catalog item users book through.
+  var CAT_ITEM = 'fe1e919e93c6c3108c8874dcebba10d0';
 
   // How far ahead the detail panel looks.
   var HORIZON_DAYS = 30;
@@ -374,38 +364,63 @@
   // The browse grid may start before today, so widen the lower bound.
   if (days[0].ymd < windowStart) windowStart = days[0].ymd;
 
+  // Mark every day from sYmd to eYmd inclusive as held for a workspace.
+  function markHeld(store, wsId, sYmd, eYmd) {
+    if (!wsId || !sYmd || !eYmd) return;
+    if (eYmd < windowStart || sYmd > windowEnd) return;
+
+    if (!store[wsId]) store[wsId] = {};
+
+    var sP = sYmd.split('-');
+    var eP = eYmd.split('-');
+    var cur = Date.UTC(+sP[0], +sP[1] - 1, +sP[2]);
+    var end = Date.UTC(+eP[0], +eP[1] - 1, +eP[2]);
+
+    while (cur <= end) {
+      store[wsId][ymd(cur)] = true;
+      cur += 86400000;
+    }
+  }
+
   // --- 3. Which workspaces are held on which days ---
 
   var held = {};   // { workspaceSysId: { 'YYYY-MM-DD': true } }
 
+  // 3a. Approved reservations that produced a tracker record.
   var res = new GlideRecord('x_1903615_worksp_0_reservation_tracker');
   res.addQuery('reservation_status', 'IN', HOLDING);
   res.query();
 
   while (res.next()) {
-    var wsId = res.getValue('workspace');
-    if (!wsId) continue;
-
     var sDisp = res.getDisplayValue('work_start');
     var eDisp = res.getDisplayValue('work_end');
     if (!sDisp || !eDisp) continue;
 
-    var sYmd = sDisp.split(' ')[0];
-    var eYmd = eDisp.split(' ')[0];
+    markHeld(held, res.getValue('workspace'),
+             sDisp.split(' ')[0], eDisp.split(' ')[0]);
+  }
 
-    if (eYmd < windowStart || sYmd > windowEnd) continue;
+  // 3b. Requests still awaiting approval hold their dates too. They have
+  // no tracker record yet, so read the dates off the RITM variables.
+  // Without this, a space looks free on days someone has already asked for.
+  var ritm = new GlideRecord('sc_req_item');
+  ritm.addQuery('cat_item', CAT_ITEM);
+  ritm.addQuery('active', true);
+  ritm.query();
 
-    if (!held[wsId]) held[wsId] = {};
-
-    var sParts = sYmd.split('-');
-    var eParts = eYmd.split('-');
-    var cur = Date.UTC(+sParts[0], +sParts[1] - 1, +sParts[2]);
-    var end = Date.UTC(+eParts[0], +eParts[1] - 1, +eParts[2]);
-
-    while (cur <= end) {
-      held[wsId][ymd(cur)] = true;
-      cur += 86400000;
+  while (ritm.next()) {
+    var rWs = '', rStart = '', rEnd = '';
+    try {
+      rWs    = ritm.variables.select_workspace.toString();
+      rStart = ritm.variables.start_date_time.getDisplayValue();
+      rEnd   = ritm.variables.end_date_time.getDisplayValue();
+    } catch (err) {
+      gs.warn('WRM week: RITM variable read failed - ' + err);
+      continue;
     }
+    if (!rWs || !rStart || !rEnd) continue;
+
+    markHeld(held, rWs, rStart.split(' ')[0], rEnd.split(' ')[0]);
   }
 
   // --- 4. Build the workspace rows ---
@@ -423,7 +438,12 @@
     var status  = gr.getValue('status');
     var typeVal = gr.getValue('workspace_type');
     var typeLbl = gr.getDisplayValue('workspace_type');
-    var isMaint = status === 'under_maintenance';
+
+    // Maintenance keeps its own visual treatment. Anything else that
+    // isn't 'available' - unavailable, undergoing_approval - is simply
+    // not bookable, so it must not render as free.
+    var isMaint    = status === 'under_maintenance';
+    var isBookable = status === 'available';
 
     if (typeVal) typeSet[typeVal] = typeLbl;
 
@@ -441,6 +461,8 @@
       var state;
       if (isMaint) {
         state = 'maint';
+      } else if (!isBookable) {
+        state = 'taken';
       } else if (held[id] && held[id][days[k].ymd]) {
         state = 'taken';
       } else {
@@ -451,10 +473,11 @@
     }
 
     // Runs of consecutive free days across the 30-day horizon.
-    // Weekends don't break a run — a booking that spans a weekend
-    // is one booking — but they don't count as working days.
+    // Weekends don't break a run - a booking that spans a weekend
+    // is one booking - but they don't count as working days.
+    // Only bookable spaces get runs at all.
     var runs = [];
-    if (!isMaint) {
+    if (isBookable) {
       var open = null;
       for (var n = 0; n < horizon.length; n++) {
         var hDay = horizon[n];
@@ -517,6 +540,9 @@
       description: gr.getValue('workspace_description'),
       imageUrl:    url,
       maint:       isMaint,
+      // No runs means nothing to book: either the space isn't available,
+      // or every day in the horizon is already held.
+      bookable:    isBookable && runOut.length > 0,
       days:        dayStates,
       runs:        runOut
     });
@@ -534,7 +560,7 @@
 
   // Catalog item to book against. The client appends the workspace
   // and dates, which the item's onLoad script reads.
-  data.bookBase = '?id=sc_cat_item&sys_id=fe1e919e93c6c3108c8874dcebba10d0';
+  data.bookBase = '?id=sc_cat_item&sys_id=' + CAT_ITEM;
 
 })();]]></script>
         <servicenow>false</servicenow>
@@ -542,16 +568,15 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-29 00:22:47</sys_created_on>
         <sys_id>0647143e939ac7108c8874dcebba10b1</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>13</sys_mod_count>
         <sys_name>WRM Workspace Week</sys_name>
         <sys_package display_value="Workspace Reservation Management" source="x_1903615_worksp_0">586a8042930e03108c8874dcebba1096</sys_package>
         <sys_policy/>
         <sys_scope display_value="Workspace Reservation Management">586a8042930e03108c8874dcebba1096</sys_scope>
         <sys_update_name>sp_widget_0647143e939ac7108c8874dcebba10b1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-31 01:30:32</sys_updated_on>
+        <sys_updated_on>2026-08-03 16:10:39</sys_updated_on>
         <template><![CDATA[<div class="wrm-wk">
-
   <div class="wrm-wk-head">
     <h2>Available workspaces</h2>
     <div class="wrm-wk-toggle">
@@ -559,7 +584,6 @@
       <button ng-click="setWeek(1)" ng-class="{'on': week === 1}">Next week</button>
     </div>
   </div>
-
   <div class="wrm-wk-bar">
     <button class="wrm-wk-day"
             ng-repeat="d in visibleDays track by d.ymd"
@@ -570,17 +594,14 @@
       <span class="sub">free</span>
     </button>
   </div>
-
   <div class="wrm-wk-pills">
     <button ng-click="setType('')" ng-class="{'on': !typeVal}">All types</button>
     <button ng-repeat="t in data.types track by t.value"
             ng-click="setType(t.value)"
             ng-class="{'on': typeVal === t.value}">{{t.label}}</button>
   </div>
-
   <div class="wrm-wk-detail" ng-if="selected">
     <button class="close" ng-click="close()" aria-label="Close details">&times;</button>
-
     <div class="dl-top">
       <div class="dl-img">
         <img ng-if="selected.imageUrl" ng-src="{{selected.imageUrl}}" alt="{{selected.name}}">
@@ -593,13 +614,17 @@
           <span class="tag maint" ng-if="selected.maint">Under maintenance</span>
         </div>
         <p class="dl-desc" ng-if="selected.description">{{selected.description}}</p>
-        <a ng-if="!selected.maint" href="{{spaceUrl(selected)}}" class="dl-book">Book this space</a>
+        <!-- Bookable spaces get a live link; spaces with no free days
+             get a disabled-looking button that explains itself. -->
+        <a ng-if="!selected.maint && selected.bookable"
+           href="{{spaceUrl(selected)}}"
+           class="dl-book">Book this space</a>
+        <span ng-if="!selected.maint && !selected.bookable"
+              class="dl-book off">Fully booked</span>
       </div>
     </div>
-
     <div class="dl-runs" ng-if="!selected.maint">
       <div class="dl-runs-head">When you can book it</div>
-
       <div class="dl-run" ng-repeat="r in selected.runs track by r.startYmd">
         <div class="rail">
           <div class="ends">
@@ -618,18 +643,15 @@
         </div>
         <a href="{{runUrl(selected, r)}}" class="go">Book</a>
       </div>
-
       <div class="dl-none" ng-if="selected.runs.length === 0">
         Fully booked for the next 30 days.
       </div>
     </div>
   </div>
-
   <div class="wrm-wk-count">
     {{filtered.length}} of {{data.workspaces.length}} spaces
     <button ng-if="typeVal || dayYmd" ng-click="clearFilters()" class="clear">Clear filters</button>
   </div>
-
   <div class="wrm-wk-grid">
     <div class="wrm-wk-card"
          ng-repeat="w in shown track by w.sysId"
@@ -651,18 +673,15 @@
       </div>
     </div>
   </div>
-
   <div class="wrm-wk-more" ng-if="filtered.length > 8">
     <button ng-click="toggleAll()">
       {{showAll ? 'Show fewer' : 'Show all ' + filtered.length + ' spaces'}}
     </button>
   </div>
-
   <div class="wrm-wk-empty" ng-if="filtered.length === 0">
     <h3>Nothing matches</h3>
     <p>Try a different day or clear the filters.</p>
   </div>
-
 </div>]]></template>
     </sp_widget>
 </record_update>
